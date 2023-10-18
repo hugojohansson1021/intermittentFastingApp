@@ -62,10 +62,6 @@ class FastingManager: ObservableObject {
     
     
     
-    
-    
-    
-    
     var fastingTime: Double{
         return fastingPlan.fastingPeriod
     } //* 60 * 60
@@ -84,7 +80,7 @@ class FastingManager: ObservableObject {
         //print("scheduledTime", scheduledTime.formatted(.dateTime.month().day().hour().minute().second()))
         
         let components = DateComponents(hour: 20)
-        let scheduledTime = calandar.nextDate(after: .now, matching: components, matchingPolicy: .nextTime)!
+        let scheduledTime = calandar.nextDate(after: .now, matching: components, matchingPolicy: .nextTime)!//hardcode Fix if nessesery
         print("scheduledTime", scheduledTime.formatted(.dateTime.month().day().hour().minute().second()))
         
         startTime = scheduledTime

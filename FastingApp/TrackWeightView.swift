@@ -19,6 +19,7 @@ struct TrackWeightView: View {
             
             VStack{
                 
+                Spacer()
                 
                 Text("Weight Tracker")
                     .font(.title)
@@ -37,6 +38,7 @@ struct TrackWeightView: View {
                 }
                 
                 
+                Spacer()
                 
                 Button(action: {
                     

@@ -88,6 +88,22 @@ struct ContentView: View {
                         .background(.thinMaterial)
                         .cornerRadius(20)
                 }
+                
+                
+                
+                
+                // MARK: New Restart Fasting button
+                               Button {
+                                   fastingManager.resetFasting()
+                               } label: {
+                                   Text("Restart fasting")
+                                       .fontWeight(.bold)
+                                       .padding(.horizontal, 24)
+                                       .padding(.vertical, 8)
+                                       .background(.thinMaterial)
+                                       .cornerRadius(20)
+                               }
+                
                 Spacer()
 
                 //MARK: Bubbles

@@ -101,4 +101,25 @@ class FastingManager: ObservableObject {
         let totalTime = fastingState == .fasting ? fastingTime : feedingTime
         progress = (elapsedTime / totalTime * 100).rounded() / 100
     }
+    
+    
+    
+    func resetFasting() {
+            fastingState = .notStarted
+            let calendar = Calendar.current
+            let components = DateComponents(hour: 20)
+            let scheduledTime = calendar.nextDate(after: .now, matching: components, matchingPolicy: .nextTime)!
+            startTime = scheduledTime
+            endTime = scheduledTime.addingTimeInterval(fastingPlan.fastingPeriod * 60 * 60)
+            elapsedTime = 0.0
+            progress = 0.0
+        }
+    
+    
+    
+    
+    
+    
+    
+    
 }

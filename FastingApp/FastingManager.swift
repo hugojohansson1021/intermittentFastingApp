@@ -7,6 +7,9 @@
 
 import Foundation
 
+
+
+
 enum FastingState {
     case notStarted
     case fasting
@@ -29,6 +32,10 @@ enum FastingPlan: String {
         }
     }
 }
+
+
+
+
 
 class FastingManager: ObservableObject {
     @Published private(set) var fastingState: FastingState = .notStarted
@@ -123,7 +130,34 @@ class FastingManager: ObservableObject {
     
     
     
+
+    @Published var completedFasts: [FastingData] = []
+    
+    
+    
+    func addCompletedFast(date: Date, fastingDuration: TimeInterval) {
+        let fastingData = FastingData(date: date, totalFastingTime: fastingDuration) // Use totalFastingTime here
+        completedFasts.append(fastingData)
+        // Add this print statement to check the contents of completedFasts
+            print("Completed Fasts: \(completedFasts)")
+    }
+    
+    
+    func tuggleFastingState() {
+        fastingState = fastingState == .fasting ? .feeding : .fasting
+        startTime = Date()
+        elapsedTime = 0.0
+
+        if fastingState == .feeding {
+            // If fasting state changed to feeding, add completed fast data
+            let fastingDuration = endTime.timeIntervalSince(startTime)
+            addCompletedFast(date: Date(), fastingDuration: fastingDuration)
+        }
+    }
+    
     
     
     
 }
+    
+

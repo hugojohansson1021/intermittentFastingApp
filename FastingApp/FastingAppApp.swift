@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct FastingAppApp: App {
+    @StateObject var fastingManager = FastingManager(initialFastingPlan: .intermediate)
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(fastingManager)
                 
         }
     }

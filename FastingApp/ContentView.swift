@@ -3,6 +3,7 @@ import SwiftUI
 struct ContentView: View {
     @StateObject var fastingManager = FastingManager(initialFastingPlan: .intermediate)
     @State private var selectedFastingPlan: FastingPlan = .intermediate
+    @State private var isAddFastingDataViewVisible = false
 
     var title: String {
         switch fastingManager.fastingState {
@@ -35,18 +36,17 @@ struct ContentView: View {
                     .font(.headline)
 
                 // MARK: Fasting plan Picker
-                                Picker("Select Fasting Plan", selection: $selectedFastingPlan) {
-                                    Text(FastingPlan.beginner.rawValue).tag(FastingPlan.beginner)
-                                    Text(FastingPlan.intermediate.rawValue).tag(FastingPlan.intermediate)
-                                    Text(FastingPlan.advanced.rawValue).tag(FastingPlan.advanced)
-                                }
-                                .pickerStyle(SegmentedPickerStyle())
-                                .onChange(of: selectedFastingPlan) { newValue in
-                                    // Update the fasting plan when the user makes a selection
-                                    fastingManager.fastingPlan = newValue
-                                }
-                                .disabled(!fastingManager.isPickerEnabled)  // Disable the picker based on fasting state
-                                
+                Picker("Select Fasting Plan", selection: $selectedFastingPlan) {
+                    Text(FastingPlan.beginner.rawValue).tag(FastingPlan.beginner)
+                    Text(FastingPlan.intermediate.rawValue).tag(FastingPlan.intermediate)
+                    Text(FastingPlan.advanced.rawValue).tag(FastingPlan.advanced)
+                }
+                .pickerStyle(SegmentedPickerStyle())
+                .onChange(of: selectedFastingPlan) { newValue in
+                    // Update the fasting plan when the user makes a selection
+                    fastingManager.fastingPlan = newValue
+                }
+                .disabled(!fastingManager.isPickerEnabled)  // Disable the picker based on fasting state
 
                 //MARK: Progressring
                 ProgressRing()
@@ -74,7 +74,15 @@ struct ContentView: View {
 
                 //MARK: Button
                 Button {
-                    fastingManager.toggleFastingState()
+                    if fastingManager.fastingState == .fasting {
+                        // If fasting is currently in progress, toggle the fasting state
+                        fastingManager.toggleFastingState()
+                        // Present the AddFastingDataView as a sheet
+                        isAddFastingDataViewVisible.toggle()
+                    } else {
+                        // If fasting is not in progress, simply start fasting
+                        fastingManager.toggleFastingState()
+                    }
                 } label: {
                     Text(fastingManager.fastingState == .fasting ? "End fast" : "Start fasting")
                         .fontWeight(.bold)
@@ -82,6 +90,11 @@ struct ContentView: View {
                         .padding(.vertical, 8)
                         .background(.thinMaterial)
                         .cornerRadius(20)
+                }
+                .sheet(isPresented: $isAddFastingDataViewVisible) {
+                    // Provide the environment object here
+                    AddFastingDataView()
+                        .environmentObject(fastingManager)
                 }
 
                 // New Restart Fasting button
@@ -99,12 +112,6 @@ struct ContentView: View {
                 Spacer()
 
                 //MARK: Bubbles
-                NavigationLink(destination: TrackWeightView()) {
-                    Rectangle()
-                        .frame(width: 350, height: 150)
-                        .cornerRadius(20.0)
-                }
-                .buttonStyle(PlainButtonStyle())
 
                 NavigationLink(destination: TrackWeightView()) {
                     Rectangle()
@@ -113,8 +120,30 @@ struct ContentView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
 
+                NavigationLink(destination: TrackWeightView()) {
+                    Rectangle()
+                        .frame(width: 350, height: 150)
+                        .cornerRadius(20.0)
+                }
+                .buttonStyle(PlainButtonStyle())
+
+                //MARK: Button to Show Data List
+                NavigationLink(destination: FastingDataListView(fastingDataArray: fastingManager.completedFasts)) {
+                    Text("View All Data")
+                        .fontWeight(.bold)
+                        .padding(.horizontal, 24)
+                        .padding(.vertical, 8)
+                        .background(.thinMaterial)
+                        .cornerRadius(20)
+                        .foregroundColor(.black) // Customize the button's text color
+                }
+                .buttonStyle(PlainButtonStyle())
+                .padding(.top, 20) // Adjust the spacing as needed
             }
-            .foregroundColor(.white)  // Moved inside VStack
+            .sheet(isPresented: $isAddFastingDataViewVisible) {
+                AddFastingDataView()
+                    .environmentObject(fastingManager) // Provide the environment object here
+            }
         }
     }
 }
@@ -122,6 +151,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+            .environmentObject(FastingManager()) // Provide a mock FastingManager for preview
     }
 }
 

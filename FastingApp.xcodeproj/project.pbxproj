@@ -7,15 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		075EE7C82AE1655400D2FAD5 /* AddFastingDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075EE7C72AE1655400D2FAD5 /* AddFastingDataView.swift */; };
+		075EE7CA2AE16CA400D2FAD5 /* FastingDataListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075EE7C92AE16CA400D2FAD5 /* FastingDataListView.swift */; };
 		07B9F2A72ADEF474003B5AE1 /* FastingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */; };
 		07B9F2A92ADEF474003B5AE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2A82ADEF474003B5AE1 /* ContentView.swift */; };
 		07B9F2AB2ADEF475003B5AE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07B9F2AA2ADEF475003B5AE1 /* Assets.xcassets */; };
 		07B9F2AE2ADEF475003B5AE1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07B9F2AD2ADEF475003B5AE1 /* Preview Assets.xcassets */; };
 		07B9F2B52ADEF56F003B5AE1 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2B42ADEF56F003B5AE1 /* ProgressRing.swift */; };
 		07B9F2B72ADEFD76003B5AE1 /* FastingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2B62ADEFD76003B5AE1 /* FastingManager.swift */; };
+		07C20B3B2AE027DF00FFF3EE /* TrackWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C20B3A2AE027DF00FFF3EE /* TrackWeightView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		075EE7C72AE1655400D2FAD5 /* AddFastingDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFastingDataView.swift; sourceTree = "<group>"; };
+		075EE7C92AE16CA400D2FAD5 /* FastingDataListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingDataListView.swift; sourceTree = "<group>"; };
 		07B9F2A32ADEF474003B5AE1 /* FastingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingAppApp.swift; sourceTree = "<group>"; };
 		07B9F2A82ADEF474003B5AE1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -23,6 +28,7 @@
 		07B9F2AD2ADEF475003B5AE1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		07B9F2B42ADEF56F003B5AE1 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 		07B9F2B62ADEFD76003B5AE1 /* FastingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingManager.swift; sourceTree = "<group>"; };
+		07C20B3A2AE027DF00FFF3EE /* TrackWeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackWeightView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +65,9 @@
 				07B9F2A82ADEF474003B5AE1 /* ContentView.swift */,
 				07B9F2B42ADEF56F003B5AE1 /* ProgressRing.swift */,
 				07B9F2B62ADEFD76003B5AE1 /* FastingManager.swift */,
+				075EE7C72AE1655400D2FAD5 /* AddFastingDataView.swift */,
+				07C20B3A2AE027DF00FFF3EE /* TrackWeightView.swift */,
+				075EE7C92AE16CA400D2FAD5 /* FastingDataListView.swift */,
 				07B9F2AA2ADEF475003B5AE1 /* Assets.xcassets */,
 				07B9F2AC2ADEF475003B5AE1 /* Preview Content */,
 			);
@@ -145,6 +154,9 @@
 			files = (
 				07B9F2A92ADEF474003B5AE1 /* ContentView.swift in Sources */,
 				07B9F2A72ADEF474003B5AE1 /* FastingAppApp.swift in Sources */,
+				075EE7CA2AE16CA400D2FAD5 /* FastingDataListView.swift in Sources */,
+				07C20B3B2AE027DF00FFF3EE /* TrackWeightView.swift in Sources */,
+				075EE7C82AE1655400D2FAD5 /* AddFastingDataView.swift in Sources */,
 				07B9F2B72ADEFD76003B5AE1 /* FastingManager.swift in Sources */,
 				07B9F2B52ADEF56F003B5AE1 /* ProgressRing.swift in Sources */,
 			);

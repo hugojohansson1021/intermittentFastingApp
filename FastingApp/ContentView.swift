@@ -1,14 +1,6 @@
-//
-//  ContentView.swift
-//  FastingApp
-//
-//  Created by Hugo Johansson on 2023-10-17.
-//
-
 import SwiftUI
 
 struct ContentView: View {
-
     @StateObject var fastingManager = FastingManager(initialFastingPlan: .intermediate)
     @State private var selectedFastingPlan: FastingPlan = .intermediate
 
@@ -24,34 +16,37 @@ struct ContentView: View {
     }
 
     var body: some View {
-        ZStack {
-            //MARK: Background
-            LinearGradient(gradient: Gradient(colors: [Color.darkPurple, Color.purpleDark, Color.darkPink]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                .ignoresSafeArea()
-            content
+        NavigationView {
+            ZStack {
+                //MARK: Background
+                LinearGradient(gradient: Gradient(colors: [Color.darkPurple, Color.purpleDark, Color.darkPink]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    .ignoresSafeArea()
+                content
+            }
         }
     }
 
     var content: some View {
-        //MARK: scrollview
         ScrollView {
             VStack(spacing: 40) {
-                
+
                 //MARK: Title
                 Text(title)
                     .font(.headline)
 
                 // MARK: Fasting plan Picker
-                Picker("Select Fasting Plan", selection: $selectedFastingPlan) {
-                    Text(FastingPlan.beginner.rawValue).tag(FastingPlan.beginner)
-                    Text(FastingPlan.intermediate.rawValue).tag(FastingPlan.intermediate)
-                    Text(FastingPlan.advanced.rawValue).tag(FastingPlan.advanced)
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .onChange(of: selectedFastingPlan) { newValue in
-                    // Update the fasting plan when the user makes a selection
-                    fastingManager.fastingPlan = newValue
-                }
+                                Picker("Select Fasting Plan", selection: $selectedFastingPlan) {
+                                    Text(FastingPlan.beginner.rawValue).tag(FastingPlan.beginner)
+                                    Text(FastingPlan.intermediate.rawValue).tag(FastingPlan.intermediate)
+                                    Text(FastingPlan.advanced.rawValue).tag(FastingPlan.advanced)
+                                }
+                                .pickerStyle(SegmentedPickerStyle())
+                                .onChange(of: selectedFastingPlan) { newValue in
+                                    // Update the fasting plan when the user makes a selection
+                                    fastingManager.fastingPlan = newValue
+                                }
+                                .disabled(!fastingManager.isPickerEnabled)  // Disable the picker based on fasting state
+                                
 
                 //MARK: Progressring
                 ProgressRing()
@@ -88,39 +83,39 @@ struct ContentView: View {
                         .background(.thinMaterial)
                         .cornerRadius(20)
                 }
-                
-                
-                
-                
-                // MARK: New Restart Fasting button
-                               Button {
-                                   fastingManager.resetFasting()
-                               } label: {
-                                   Text("Restart fasting")
-                                       .fontWeight(.bold)
-                                       .padding(.horizontal, 24)
-                                       .padding(.vertical, 8)
-                                       .background(.thinMaterial)
-                                       .cornerRadius(20)
-                               }
-                
+
+                // New Restart Fasting button
+                Button {
+                    fastingManager.resetFasting()
+                } label: {
+                    Text("Restart fasting")
+                        .fontWeight(.bold)
+                        .padding(.horizontal, 24)
+                        .padding(.vertical, 8)
+                        .background(.thinMaterial)
+                        .cornerRadius(20)
+                }
+
                 Spacer()
 
                 //MARK: Bubbles
-                VStack(spacing: 5) {
+                NavigationLink(destination: TrackWeightView()) {
                     Rectangle()
                         .frame(width: 350, height: 150)
                         .cornerRadius(20.0)
                 }
-                VStack(spacing: 1) {
+                .buttonStyle(PlainButtonStyle())
+
+                NavigationLink(destination: TrackWeightView()) {
                     Rectangle()
                         .frame(width: 350, height: 150)
                         .cornerRadius(20.0)
                 }
+                .buttonStyle(PlainButtonStyle())
+
             }
-            //navigation bar
+            .foregroundColor(.white)  // Moved inside VStack
         }
-        .foregroundColor(.white)
     }
 }
 
@@ -129,3 +124,4 @@ struct ContentView_Previews: PreviewProvider {
         ContentView()
     }
 }
+

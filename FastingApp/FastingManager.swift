@@ -76,6 +76,10 @@ class FastingManager: ObservableObject {
         return (24 - fastingPlan.fastingPeriod) * 60 * 60
     }
     
+    var isPickerEnabled: Bool {
+           return fastingState == .notStarted || fastingState == .feeding
+       }
+    
     init(initialFastingPlan: FastingPlan = .intermediate) {
         let calendar = Calendar.current
         let components = DateComponents(hour: 20)

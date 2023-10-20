@@ -18,6 +18,9 @@ struct FastingData: Identifiable {
 
 struct FastingDataListView: View {
     @State var fastingDataArray: [FastingData]
+    @EnvironmentObject var fastingManager: FastingManager
+    
+
 
     var body: some View {
         NavigationView {
@@ -53,9 +56,15 @@ struct FastingDataListView: View {
         return String(format: "%02d:%02d", hours, minutes)
     }
 
+   
+
     func deleteFastingData(at offsets: IndexSet) {
         fastingDataArray.remove(atOffsets: offsets)
+        
+        // Update the fastingManager's array directly
+        fastingManager.completedFasts = fastingDataArray
     }
+
 }
 
 struct FastingDataListView_Previews: PreviewProvider {

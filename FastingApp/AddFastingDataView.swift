@@ -3,9 +3,8 @@ import SwiftUI
 struct AddFastingDataView: View {
     @Environment(\.presentationMode) var presentationMode
     @State private var selectedDate = Date()
-    @State private var fastingDurationString = "" // Changed variable name
-    @State private var showErrorAlert = false // Added state variable
-    @State private var errorMessage = "" // Added state variable
+    @State private var selectedHours = 0
+    @State private var selectedMinutes = 0
 
     @EnvironmentObject var fastingManager: FastingManager
 
@@ -14,34 +13,49 @@ struct AddFastingDataView: View {
             Form {
                 Section(header: Text("Enter Fast Completion Data")) {
                     DatePicker("Date", selection: $selectedDate, in: ...Date(), displayedComponents: .date)
-                    TextField("Fasting Duration (in hours)", text: $fastingDurationString) // Updated binding to text
-                }
-
-                Button("Save") {
-                    if let fastingDuration = Double(fastingDurationString) {
-                        if fastingDuration >= 0 {
-                            // Add the completed fast data to the manager's list
-                            fastingManager.addCompletedFast(date: selectedDate, fastingDuration: fastingDuration)
-                            // Dismiss the sheet
-                            presentationMode.wrappedValue.dismiss()
-                        } else {
-                            // Handle negative duration here
-                            errorMessage = "Fasting duration cannot be negative."
-                            showErrorAlert.toggle()
+                    
+                    HStack {
+                        Text("Fasting Duration:")
+                            .foregroundColor(.primary)
+                        
+                        Picker("Hours", selection: $selectedHours) {
+                            ForEach(0..<24, id: \.self) { hour in
+                                Text("\(hour) hours")
+                            }
                         }
-                    } else {
-                        // Handle invalid input here (non-numeric input)
-                        errorMessage = "Invalid fasting duration. Please enter a valid number."
-                        showErrorAlert.toggle()
+                        .pickerStyle(WheelPickerStyle())
+                        
+                        Picker("Minutes", selection: $selectedMinutes) {
+                            ForEach(0..<60, id: \.self) { minute in
+                                Text("\(minute) minutes")
+                            }
+                        }
+                        .pickerStyle(WheelPickerStyle())
                     }
                 }
 
+                Button("Save") {
+                    let fastingDurationInSeconds = selectedHours * 3600 + selectedMinutes * 60
+                    if fastingDurationInSeconds >= 0 {
+                        // Add the completed fast data to the manager's list
+                        fastingManager.addCompletedFast(date: selectedDate, fastingDuration: TimeInterval(fastingDurationInSeconds))
+                        // Dismiss the sheet
+                        presentationMode.wrappedValue.dismiss()
+                    } else {
+                        // Handle negative duration here
+                        showErrorAlert(message: "Fasting duration cannot be negative.")
+                        fastingManager.completedFasts.append(FastingData(date: selectedDate, totalFastingTime: TimeInterval(fastingDurationInSeconds)))
+                    }
+                }
             }
             .navigationBarTitle("Add Fasting Data", displayMode: .inline)
-            .alert(isPresented: $showErrorAlert) {
-                Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
-            }
         }
+    }
+    
+    private func showErrorAlert(message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: nil)
     }
 }
 

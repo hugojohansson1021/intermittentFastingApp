@@ -155,6 +155,32 @@ class FastingManager: ObservableObject {
         }
     }
     
+
+ 
+        
+    
+    func elapsedTimeComponents() -> (hours: Int, minutes: Int, seconds: Int) {
+        let totalSeconds = Int(elapsedTime)
+        let hours = totalSeconds / 3600
+        let minutes = (totalSeconds % 3600) / 60
+        let seconds = totalSeconds % 60
+        return (hours, minutes, seconds)
+    }
+
+    
+    
+    
+    
+    func deleteCompletedFast(at offsets: IndexSet) {
+        completedFasts.remove(atOffsets: offsets)
+    }
+
+    
+    
+    
+    
+    
+    
     
     
     

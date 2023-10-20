@@ -23,6 +23,7 @@ struct ContentView: View {
                 LinearGradient(gradient: Gradient(colors: [Color.darkPurple, Color.purpleDark, Color.darkPink]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     .ignoresSafeArea()
                 content
+                
             }
         }
     }
@@ -72,12 +73,13 @@ struct ContentView: View {
                     }
                 }
 
+                //MARK: start/end Button
+                // ... (previous code)
+
                 //MARK: Button
                 Button {
                     if fastingManager.fastingState == .fasting {
-                        // If fasting is currently in progress, toggle the fasting state
-                        fastingManager.toggleFastingState()
-                        // Present the AddFastingDataView as a sheet
+                        // If fasting is currently in progress, only show the sheet to add fasting data
                         isAddFastingDataViewVisible.toggle()
                     } else {
                         // If fasting is not in progress, simply start fasting
@@ -91,13 +93,24 @@ struct ContentView: View {
                         .background(.thinMaterial)
                         .cornerRadius(20)
                 }
-                .sheet(isPresented: $isAddFastingDataViewVisible) {
+                .sheet(isPresented: $isAddFastingDataViewVisible, onDismiss: {
+                    // When the sheet is dismissed, then check if the fasting state was .fasting and toggle it
+                    if fastingManager.fastingState == .fasting {
+                        fastingManager.toggleFastingState()
+                    }
+                }) {
                     // Provide the environment object here
                     AddFastingDataView()
                         .environmentObject(fastingManager)
                 }
 
-                // New Restart Fasting button
+                // ... (rest of your code)
+
+                
+                
+                
+
+                //MARK: New Restart Fasting button
                 Button {
                     fastingManager.resetFasting()
                 } label: {

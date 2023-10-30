@@ -9,6 +9,10 @@
 /* Begin PBXBuildFile section */
 		075EE7C82AE1655400D2FAD5 /* AddFastingDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075EE7C72AE1655400D2FAD5 /* AddFastingDataView.swift */; };
 		075EE7CA2AE16CA400D2FAD5 /* FastingDataListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075EE7C92AE16CA400D2FAD5 /* FastingDataListView.swift */; };
+		0786C9512AEF3644002B252D /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 0786C9502AEF3644002B252D /* SwiftUICharts */; };
+		0786C9532AEF3B48002B252D /* WeightEntrySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786C9522AEF3B48002B252D /* WeightEntrySheet.swift */; };
+		0786C9562AEF3C9E002B252D /* WeightTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0786C9542AEF3C9E002B252D /* WeightTracker.xcdatamodeld */; };
+		0786C9602AEF4CB8002B252D /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786C95F2AEF4CB8002B252D /* PersistenceController.swift */; };
 		07B9F2A72ADEF474003B5AE1 /* FastingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */; };
 		07B9F2A92ADEF474003B5AE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2A82ADEF474003B5AE1 /* ContentView.swift */; };
 		07B9F2AB2ADEF475003B5AE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07B9F2AA2ADEF475003B5AE1 /* Assets.xcassets */; };
@@ -21,6 +25,9 @@
 /* Begin PBXFileReference section */
 		075EE7C72AE1655400D2FAD5 /* AddFastingDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFastingDataView.swift; sourceTree = "<group>"; };
 		075EE7C92AE16CA400D2FAD5 /* FastingDataListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingDataListView.swift; sourceTree = "<group>"; };
+		0786C9522AEF3B48002B252D /* WeightEntrySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightEntrySheet.swift; sourceTree = "<group>"; };
+		0786C9552AEF3C9E002B252D /* WeightTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeightTracker.xcdatamodel; sourceTree = "<group>"; };
+		0786C95F2AEF4CB8002B252D /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
 		07B9F2A32ADEF474003B5AE1 /* FastingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingAppApp.swift; sourceTree = "<group>"; };
 		07B9F2A82ADEF474003B5AE1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,6 +43,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0786C9512AEF3644002B252D /* SwiftUICharts in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -66,8 +74,11 @@
 				07B9F2B42ADEF56F003B5AE1 /* ProgressRing.swift */,
 				07B9F2B62ADEFD76003B5AE1 /* FastingManager.swift */,
 				075EE7C72AE1655400D2FAD5 /* AddFastingDataView.swift */,
-				07C20B3A2AE027DF00FFF3EE /* TrackWeightView.swift */,
 				075EE7C92AE16CA400D2FAD5 /* FastingDataListView.swift */,
+				07C20B3A2AE027DF00FFF3EE /* TrackWeightView.swift */,
+				0786C9522AEF3B48002B252D /* WeightEntrySheet.swift */,
+				0786C95F2AEF4CB8002B252D /* PersistenceController.swift */,
+				0786C9542AEF3C9E002B252D /* WeightTracker.xcdatamodeld */,
 				07B9F2AA2ADEF475003B5AE1 /* Assets.xcassets */,
 				07B9F2AC2ADEF475003B5AE1 /* Preview Content */,
 			);
@@ -98,6 +109,9 @@
 			dependencies = (
 			);
 			name = FastingApp;
+			packageProductDependencies = (
+				0786C9502AEF3644002B252D /* SwiftUICharts */,
+			);
 			productName = FastingApp;
 			productReference = 07B9F2A32ADEF474003B5AE1 /* FastingApp.app */;
 			productType = "com.apple.product-type.application";
@@ -126,6 +140,9 @@
 				Base,
 			);
 			mainGroup = 07B9F29A2ADEF474003B5AE1;
+			packageReferences = (
+				0786C94F2AEF3644002B252D /* XCRemoteSwiftPackageReference "chartview" */,
+			);
 			productRefGroup = 07B9F2A42ADEF474003B5AE1 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -153,12 +170,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				07B9F2A92ADEF474003B5AE1 /* ContentView.swift in Sources */,
+				0786C9562AEF3C9E002B252D /* WeightTracker.xcdatamodeld in Sources */,
 				07B9F2A72ADEF474003B5AE1 /* FastingAppApp.swift in Sources */,
 				075EE7CA2AE16CA400D2FAD5 /* FastingDataListView.swift in Sources */,
 				07C20B3B2AE027DF00FFF3EE /* TrackWeightView.swift in Sources */,
+				0786C9532AEF3B48002B252D /* WeightEntrySheet.swift in Sources */,
 				075EE7C82AE1655400D2FAD5 /* AddFastingDataView.swift in Sources */,
 				07B9F2B72ADEFD76003B5AE1 /* FastingManager.swift in Sources */,
 				07B9F2B52ADEF56F003B5AE1 /* ProgressRing.swift in Sources */,
+				0786C9602AEF4CB8002B252D /* PersistenceController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -362,6 +382,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0786C94F2AEF3644002B252D /* XCRemoteSwiftPackageReference "chartview" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apppear/chartview.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0786C9502AEF3644002B252D /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0786C94F2AEF3644002B252D /* XCRemoteSwiftPackageReference "chartview" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		0786C9542AEF3C9E002B252D /* WeightTracker.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0786C9552AEF3C9E002B252D /* WeightTracker.xcdatamodel */,
+			);
+			currentVersion = 0786C9552AEF3C9E002B252D /* WeightTracker.xcdatamodel */;
+			path = WeightTracker.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 07B9F29B2ADEF474003B5AE1 /* Project object */;
 }

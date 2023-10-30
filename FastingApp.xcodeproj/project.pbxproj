@@ -13,6 +13,8 @@
 		0786C9532AEF3B48002B252D /* WeightEntrySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786C9522AEF3B48002B252D /* WeightEntrySheet.swift */; };
 		0786C9562AEF3C9E002B252D /* WeightTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0786C9542AEF3C9E002B252D /* WeightTracker.xcdatamodeld */; };
 		0786C9602AEF4CB8002B252D /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786C95F2AEF4CB8002B252D /* PersistenceController.swift */; };
+		0786C9632AEF517B002B252D /* WeightHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786C9622AEF517B002B252D /* WeightHistoryView.swift */; };
+		0786C9652AEF5688002B252D /* WeightGoalDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786C9642AEF5688002B252D /* WeightGoalDate.swift */; };
 		07B9F2A72ADEF474003B5AE1 /* FastingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */; };
 		07B9F2A92ADEF474003B5AE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2A82ADEF474003B5AE1 /* ContentView.swift */; };
 		07B9F2AB2ADEF475003B5AE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07B9F2AA2ADEF475003B5AE1 /* Assets.xcassets */; };
@@ -28,6 +30,8 @@
 		0786C9522AEF3B48002B252D /* WeightEntrySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightEntrySheet.swift; sourceTree = "<group>"; };
 		0786C9552AEF3C9E002B252D /* WeightTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeightTracker.xcdatamodel; sourceTree = "<group>"; };
 		0786C95F2AEF4CB8002B252D /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		0786C9622AEF517B002B252D /* WeightHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightHistoryView.swift; sourceTree = "<group>"; };
+		0786C9642AEF5688002B252D /* WeightGoalDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightGoalDate.swift; sourceTree = "<group>"; };
 		07B9F2A32ADEF474003B5AE1 /* FastingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingAppApp.swift; sourceTree = "<group>"; };
 		07B9F2A82ADEF474003B5AE1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -50,6 +54,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0786C9612AEF4FF0002B252D /* WeightTrackrFeature */ = {
+			isa = PBXGroup;
+			children = (
+				07C20B3A2AE027DF00FFF3EE /* TrackWeightView.swift */,
+				0786C9522AEF3B48002B252D /* WeightEntrySheet.swift */,
+				0786C9642AEF5688002B252D /* WeightGoalDate.swift */,
+				0786C9622AEF517B002B252D /* WeightHistoryView.swift */,
+				0786C95F2AEF4CB8002B252D /* PersistenceController.swift */,
+				0786C9542AEF3C9E002B252D /* WeightTracker.xcdatamodeld */,
+			);
+			path = WeightTrackrFeature;
+			sourceTree = "<group>";
+		};
 		07B9F29A2ADEF474003B5AE1 = {
 			isa = PBXGroup;
 			children = (
@@ -75,10 +92,7 @@
 				07B9F2B62ADEFD76003B5AE1 /* FastingManager.swift */,
 				075EE7C72AE1655400D2FAD5 /* AddFastingDataView.swift */,
 				075EE7C92AE16CA400D2FAD5 /* FastingDataListView.swift */,
-				07C20B3A2AE027DF00FFF3EE /* TrackWeightView.swift */,
-				0786C9522AEF3B48002B252D /* WeightEntrySheet.swift */,
-				0786C95F2AEF4CB8002B252D /* PersistenceController.swift */,
-				0786C9542AEF3C9E002B252D /* WeightTracker.xcdatamodeld */,
+				0786C9612AEF4FF0002B252D /* WeightTrackrFeature */,
 				07B9F2AA2ADEF475003B5AE1 /* Assets.xcassets */,
 				07B9F2AC2ADEF475003B5AE1 /* Preview Content */,
 			);
@@ -169,6 +183,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0786C9632AEF517B002B252D /* WeightHistoryView.swift in Sources */,
 				07B9F2A92ADEF474003B5AE1 /* ContentView.swift in Sources */,
 				0786C9562AEF3C9E002B252D /* WeightTracker.xcdatamodeld in Sources */,
 				07B9F2A72ADEF474003B5AE1 /* FastingAppApp.swift in Sources */,
@@ -176,6 +191,7 @@
 				07C20B3B2AE027DF00FFF3EE /* TrackWeightView.swift in Sources */,
 				0786C9532AEF3B48002B252D /* WeightEntrySheet.swift in Sources */,
 				075EE7C82AE1655400D2FAD5 /* AddFastingDataView.swift in Sources */,
+				0786C9652AEF5688002B252D /* WeightGoalDate.swift in Sources */,
 				07B9F2B72ADEFD76003B5AE1 /* FastingManager.swift in Sources */,
 				07B9F2B52ADEF56F003B5AE1 /* ProgressRing.swift in Sources */,
 				0786C9602AEF4CB8002B252D /* PersistenceController.swift in Sources */,

@@ -11,12 +11,14 @@ import SwiftUI
 struct FastingAppApp: App {
     @StateObject var fastingManager = FastingManager(initialFastingPlan: .intermediate)
     let persistenceController = PersistenceController.shared
+    
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environmentObject(fastingManager)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                
                 
         }
     }

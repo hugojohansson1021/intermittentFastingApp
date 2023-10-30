@@ -11,16 +11,19 @@ import SwiftUICharts
 
 struct TrackWeightView: View {
     @Environment(\.managedObjectContext) private var managedObjectContext
+    
     @FetchRequest(
         entity: CDWeightEntry.entity(),
         sortDescriptors: [NSSortDescriptor(keyPath: \CDWeightEntry.date, ascending: true)]
     ) var weightEntries: FetchedResults<CDWeightEntry>
     
+    
+    
     @State private var showingAddWeightSheet = false
     @State private var showingWeightHistory = false
     @State private var goalWeight: Int = 60
     @State private var showingPicker = false
-
+    
     var body: some View {
         ZStack {
             // Background
@@ -29,17 +32,17 @@ struct TrackWeightView: View {
             
             VStack {
                 // Title
-                Text("Spåra din vikt")
+                Text("Track your weight")
                     .font(.largeTitle)
                     .padding()
 
                 // Chart
                 if weightEntries.isEmpty {
-                    Text("Ingen viktdata tillgänglig.")
+                    Text("No data available.")
                         .foregroundColor(.white)
                 } else {
                     let data = weightEntries.compactMap { $0.weight as? Double }
-                    LineView(data: data, title: "Vikt", legend: "kg")
+                    LineView(data: data, title: "Weight", legend: "kg")
                         .frame(height: 300)
                 }
                 
@@ -49,13 +52,13 @@ struct TrackWeightView: View {
                 Button(action: {
                     showingPicker.toggle()
                 }) {
-                    Text("Målvikt: \(goalWeight) kg")
+                    Text("Goal Weight: \(goalWeight) kg")
                         .foregroundColor(.white)
                 }
                 .popover(isPresented: $showingPicker) {
                     VStack {
-                        Text("Välj Målvikt").font(.headline).padding()
-                        Picker("Målvikt", selection: $goalWeight) {
+                        Text("Choose a goal Weight").font(.headline).padding()
+                        Picker("Goal Weight", selection: $goalWeight) {
                             ForEach(30...150, id: \.self) { weight in
                                 Text("\(weight)")
                             }
@@ -65,18 +68,17 @@ struct TrackWeightView: View {
                         .clipped()
                     }
                     .padding()
-                    .frame(width: 200, height: 250)  // Justera dessa värden efter ditt behov
+                    .frame(width: 200, height: 250)
+                }
+                .onChange(of: goalWeight) { _ in
+                    saveGoalWeight()
                 }
 
-
-
-                
                 // Estimated Date Of Goal Weight
                 if let estimatedDate = calculateEstimatedDateOfGoalWeight(goalWeight: Double(goalWeight)) {
-                    Text("Beräknat datum för målvikt: \(estimatedDate, format: .dateTime.day().month().year())")
+                    Text("Estimated Time to Goal: \(estimatedDate, format: .dateTime.day().month().year())")
                         .padding()
                 }
-
 
                 Spacer()
                 
@@ -108,17 +110,18 @@ struct TrackWeightView: View {
             WeightHistoryView()
                 .environment(\.managedObjectContext, managedObjectContext)
         }
-    }
+        .onAppear {
+            loadGoalWeight()
+        }
+    }//body
     
     
     
     
-  
     
     
     
-    
-    //Calculate weight
+    // Calculate weight
     func calculateEstimatedDateOfGoalWeight(goalWeight: Double) -> Date? {
         let weightData = weightEntries.compactMap { weightEntry -> (date: Date, weight: Double)? in
             if let date = weightEntry.date,
@@ -135,7 +138,40 @@ struct TrackWeightView: View {
         
         return nil
     }
-}
+    
+    func loadGoalWeight() {
+           let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CDGoalWeight")
+           do {
+               let result = try managedObjectContext.fetch(fetchRequest)
+               if let savedGoalWeight = result.first?.value(forKey: "goalWeight") as? Int {
+                   goalWeight = savedGoalWeight
+               }
+           } catch {
+               print("Error loading goal weight: \(error)")
+           }
+       }
+    
+    
+    
+    
+    func saveGoalWeight() {
+           let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CDGoalWeight")
+           do {
+               let result = try managedObjectContext.fetch(fetchRequest)
+               if let existingGoalWeight = result.first {
+                   existingGoalWeight.setValue(goalWeight, forKey: "goalWeight")
+               } else {
+                   let entity = NSEntityDescription.entity(forEntityName: "CDGoalWeight", in: managedObjectContext)!
+                   let newGoalWeight = NSManagedObject(entity: entity, insertInto: managedObjectContext)
+                   newGoalWeight.setValue(goalWeight, forKey: "goalWeight")
+               }
+               
+               try managedObjectContext.save()
+           } catch {
+               print("Error saving goal weight: \(error)")
+           }
+       }
+   }
 
 struct TrackWeightView_Previews: PreviewProvider {
     static var previews: some View {
@@ -143,5 +179,3 @@ struct TrackWeightView_Previews: PreviewProvider {
             .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
     }
 }
-
-

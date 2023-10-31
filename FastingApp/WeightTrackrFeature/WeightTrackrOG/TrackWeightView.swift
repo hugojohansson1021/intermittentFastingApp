@@ -29,162 +29,223 @@ struct TrackWeightView: View {
     
     
     var body: some View {
-        ZStack {
-            // Background
-            LinearGradient(gradient: Gradient(colors: [Color.darkPurple, Color.purpleDark, Color.darkPink]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                .ignoresSafeArea()
+        
             
-            VStack {
-                // Title
-                Text("Track your weight")
-                    .font(.largeTitle)
-                    .padding()
-                    .foregroundStyle(.white)
+            
+            ZStack {
+                // Background
+                LinearGradient(gradient: Gradient(colors: [Color.darkPurple, Color.purpleDark, Color.darkPink]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    .ignoresSafeArea()
                 
-                
-                
-                // Chart
-                
-                if weightEntries.isEmpty {
-                    Text("No data available.")
-                        .foregroundColor(.white)
-                } else {
-                    Chart {
-                        ForEach(weightEntries, id: \.self) { entry in
-                            LineMark(
-                                x: .value("Date", entry.date ?? Date()),
-                                y: .value("Weight", entry.weight)
-                            )
-                            .foregroundStyle(.mintBack)
-                            
-                            PointMark(
-                                x: .value("Date", entry.date ?? Date()),
-                                y: .value("Weight", entry.weight)
-                            )
-                            .foregroundStyle(.white)
-                        }
-                        
-                        RuleMark(
-                               y: .value("Goal Weight", goalWeight)
-                           )
-                           .foregroundStyle(.yellow)
-                           .lineStyle(StrokeStyle(lineWidth: 2, dash: [5, 5]))
-                           .annotation(position: .trailing) {
-                               Text("Goal")
-                                   .foregroundStyle(.yellow)
-                                   .font(.caption)
-                                   .offset(x: 5)
-                           }
-                        
-                        
-                    }
-                    .frame(height: 300)
-                    .padding(.leading, 10)
-                    .padding(.trailing, 10)
-
-                    .chartXAxis {
-                        AxisMarks(values: .stride(by: .day)) { _ in
-                            AxisGridLine()
-                                .foregroundStyle(.white)
-                            AxisTick()
-                                .foregroundStyle(.white)
-                            AxisValueLabel(format: .dateTime.day().month())
-                                .foregroundStyle(.white)
-                        }
-                    }
-                    .chartYAxis {
-                        AxisMarks { _ in
-                            AxisGridLine()
-                                .foregroundStyle(.white)
-                            AxisTick()
-                                .foregroundStyle(.white)
-                            AxisValueLabel()
-                                .foregroundStyle(.white)
-                        }
-                    }
-                }
-                
-                
-                
-                Spacer()
-                
-                // Goal Weight Display and Picker
-                Button(action: {
-                    showingPicker.toggle()
-                }
-                       
-                ) {
-                    Text("Goal Weight: \(goalWeight) kg")
-                        .foregroundColor(.yellow)
-                        .padding()
-                        .background(Capsule().fill(Color.purpleDark))
-                        .shadow(radius: 5)
-                }
-                .popover(isPresented: $showingPicker) {
-                    VStack {
-                        Text("Choose a goal Weight").font(.headline).padding()
-                        Picker("Goal Weight", selection: $goalWeight) {
-                            ForEach(30...150, id: \.self) { weight in
-                                Text("\(weight)")
-                            }
-                        }
-                        .pickerStyle(WheelPickerStyle())
-                        .frame(height: 150)
-                        .clipped()
-                    }
-                    .padding()
-                    .frame(width: 300, height: 350)
-                }
-                .onChange(of: goalWeight) { _ in
-                    saveGoalWeight()
-                }
-                
-                // Estimated Date Of Goal Weight
-                if let estimatedDate = calculateEstimatedDateOfGoalWeight(goalWeight: Double(goalWeight)) {
-                    Text("Estimated Time to Goal: \(estimatedDate, format: .dateTime.day().month().year())")
+                VStack {
+                    // Title
+                    Text("Track your weight")
+                        .font(.largeTitle)
                         .padding()
                         .foregroundStyle(.white)
-                }
-                
-                Spacer()
-                VStack {
-                    // Button to add new weight entry
-                    Button("Track Weight") {
-                        withAnimation {
-                            showingAddWeightSheet.toggle()
+                    
+                    
+                    
+                    // MARK: Chart
+                    
+                    if weightEntries.isEmpty {
+                        Text("No data available.")
+                            .foregroundColor(.white)
+                    } else {
+                        Chart {
+                            ForEach(weightEntries, id: \.self) { entry in
+                                LineMark(
+                                    x: .value("Date", entry.date ?? Date()),
+                                    y: .value("Weight", entry.weight)
+                                )
+                                .foregroundStyle(.mintBack)
+                                
+                                PointMark(
+                                    x: .value("Date", entry.date ?? Date()),
+                                    y: .value("Weight", entry.weight)
+                                )
+                                .foregroundStyle(.white)
+                            }
+                            
+                            RuleMark(
+                                y: .value("Goal Weight", goalWeight)
+                            )
+                            .foregroundStyle(.yellow)
+                            .lineStyle(StrokeStyle(lineWidth: 2, dash: [5, 5]))
+                            .annotation(position: .trailing) {
+                                Text("Goal")
+                                    .foregroundStyle(.yellow)
+                                    .font(.caption)
+                                    .offset(x: 5)
+                            }
+                            
+                            
                         }
+                        .frame(height: 300)
+                        .padding(.leading, 10)
+                        .padding(.trailing, 10)
+                        
+                        .chartXAxis {
+                            AxisMarks(values: .stride(by: .day)) { _ in
+                                AxisGridLine()
+                                    .foregroundStyle(.white)
+                                AxisTick()
+                                    .foregroundStyle(.white)
+                                AxisValueLabel(format: .dateTime.day().month())
+                                    .foregroundStyle(.white)
+                            }
+                        }
+                        .chartYAxis {
+                            AxisMarks { _ in
+                                AxisGridLine()
+                                    .foregroundStyle(.white)
+                                AxisTick()
+                                    .foregroundStyle(.white)
+                                AxisValueLabel()
+                                    .foregroundStyle(.white)
+                            }
+                        }
+                    }
+                    
+                    
+                    
+                    Spacer()
+                    HStack(spacing: 50){
+                        VStack(spacing: 10){
+                            // MARK: Text
+                            
+                            Text("Goal Weight:")
+                                .foregroundStyle(.white)
+                                .fontWeight(.bold)
+                            
+                            // MARK: Button Goal Weight Display and Picker
+                            Button(action: {
+                                showingPicker.toggle()
+                            }
+                                   
+                            ) {
+                                Text("\(goalWeight) kg")
+                                    .fontWeight(.bold)
+                                    .padding(.horizontal, 24)
+                                    .padding(.vertical, 8)
+                                    .background(.thinMaterial)
+                                    .cornerRadius(20)
+                                    .foregroundColor(.yellow)
+                            }
+                            .popover(isPresented: $showingPicker) {
+                                VStack {
+                                    Text("Choose a goal Weight").font(.headline).padding()
+                                    Picker("Goal Weight", selection: $goalWeight) {
+                                        ForEach(30...150, id: \.self) { weight in
+                                            Text("\(weight)")
+                                        }
+                                        
+                                    }
+                                    .pickerStyle(WheelPickerStyle())
+                                    .frame(height: 150)
+                                    .clipped()
+                                    
+                                }
+                                .padding()
+                                .frame(width: 300, height: 350)
+                            }
+                            .onChange(of: goalWeight) { _ in
+                                saveGoalWeight()
+                            }
+                            
+                            
+                        }//V-stack
+                        
+                        
+                        
+                        VStack(spacing: 10){
+                            // MARK: Text current weight
+                            Text("Current Weight:")
+                                .foregroundStyle(.white)
+                                .fontWeight(.bold)
+                            
+                            Button(action: {
+                                withAnimation {
+                                    showingAddWeightSheet.toggle()
+                                }
+                            }) {
+                                if let latestWeight = latestWeightEntry(), let weight = latestWeight.weight as? Double {
+                                    Text(String(format: "%.1f kg", weight))
+                                } else {
+                                    Text("No Data")
+                                }
+                            }
+                            .fontWeight(.bold)
+                            .padding(.horizontal, 24)
+                            .padding(.vertical, 8)
+                            .background(.thinMaterial)
+                            .cornerRadius(20)
+                            .foregroundColor(.white)
+                        }//V-stack
+    
+                        }//H-Stack
+                        
+                    
+                    
+                    
+                    // Estimated Date Of Goal Weight
+                    if let estimatedDate = calculateEstimatedDateOfGoalWeight(goalWeight: Double(goalWeight)) {
+                        Text("Estimated Time to Goal: \(estimatedDate, format: .dateTime.day().month().year())")
+                            .padding()
+                            .foregroundStyle(.white)
+                            .fontWeight(.bold)
+                        
+                    }//H-stack
+                    
+                  
+                    
+                    
+                    
+                    
+                    Spacer()
+                    VStack {
+                        // Button to add new weight entry
+                        Button("Track Weight") {
+                            withAnimation {
+                                showingAddWeightSheet.toggle()
+                            }
+                        }
+                        .fontWeight(.bold)
+                        .padding(.horizontal, 35)
+                        .padding(.vertical, 13)
+                        .background(.thinMaterial)
+                        .cornerRadius(20)
+                        .foregroundColor(.white)
+                        
+                        // Button to show weight history
+                        Button("Track History") {
+                            withAnimation {
+                                showingWeightHistory.toggle()
+                            }
+                        }
+                        .fontWeight(.bold)
+                        .padding(.horizontal, 24)
+                        .padding(.vertical, 8)
+                        .background(.thinMaterial)
+                        .cornerRadius(20)
+                        .foregroundColor(.white)
                     }
                     .padding()
-                    .background(Capsule().fill(Color.purpleDark))
-                    .foregroundColor(.white)
-                    .shadow(radius: 5)
-                    
-                    // Button to show weight history
-                    Button("Track History") {
-                        withAnimation {
-                            showingWeightHistory.toggle()
-                        }
+                    .sheet(isPresented: $showingAddWeightSheet) {
+                        WeightEntrySheet()
+                            .environment(\.managedObjectContext, managedObjectContext)
                     }
-                    .padding(8)
-                    .background(Capsule().fill(Color.purpleDark))
-                    .foregroundColor(.white)
-                    .shadow(radius: 5)
-                }
-                .padding()
-                .sheet(isPresented: $showingAddWeightSheet) {
-                    WeightEntrySheet()
-                        .environment(\.managedObjectContext, managedObjectContext)
-                }
-                .popover(isPresented: $showingWeightHistory) {
-                    WeightHistoryView()
-                        .environment(\.managedObjectContext, managedObjectContext)
-                }
-
-                .onAppear {
-                    loadGoalWeight()
+                    .popover(isPresented: $showingWeightHistory) {
+                        WeightHistoryView()
+                            .environment(\.managedObjectContext, managedObjectContext)
+                    }
+                    
+                    .onAppear {
+                        loadGoalWeight()
+                    }
                 }
             }
-        }
+            
         
         
     }//body
@@ -243,9 +304,21 @@ struct TrackWeightView: View {
        }
     
     
+
+    //Help func to find last weight entry
+    func latestWeightEntry() -> CDWeightEntry? {
+        return weightEntries.last
+    }
+
     
     
-   }
+    
+    
+    
+    
+    
+    
+   }//VIEW
 
 struct TrackWeightView_Previews: PreviewProvider {
     static var previews: some View {

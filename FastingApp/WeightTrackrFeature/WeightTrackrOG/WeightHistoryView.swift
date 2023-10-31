@@ -19,6 +19,13 @@ struct WeightHistoryView: View {
     var body: some View {
         NavigationView {
             VStack {
+                
+                Text("This list all your loggs, if you want to delate list items swipe right to left")
+                    .fontWeight(.thin)
+                    .padding()
+                    .font(.subheadline)
+                    .foregroundStyle(.white)
+                
                 List {
                     ForEach(weightEntries) { weightEntry in
                         HStack {
@@ -40,12 +47,12 @@ struct WeightHistoryView: View {
                 Button("Done") {
                     dismiss()
                 }
-                .padding()
-                .frame(maxWidth: .infinity)
-                .background(Color.customDarkPink)
+                .fontWeight(.bold)
+                .padding(.horizontal, 24)
+                .padding(.vertical, 8)
+                .background(.thinMaterial)
+                .cornerRadius(20)
                 .foregroundColor(.white)
-                .cornerRadius(10)
-                .padding()
             }
             .background(Color.customPurpleDark)
             .navigationTitle("Weight History")

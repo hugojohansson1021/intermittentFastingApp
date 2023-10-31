@@ -41,9 +41,6 @@ struct WeightEntrySheet: View {
             
             VStack {
                 
-                
-                
-                
                 Text("Date")
                        .foregroundColor(.white)
                        .font(.title2)
@@ -120,11 +117,12 @@ struct WeightEntrySheet: View {
                         print("Error saving weight: \(error)")
                     }
                 }
-                .padding()
-                .background(Capsule().fill(Color.purpleDark))
+                .fontWeight(.bold)
+                .padding(.horizontal, 24)
+                .padding(.vertical, 8)
+                .background(.thinMaterial)
+                .cornerRadius(20)
                 .foregroundColor(.white)
-                .shadow(radius: 5)
-                
                 
                 Spacer()
             }

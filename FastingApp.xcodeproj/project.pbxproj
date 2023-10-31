@@ -54,14 +54,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0786C9612AEF4FF0002B252D /* WeightTrackrFeature */ = {
+		073B45F02AF095DE000687B2 /* WeightTrackrOG */ = {
 			isa = PBXGroup;
 			children = (
 				07C20B3A2AE027DF00FFF3EE /* TrackWeightView.swift */,
 				0786C9522AEF3B48002B252D /* WeightEntrySheet.swift */,
 				0786C9642AEF5688002B252D /* WeightGoalDate.swift */,
-				0786C9622AEF517B002B252D /* WeightHistoryView.swift */,
 				0786C95F2AEF4CB8002B252D /* PersistenceController.swift */,
+				0786C9622AEF517B002B252D /* WeightHistoryView.swift */,
+			);
+			path = WeightTrackrOG;
+			sourceTree = "<group>";
+		};
+		0786C9612AEF4FF0002B252D /* WeightTrackrFeature */ = {
+			isa = PBXGroup;
+			children = (
+				073B45F02AF095DE000687B2 /* WeightTrackrOG */,
 				0786C9542AEF3C9E002B252D /* WeightTracker.xcdatamodeld */,
 			);
 			path = WeightTrackrFeature;

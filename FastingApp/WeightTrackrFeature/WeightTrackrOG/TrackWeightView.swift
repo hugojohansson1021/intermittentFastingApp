@@ -5,9 +5,12 @@
 //  Created by Hugo Johansson on 2023-10-18.
 //
 
+
+
 import SwiftUI
 import CoreData
 import SwiftUICharts
+import Charts
 
 struct TrackWeightView: View {
     @Environment(\.managedObjectContext) private var managedObjectContext
@@ -24,6 +27,7 @@ struct TrackWeightView: View {
     @State private var goalWeight: Int = 60
     @State private var showingPicker = false
     
+    
     var body: some View {
         ZStack {
             // Background
@@ -35,25 +39,70 @@ struct TrackWeightView: View {
                 Text("Track your weight")
                     .font(.largeTitle)
                     .padding()
-
+                    .foregroundStyle(.white)
+                
+                
+                
                 // Chart
+                
                 if weightEntries.isEmpty {
                     Text("No data available.")
                         .foregroundColor(.white)
                 } else {
-                    let data = weightEntries.compactMap { $0.weight as? Double }
-                    LineView(data: data, title: "Weight", legend: "kg")
-                        .frame(height: 300)
+                    Chart {
+                        ForEach(weightEntries, id: \.self) { entry in
+                            LineMark(
+                                x: .value("Date", entry.date ?? Date()),
+                                y: .value("Weight", entry.weight)
+                            )
+                            .foregroundStyle(.mintBack)
+                            
+                            PointMark(
+                                x: .value("Date", entry.date ?? Date()),
+                                y: .value("Weight", entry.weight)
+                            )
+                            .foregroundStyle(.white)
+                        }
+                    }
+                    .frame(height: 300)
+                    .chartXAxis {
+                        AxisMarks(values: .stride(by: .day)) { _ in
+                            AxisGridLine()
+                                .foregroundStyle(.white)
+                            AxisTick()
+                                .foregroundStyle(.white)
+                            AxisValueLabel(format: .dateTime.day().month())
+                                .foregroundStyle(.white)
+                        }
+                    }
+                    .chartYAxis {
+                        AxisMarks { _ in
+                            AxisGridLine()
+                            .foregroundStyle(.white)
+                            AxisTick()
+                                .foregroundStyle(.white)
+                            AxisValueLabel()
+                                .foregroundStyle(.white)
+                        }
+                    }
                 }
+            
+        
                 
                 Spacer()
                 
                 // Goal Weight Display and Picker
                 Button(action: {
                     showingPicker.toggle()
-                }) {
+                }
+                
+                ) {
                     Text("Goal Weight: \(goalWeight) kg")
                         .foregroundColor(.white)
+                        .padding()
+                        .background(Capsule().fill(Color.purpleDark))
+                        .foregroundColor(.white)
+                        .shadow(radius: 5)
                 }
                 .popover(isPresented: $showingPicker) {
                     VStack {
@@ -78,6 +127,7 @@ struct TrackWeightView: View {
                 if let estimatedDate = calculateEstimatedDateOfGoalWeight(goalWeight: Double(goalWeight)) {
                     Text("Estimated Time to Goal: \(estimatedDate, format: .dateTime.day().month().year())")
                         .padding()
+                        .foregroundStyle(.white)
                 }
 
                 Spacer()
@@ -92,11 +142,11 @@ struct TrackWeightView: View {
                 .shadow(radius: 5)
                 
                 // Button to show weight history
-                Button("Weight History") {
+                Button("Track History") {
                     showingWeightHistory.toggle()
                 }
-                .padding()
-                .background(Capsule().fill(Color.gray))
+                .padding(8)
+                .background(Capsule().fill(Color.purpleDark))
                 .foregroundColor(.white)
                 .shadow(radius: 5)
             }

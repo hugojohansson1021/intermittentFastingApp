@@ -27,8 +27,9 @@ struct WeightHistoryView: View {
                         HStack {
                             Text("\(weightEntry.date ?? Date(), formatter: itemFormatter)")
                             Spacer()
-                            Text("\(weightEntry.weight ?? 0) kg")
+                            Text(String(format: "%.1f kg", weightEntry.weight ?? 0))
                         }
+
                     }
                     .onDelete(perform: deleteItems)
                 }

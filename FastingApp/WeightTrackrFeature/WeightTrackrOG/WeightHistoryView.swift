@@ -5,9 +5,6 @@
 //  Created by Hugo Johansson on 2023-10-30.
 //
 
-
-
-
 import CoreData
 import SwiftUI
 
@@ -27,28 +24,42 @@ struct WeightHistoryView: View {
                         HStack {
                             Text("\(weightEntry.date ?? Date(), formatter: itemFormatter)")
                             Spacer()
-                            Text(String(format: "%.1f kg", weightEntry.weight ?? 0))
+                            Text(String(format: "%.1f kg", weightEntry.weight))
                         }
-
+                        foregroundColor(.white)
+                        .padding()
+                        .background(Color.white.opacity(0.8))
+                        .cornerRadius(10)
                     }
                     .onDelete(perform: deleteItems)
                 }
-                .toolbar {
-                    EditButton()
-                }
-
+                .listStyle(PlainListStyle())
+                .padding()
+                .background(Color.customPurpleDark)
+                
                 Button("Done") {
                     dismiss()
                 }
                 .padding()
                 .frame(maxWidth: .infinity)
-                .background(Color.blue)
+                .background(Color.customDarkPink)
                 .foregroundColor(.white)
                 .cornerRadius(10)
                 .padding()
             }
+            .background(Color.customPurpleDark)
             .navigationTitle("Weight History")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Weight History")
+                        .foregroundColor(.white)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                }
+            }
         }
+        .navigationViewStyle(StackNavigationViewStyle())
     }
 
     private func deleteItems(offsets: IndexSet) {
@@ -58,7 +69,6 @@ struct WeightHistoryView: View {
             do {
                 try managedObjectContext.save()
             } catch {
-                // Add your error handling here
                 print("Error deleting weight entries: \(error)")
             }
         }

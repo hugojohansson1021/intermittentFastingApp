@@ -26,6 +26,8 @@ struct ContentView: View {
                 
             }
         }
+        .accentColor(.white)  // Sätter accentfärgen för NavigationView
+    
     }
 
     var content: some View {
@@ -35,6 +37,7 @@ struct ContentView: View {
                 //MARK: Title
                 Text(title)
                     .font(.headline)
+                    .foregroundStyle(.white)
 
                 // MARK: Fasting plan Picker
                 Picker("Select Fasting Plan", selection: $selectedFastingPlan) {
@@ -42,6 +45,7 @@ struct ContentView: View {
                     Text(FastingPlan.intermediate.rawValue).tag(FastingPlan.intermediate)
                     Text(FastingPlan.advanced.rawValue).tag(FastingPlan.advanced)
                 }
+                
                 .pickerStyle(SegmentedPickerStyle())
                 .onChange(of: selectedFastingPlan) { newValue in
                     // Update the fasting plan when the user makes a selection
@@ -52,29 +56,34 @@ struct ContentView: View {
                 //MARK: Progressring
                 ProgressRing()
                     .environmentObject(fastingManager)
+                    .foregroundStyle(.white)
 
                 HStack(spacing: 60) {
                     //MARK: Start Time
                     VStack(spacing: 5) {
                         Text(fastingManager.fastingState == .notStarted ? "Start" : "Started")
                             .opacity(0.7)
+                            .foregroundStyle(.white)
 
                         Text(fastingManager.startTime, format: .dateTime.weekday().hour().minute().second())
                             .fontWeight(.bold)
+                            .foregroundStyle(.white)
                     }
 
                     //MARK: End Time
                     VStack(spacing: 5) {
                         Text(fastingManager.fastingState == .notStarted ? "End" : "Ends")
                             .opacity(0.7)
+                            .foregroundStyle(.white)
 
                         Text(fastingManager.endTime, format: .dateTime.weekday().hour().minute().second())
                             .fontWeight(.bold)
+                            .foregroundStyle(.white)
                     }
                 }
 
-                //MARK: start/end Button
-                // ... (previous code)
+             
+                
 
                 //MARK: Button
                 Button {
@@ -92,6 +101,7 @@ struct ContentView: View {
                         .padding(.vertical, 8)
                         .background(.thinMaterial)
                         .cornerRadius(20)
+                        .foregroundColor(.white)
                 }
                 .sheet(isPresented: $isAddFastingDataViewVisible, onDismiss: {
                     // When the sheet is dismissed, then check if the fasting state was .fasting and toggle it
@@ -104,11 +114,7 @@ struct ContentView: View {
                         .environmentObject(fastingManager)
                 }
 
-                // ... (rest of your code)
-
-                
-                
-                
+               
 
                 //MARK: New Restart Fasting button
                 Button {
@@ -120,16 +126,18 @@ struct ContentView: View {
                         .padding(.vertical, 8)
                         .background(.thinMaterial)
                         .cornerRadius(20)
+                        .foregroundColor(.white)
                 }
 
                 Spacer()
 
                 //MARK: Bubbles
 
-                NavigationLink(destination: TrackWeightView()) {
+                NavigationLink(destination: TrackWeightView()){
                     Rectangle()
                         .frame(width: 350, height: 150)
                         .cornerRadius(20.0)
+                        .foregroundColor(.white)
                 }
                 .buttonStyle(PlainButtonStyle())
 
@@ -140,6 +148,8 @@ struct ContentView: View {
                 }
                 .buttonStyle(PlainButtonStyle())
 
+                
+                
                 //MARK: Button to Show Data List
                 NavigationLink(destination: FastingDataListView(fastingDataArray: fastingManager.completedFasts)) {
                     Text("View All Data")
@@ -148,7 +158,7 @@ struct ContentView: View {
                         .padding(.vertical, 8)
                         .background(.thinMaterial)
                         .cornerRadius(20)
-                        .foregroundColor(.black) // Customize the button's text color
+                        .foregroundColor(.white) // Customize the button's text color
                 }
                 .buttonStyle(PlainButtonStyle())
                 .padding(.top, 20) // Adjust the spacing as needed

@@ -63,8 +63,25 @@ struct TrackWeightView: View {
                             )
                             .foregroundStyle(.white)
                         }
+                        
+                        RuleMark(
+                               y: .value("Goal Weight", goalWeight)
+                           )
+                           .foregroundStyle(.yellow)
+                           .lineStyle(StrokeStyle(lineWidth: 2, dash: [5, 5]))
+                           .annotation(position: .trailing) {
+                               Text("Goal")
+                                   .foregroundStyle(.yellow)
+                                   .font(.caption)
+                                   .offset(x: 5)
+                           }
+                        
+                        
                     }
                     .frame(height: 300)
+                    .padding(.leading, 10)
+                    .padding(.trailing, 10)
+
                     .chartXAxis {
                         AxisMarks(values: .stride(by: .day)) { _ in
                             AxisGridLine()
@@ -78,7 +95,7 @@ struct TrackWeightView: View {
                     .chartYAxis {
                         AxisMarks { _ in
                             AxisGridLine()
-                            .foregroundStyle(.white)
+                                .foregroundStyle(.white)
                             AxisTick()
                                 .foregroundStyle(.white)
                             AxisValueLabel()
@@ -86,8 +103,8 @@ struct TrackWeightView: View {
                         }
                     }
                 }
-            
-        
+                
+                
                 
                 Spacer()
                 
@@ -95,13 +112,12 @@ struct TrackWeightView: View {
                 Button(action: {
                     showingPicker.toggle()
                 }
-                
+                       
                 ) {
                     Text("Goal Weight: \(goalWeight) kg")
-                        .foregroundColor(.white)
+                        .foregroundColor(.yellow)
                         .padding()
                         .background(Capsule().fill(Color.purpleDark))
-                        .foregroundColor(.white)
                         .shadow(radius: 5)
                 }
                 .popover(isPresented: $showingPicker) {
@@ -117,57 +133,61 @@ struct TrackWeightView: View {
                         .clipped()
                     }
                     .padding()
-                    .frame(width: 200, height: 250)
+                    .frame(width: 300, height: 350)
                 }
                 .onChange(of: goalWeight) { _ in
                     saveGoalWeight()
                 }
-
+                
                 // Estimated Date Of Goal Weight
                 if let estimatedDate = calculateEstimatedDateOfGoalWeight(goalWeight: Double(goalWeight)) {
                     Text("Estimated Time to Goal: \(estimatedDate, format: .dateTime.day().month().year())")
                         .padding()
                         .foregroundStyle(.white)
                 }
-
-                Spacer()
                 
-                // Button to add new weight entry
-                Button("Track Weight") {
-                    showingAddWeightSheet.toggle()
+                Spacer()
+                VStack {
+                    // Button to add new weight entry
+                    Button("Track Weight") {
+                        withAnimation {
+                            showingAddWeightSheet.toggle()
+                        }
+                    }
+                    .padding()
+                    .background(Capsule().fill(Color.purpleDark))
+                    .foregroundColor(.white)
+                    .shadow(radius: 5)
+                    
+                    // Button to show weight history
+                    Button("Track History") {
+                        withAnimation {
+                            showingWeightHistory.toggle()
+                        }
+                    }
+                    .padding(8)
+                    .background(Capsule().fill(Color.purpleDark))
+                    .foregroundColor(.white)
+                    .shadow(radius: 5)
                 }
                 .padding()
-                .background(Capsule().fill(Color.purpleDark))
-                .foregroundColor(.white)
-                .shadow(radius: 5)
-                
-                // Button to show weight history
-                Button("Track History") {
-                    showingWeightHistory.toggle()
+                .sheet(isPresented: $showingAddWeightSheet) {
+                    WeightEntrySheet()
+                        .environment(\.managedObjectContext, managedObjectContext)
                 }
-                .padding(8)
-                .background(Capsule().fill(Color.purpleDark))
-                .foregroundColor(.white)
-                .shadow(radius: 5)
+                .popover(isPresented: $showingWeightHistory) {
+                    WeightHistoryView()
+                        .environment(\.managedObjectContext, managedObjectContext)
+                }
+
+                .onAppear {
+                    loadGoalWeight()
+                }
             }
-            .padding()
         }
-        .sheet(isPresented: $showingAddWeightSheet) {
-            WeightEntrySheet()
-                .environment(\.managedObjectContext, managedObjectContext)
-        }
-        .sheet(isPresented: $showingWeightHistory) {
-            WeightHistoryView()
-                .environment(\.managedObjectContext, managedObjectContext)
-        }
-        .onAppear {
-            loadGoalWeight()
-        }
+        
+        
     }//body
-    
-    
-    
-    
     
     
     
@@ -221,6 +241,10 @@ struct TrackWeightView: View {
                print("Error saving goal weight: \(error)")
            }
        }
+    
+    
+    
+    
    }
 
 struct TrackWeightView_Previews: PreviewProvider {

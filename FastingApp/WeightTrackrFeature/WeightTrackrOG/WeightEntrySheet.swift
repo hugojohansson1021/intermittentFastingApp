@@ -37,17 +37,36 @@ struct WeightEntrySheet: View {
     }
     
     var body: some View {
-        
-        
         NavigationView {
             
-            
-            
-            Form {
+            VStack {
+                
+                
+                
+                
+                Text("Date")
+                       .foregroundColor(.white)
+                       .font(.title2)
+                       .fontWeight(.bold)
+                       
+
+                DatePicker("", selection: $date, displayedComponents: .date)
+                    .datePickerStyle(GraphicalDatePickerStyle())
+                    .labelsHidden()
+                    .accentColor(.white)
+                    .background(Color.white.opacity(0.7))
+                    .cornerRadius(10)
+                    .padding()
+                
+                
+                
+                Text("Weight")
+                       .foregroundColor(.white)
+                       .font(.title2)
+                       .fontWeight(.bold)
                 
                 
                 HStack {
-                    
                     
                     Picker("Hundreds", selection: $hundreds) {
                         ForEach(numberRange, id: \.self) {
@@ -82,14 +101,18 @@ struct WeightEntrySheet: View {
                     Text("kg")
                         .font(.largeTitle)
                 }
+                .accentColor(.white)
+                .background(Color.white.opacity(0.7))
+                .cornerRadius(10)
                 
-                DatePicker("Date", selection: $date, displayedComponents: .date)
+                
+
                 
                 Button("Save") {
                     let newWeightEntry = CDWeightEntry(context: managedObjectContext)
                     newWeightEntry.weight = weight
                     newWeightEntry.date = date
-                                    
+                    
                     do {
                         try managedObjectContext.save()
                         dismiss()
@@ -97,26 +120,50 @@ struct WeightEntrySheet: View {
                         print("Error saving weight: \(error)")
                     }
                 }
+                .padding()
+                .background(Capsule().fill(Color.purpleDark))
+                .foregroundColor(.white)
+                .shadow(radius: 5)
+                
+                
+                Spacer()
             }
-            
+            .padding()
+            .background(.purpleDark)
             .navigationTitle("Add Weight")
+            .navigationBarTitleDisplayMode(.inline)
             .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Add Weight")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                }
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Cancel") {
+                    Button("Back") {
                         dismiss()
-                            
                     }
+                    
+                    .foregroundColor(.white)
+                    .font(.title2)
+                    .fontWeight(.bold)
                 }
             }
-            
         }
-        
-        
     }
 }
 
-
-
-#Preview {
-    WeightEntrySheet()
+// Definiera färgerna om de inte redan är definierade
+extension Color {
+    static let customDarkPurple = Color("darkPurple")
+    static let customPurpleDark = Color("purpleDark")
+    static let customDarkPink = Color("darkPink")
 }
+
+struct WeightEntrySheet_Previews: PreviewProvider {
+    static var previews: some View {
+        WeightEntrySheet()
+    }
+}
+

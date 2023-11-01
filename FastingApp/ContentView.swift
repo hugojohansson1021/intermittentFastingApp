@@ -4,7 +4,16 @@ struct ContentView: View {
     @StateObject var fastingManager = FastingManager(initialFastingPlan: .intermediate)
     @State private var selectedFastingPlan: FastingPlan = .intermediate
     @State private var isAddFastingDataViewVisible = false
+    @State private var currentView: CurrentView = .data
 
+    
+    
+    enum CurrentView {
+            case data, trackWeight
+        }
+    
+    
+    
     var title: String {
         switch fastingManager.fastingState {
         case .notStarted:
@@ -16,6 +25,48 @@ struct ContentView: View {
         }
     }
 
+    
+    var bottomNavBar: some View {
+        HStack {
+            Spacer()
+
+            NavigationLink(destination: ContentView()) {
+                Image(systemName: "circle.dashed")
+                    .imageScale(.large)
+                    .foregroundColor(.white)
+            }
+            .buttonStyle(PlainButtonStyle())
+            .disabled(currentView == .data)
+
+            Spacer()
+
+            Divider()
+                .frame(height: 20)
+                .background(Color.black)
+
+            Spacer()
+
+            NavigationLink(destination: TrackWeightView()) {
+                Image(systemName: "chart.xyaxis.line")
+                    .imageScale(.large)
+                    .foregroundColor(.white)
+            }
+            .buttonStyle(PlainButtonStyle())
+            .disabled(currentView == .trackWeight)
+
+            Spacer()
+        }
+        .padding(.vertical, 8)
+        .padding(.horizontal, 16)
+        .background(.ultraThinMaterial)
+        .cornerRadius(20)
+        .frame(maxWidth: .infinity)
+        .shadow(radius: 5)
+        .padding(.horizontal, 16)
+
+    }
+    
+
     var body: some View {
         NavigationView {
             ZStack {
@@ -23,10 +74,20 @@ struct ContentView: View {
                 LinearGradient(gradient: Gradient(colors: [Color.darkPurple, Color.purpleDark, Color.darkPink]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     .ignoresSafeArea()
                 content
-                
-            }
+                    //.padding()
+                    //.background(Color.clear)
+                VStack {
+                        Spacer()
+                        bottomNavBar
+                    }
+
+            }//Z-Stack
+            
+            
+            
         }
         .accentColor(.white)  // Sätter accentfärgen för NavigationView
+        .navigationBarHidden(true)
     
     }
 
@@ -128,28 +189,7 @@ struct ContentView: View {
                         .cornerRadius(20)
                         .foregroundColor(.white)
                 }
-
-                Spacer()
-
-                //MARK: Bubbles
-
-                NavigationLink(destination: TrackWeightView()){
-                    Rectangle()
-                        .frame(width: 350, height: 150)
-                        .cornerRadius(20.0)
-                        .foregroundColor(.white)
-                }
-                .buttonStyle(PlainButtonStyle())
-
-                NavigationLink(destination: TrackWeightView()) {
-                    Rectangle()
-                        .frame(width: 350, height: 150)
-                        .cornerRadius(20.0)
-                }
-                .buttonStyle(PlainButtonStyle())
-
-                
-                
+               
                 //MARK: Button to Show Data List
                 NavigationLink(destination: FastingDataListView(fastingDataArray: fastingManager.completedFasts)) {
                     Text("View All Data")
@@ -161,7 +201,7 @@ struct ContentView: View {
                         .foregroundColor(.white) // Customize the button's text color
                 }
                 .buttonStyle(PlainButtonStyle())
-                .padding(.top, 20) // Adjust the spacing as needed
+                .padding(.bottom, 115) // Adjust the spacing as needed
             }
             .sheet(isPresented: $isAddFastingDataViewVisible) {
                 AddFastingDataView()
@@ -170,6 +210,8 @@ struct ContentView: View {
         }
     }
 }
+
+
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

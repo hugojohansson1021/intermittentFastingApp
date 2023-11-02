@@ -6,7 +6,7 @@
 //
 
 import Foundation
-
+//
 
 func linearRegression(data: [(date: Date, weight: Double)]) -> (slope: Double, intercept: Double)? {
     guard data.count > 1 else { return nil }

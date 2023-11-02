@@ -13,11 +13,11 @@ import CoreData
 struct ContentView: View {
     @EnvironmentObject var fastingManager: FastingManager
 
-    
-    
     @State private var selectedFastingPlan: FastingPlan = .intermediate
     @State private var isAddFastingDataViewVisible = false
     @State private var currentView: CurrentView = .data
+    @State private var showRestartAlert = false
+
 
     
     
@@ -181,7 +181,13 @@ struct ContentView: View {
 
                 //MARK: New Restart Fasting button
                 Button {
-                    fastingManager.resetFasting()
+                    if fastingManager.fastingState == .fasting {
+                        // Om fastan pågår, visa toasten
+                        showRestartAlert = true
+                    } else {
+                        // Om inte, restarta fastan som vanligt
+                        fastingManager.resetFasting()
+                    }
                 } label: {
                     Text("Restart fasting")
                         .fontWeight(.bold)
@@ -191,7 +197,10 @@ struct ContentView: View {
                         .cornerRadius(20)
                         .foregroundColor(.white)
                 }
-               
+                .alert("End Fasting to restart session", isPresented: $showRestartAlert) {
+                    Button("OK", role: .cancel) { }
+                }
+
                 //MARK: Button to Show Data List
                
             }

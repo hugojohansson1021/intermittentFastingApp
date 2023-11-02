@@ -101,16 +101,14 @@ class FastingManager: ObservableObject {
         elapsedTime = 0.0
     }
     
+  
+    
     func track() {
-        guard fastingState != .notStarted else { return }
-        if endTime >= Date() {
-            elapsed = false
-        } else {
-            elapsed = true
-        }
-        elapsedTime += 1
+        let currentTime = Date()
+        elapsedTime = currentTime.timeIntervalSince(startTime)
         let totalTime = fastingState == .fasting ? fastingTime : feedingTime
-        progress = (elapsedTime / totalTime * 100).rounded() / 100
+        elapsed = currentTime >= endTime
+        progress = round(min((elapsedTime / totalTime), 1.0) * 100) / 100
     }
     
     
@@ -131,16 +129,6 @@ class FastingManager: ObservableObject {
     
     
 
-    @Published var completedFasts: [FastingData] = []
-    
-    
-    
-    func addCompletedFast(date: Date, fastingDuration: TimeInterval) {
-        let fastingData = FastingData(date: date, totalFastingTime: fastingDuration) // Use totalFastingTime here
-        completedFasts.append(fastingData)
-        // Add this print statement to check the contents of completedFasts
-            print("Completed Fasts: \(completedFasts)")
-    }
     
     
     func tuggleFastingState() {
@@ -151,7 +139,7 @@ class FastingManager: ObservableObject {
         if fastingState == .feeding {
             // If fasting state changed to feeding, add completed fast data
             let fastingDuration = endTime.timeIntervalSince(startTime)
-            addCompletedFast(date: Date(), fastingDuration: fastingDuration)
+            //addCompletedFast(date: Date(), fastingDuration: fastingDuration)
         }
     }
     
@@ -171,9 +159,6 @@ class FastingManager: ObservableObject {
     
     
     
-    func deleteCompletedFast(at offsets: IndexSet) {
-        completedFasts.remove(atOffsets: offsets)
-    }
 
     
     
@@ -187,3 +172,5 @@ class FastingManager: ObservableObject {
 }
     
 
+
+   

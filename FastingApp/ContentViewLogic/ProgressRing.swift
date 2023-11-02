@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct ProgressRing: View {
     @EnvironmentObject var fastingManager: FastingManager
 
@@ -78,6 +79,11 @@ struct ProgressRing: View {
                 }
             }
         }
+        .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
+            fastingManager.track()
+        }
+
+        
         .frame(width: 250, height: 250)
         .padding()
         .onReceive(timer) { _ in

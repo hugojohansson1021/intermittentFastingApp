@@ -1,7 +1,20 @@
+//
+//  FastingManager.swift
+//  FastingApp
+//
+//  Created by Hugo Johansson on 2023-10-17.
+//
+
 import SwiftUI
+import CoreData
+
+
 
 struct ContentView: View {
-    @StateObject var fastingManager = FastingManager(initialFastingPlan: .intermediate)
+    @EnvironmentObject var fastingManager: FastingManager
+
+    
+    
     @State private var selectedFastingPlan: FastingPlan = .intermediate
     @State private var isAddFastingDataViewVisible = false
     @State private var currentView: CurrentView = .data
@@ -148,13 +161,7 @@ struct ContentView: View {
 
                 //MARK: Button
                 Button {
-                    if fastingManager.fastingState == .fasting {
-                        // If fasting is currently in progress, only show the sheet to add fasting data
-                        isAddFastingDataViewVisible.toggle()
-                    } else {
-                        // If fasting is not in progress, simply start fasting
-                        fastingManager.toggleFastingState()
-                    }
+                    fastingManager.tuggleFastingState()
                 } label: {
                     Text(fastingManager.fastingState == .fasting ? "End fast" : "Start fasting")
                         .fontWeight(.bold)
@@ -164,16 +171,11 @@ struct ContentView: View {
                         .cornerRadius(20)
                         .foregroundColor(.white)
                 }
-                .sheet(isPresented: $isAddFastingDataViewVisible, onDismiss: {
-                    // When the sheet is dismissed, then check if the fasting state was .fasting and toggle it
-                    if fastingManager.fastingState == .fasting {
-                        fastingManager.toggleFastingState()
-                    }
-                }) {
+                 
                     // Provide the environment object here
-                    AddFastingDataView()
-                        .environmentObject(fastingManager)
-                }
+                    //AddFastingDataView()
+                        //.environmentObject(fastingManager)
+                
 
                
 
@@ -191,22 +193,9 @@ struct ContentView: View {
                 }
                
                 //MARK: Button to Show Data List
-                NavigationLink(destination: FastingDataListView(fastingDataArray: fastingManager.completedFasts)) {
-                    Text("View All Data")
-                        .fontWeight(.bold)
-                        .padding(.horizontal, 24)
-                        .padding(.vertical, 8)
-                        .background(.thinMaterial)
-                        .cornerRadius(20)
-                        .foregroundColor(.white) // Customize the button's text color
-                }
-                .buttonStyle(PlainButtonStyle())
-                .padding(.bottom, 115) // Adjust the spacing as needed
+               
             }
-            .sheet(isPresented: $isAddFastingDataViewVisible) {
-                AddFastingDataView()
-                    .environmentObject(fastingManager) // Provide the environment object here
-            }
+            
         }
     }
 }
@@ -219,4 +208,7 @@ struct ContentView_Previews: PreviewProvider {
             .environmentObject(FastingManager()) // Provide a mock FastingManager for preview
     }
 }
+
+
+
 

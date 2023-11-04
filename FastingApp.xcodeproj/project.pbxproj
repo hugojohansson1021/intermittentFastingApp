@@ -151,6 +151,7 @@
 		0786C9612AEF4FF0002B252D /* WeightTrackrFeature */ = {
 			isa = PBXGroup;
 			children = (
+				073B462D2AF6ECA9000687B2 /* Images */,
 				07C20B3A2AE027DF00FFF3EE /* TrackWeightView.swift */,
 				073B46172AF43643000687B2 /* GoalWeight */,
 				073B46162AF4357A000687B2 /* DataViews */,
@@ -181,7 +182,6 @@
 			children = (
 				07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */,
 				07B9F2A82ADEF474003B5AE1 /* ContentView.swift */,
-				073B462D2AF6ECA9000687B2 /* Images */,
 				073B46132AF3534F000687B2 /* ContentViewLogic */,
 				0786C9612AEF4FF0002B252D /* WeightTrackrFeature */,
 				07B9F2AA2ADEF475003B5AE1 /* Assets.xcassets */,

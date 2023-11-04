@@ -15,6 +15,9 @@
 		073B46262AF481C0000687B2 /* FastingSession+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073B46242AF481C0000687B2 /* FastingSession+CoreDataProperties.swift */; };
 		073B462A2AF489CF000687B2 /* FastingPersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073B46292AF489CF000687B2 /* FastingPersistenceController.swift */; };
 		073B462C2AF48A72000687B2 /* EnvironmentExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073B462B2AF48A72000687B2 /* EnvironmentExtensions.swift */; };
+		073B462F2AF6ECB5000687B2 /* fastingApp1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 073B462E2AF6ECB5000687B2 /* fastingApp1.jpg */; };
+		073B46312AF6ECBD000687B2 /* fastingApp2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 073B46302AF6ECBD000687B2 /* fastingApp2.jpg */; };
+		073B46332AF6ECC2000687B2 /* fastingApp3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 073B46322AF6ECC2000687B2 /* fastingApp3.jpg */; };
 		0786C9512AEF3644002B252D /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 0786C9502AEF3644002B252D /* SwiftUICharts */; };
 		0786C9532AEF3B48002B252D /* WeightEntrySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786C9522AEF3B48002B252D /* WeightEntrySheet.swift */; };
 		0786C9562AEF3C9E002B252D /* WeightTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0786C9542AEF3C9E002B252D /* WeightTracker.xcdatamodeld */; };
@@ -39,6 +42,9 @@
 		073B46242AF481C0000687B2 /* FastingSession+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FastingSession+CoreDataProperties.swift"; path = "FastingApp/ContentViewLogic/DataBase/CoreBaseSubClass/FastingSession+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
 		073B46292AF489CF000687B2 /* FastingPersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingPersistenceController.swift; sourceTree = "<group>"; };
 		073B462B2AF48A72000687B2 /* EnvironmentExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentExtensions.swift; sourceTree = "<group>"; };
+		073B462E2AF6ECB5000687B2 /* fastingApp1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = fastingApp1.jpg; path = ../../../../AppProjektBilder/fastingApp1.jpg; sourceTree = "<group>"; };
+		073B46302AF6ECBD000687B2 /* fastingApp2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = fastingApp2.jpg; path = ../../../../AppProjektBilder/fastingApp2.jpg; sourceTree = "<group>"; };
+		073B46322AF6ECC2000687B2 /* fastingApp3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = fastingApp3.jpg; path = ../../../../AppProjektBilder/fastingApp3.jpg; sourceTree = "<group>"; };
 		0786C9522AEF3B48002B252D /* WeightEntrySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightEntrySheet.swift; sourceTree = "<group>"; };
 		0786C9552AEF3C9E002B252D /* WeightTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeightTracker.xcdatamodel; sourceTree = "<group>"; };
 		0786C95F2AEF4CB8002B252D /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
@@ -132,6 +138,16 @@
 			path = CoreBaseSubClass;
 			sourceTree = "<group>";
 		};
+		073B462D2AF6ECA9000687B2 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				073B462E2AF6ECB5000687B2 /* fastingApp1.jpg */,
+				073B46302AF6ECBD000687B2 /* fastingApp2.jpg */,
+				073B46322AF6ECC2000687B2 /* fastingApp3.jpg */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		0786C9612AEF4FF0002B252D /* WeightTrackrFeature */ = {
 			isa = PBXGroup;
 			children = (
@@ -165,6 +181,7 @@
 			children = (
 				07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */,
 				07B9F2A82ADEF474003B5AE1 /* ContentView.swift */,
+				073B462D2AF6ECA9000687B2 /* Images */,
 				073B46132AF3534F000687B2 /* ContentViewLogic */,
 				0786C9612AEF4FF0002B252D /* WeightTrackrFeature */,
 				07B9F2AA2ADEF475003B5AE1 /* Assets.xcassets */,
@@ -246,7 +263,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				07B9F2AE2ADEF475003B5AE1 /* Preview Assets.xcassets in Resources */,
+				073B46312AF6ECBD000687B2 /* fastingApp2.jpg in Resources */,
+				073B462F2AF6ECB5000687B2 /* fastingApp1.jpg in Resources */,
 				07B9F2AB2ADEF475003B5AE1 /* Assets.xcassets in Resources */,
+				073B46332AF6ECC2000687B2 /* fastingApp3.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

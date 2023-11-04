@@ -1,0 +1,527 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		073B46192AF4365A000687B2 /* GoalPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073B46182AF4365A000687B2 /* GoalPickerView.swift */; };
+		073B461E2AF46CD7000687B2 /* TotalFastingRecord.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 073B461C2AF46CD7000687B2 /* TotalFastingRecord.xcdatamodeld */; };
+		073B46202AF47BA2000687B2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073B461F2AF47BA2000687B2 /* CoreDataManager.swift */; };
+		073B46222AF47E14000687B2 /* FastingHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073B46212AF47E14000687B2 /* FastingHistoryView.swift */; };
+		073B46252AF481C0000687B2 /* FastingSession+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073B46232AF481C0000687B2 /* FastingSession+CoreDataClass.swift */; };
+		073B46262AF481C0000687B2 /* FastingSession+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073B46242AF481C0000687B2 /* FastingSession+CoreDataProperties.swift */; };
+		073B462A2AF489CF000687B2 /* FastingPersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073B46292AF489CF000687B2 /* FastingPersistenceController.swift */; };
+		073B462C2AF48A72000687B2 /* EnvironmentExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073B462B2AF48A72000687B2 /* EnvironmentExtensions.swift */; };
+		0786C9512AEF3644002B252D /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 0786C9502AEF3644002B252D /* SwiftUICharts */; };
+		0786C9532AEF3B48002B252D /* WeightEntrySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786C9522AEF3B48002B252D /* WeightEntrySheet.swift */; };
+		0786C9562AEF3C9E002B252D /* WeightTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0786C9542AEF3C9E002B252D /* WeightTracker.xcdatamodeld */; };
+		0786C9602AEF4CB8002B252D /* PersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786C95F2AEF4CB8002B252D /* PersistenceController.swift */; };
+		0786C9632AEF517B002B252D /* WeightHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786C9622AEF517B002B252D /* WeightHistoryView.swift */; };
+		0786C9652AEF5688002B252D /* WeightGoalDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786C9642AEF5688002B252D /* WeightGoalDate.swift */; };
+		07B9F2A72ADEF474003B5AE1 /* FastingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */; };
+		07B9F2A92ADEF474003B5AE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2A82ADEF474003B5AE1 /* ContentView.swift */; };
+		07B9F2AB2ADEF475003B5AE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07B9F2AA2ADEF475003B5AE1 /* Assets.xcassets */; };
+		07B9F2AE2ADEF475003B5AE1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07B9F2AD2ADEF475003B5AE1 /* Preview Assets.xcassets */; };
+		07B9F2B52ADEF56F003B5AE1 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2B42ADEF56F003B5AE1 /* ProgressRing.swift */; };
+		07B9F2B72ADEFD76003B5AE1 /* FastingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2B62ADEFD76003B5AE1 /* FastingManager.swift */; };
+		07C20B3B2AE027DF00FFF3EE /* TrackWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C20B3A2AE027DF00FFF3EE /* TrackWeightView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		073B46182AF4365A000687B2 /* GoalPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPickerView.swift; sourceTree = "<group>"; };
+		073B461D2AF46CD7000687B2 /* TotalFastingRecord.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TotalFastingRecord.xcdatamodel; sourceTree = "<group>"; };
+		073B461F2AF47BA2000687B2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
+		073B46212AF47E14000687B2 /* FastingHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingHistoryView.swift; sourceTree = "<group>"; };
+		073B46232AF481C0000687B2 /* FastingSession+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FastingSession+CoreDataClass.swift"; path = "FastingApp/ContentViewLogic/DataBase/CoreBaseSubClass/FastingSession+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
+		073B46242AF481C0000687B2 /* FastingSession+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FastingSession+CoreDataProperties.swift"; path = "FastingApp/ContentViewLogic/DataBase/CoreBaseSubClass/FastingSession+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
+		073B46292AF489CF000687B2 /* FastingPersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingPersistenceController.swift; sourceTree = "<group>"; };
+		073B462B2AF48A72000687B2 /* EnvironmentExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentExtensions.swift; sourceTree = "<group>"; };
+		0786C9522AEF3B48002B252D /* WeightEntrySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightEntrySheet.swift; sourceTree = "<group>"; };
+		0786C9552AEF3C9E002B252D /* WeightTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeightTracker.xcdatamodel; sourceTree = "<group>"; };
+		0786C95F2AEF4CB8002B252D /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
+		0786C9622AEF517B002B252D /* WeightHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightHistoryView.swift; sourceTree = "<group>"; };
+		0786C9642AEF5688002B252D /* WeightGoalDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightGoalDate.swift; sourceTree = "<group>"; };
+		07B9F2A32ADEF474003B5AE1 /* FastingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingAppApp.swift; sourceTree = "<group>"; };
+		07B9F2A82ADEF474003B5AE1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		07B9F2AA2ADEF475003B5AE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		07B9F2AD2ADEF475003B5AE1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		07B9F2B42ADEF56F003B5AE1 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
+		07B9F2B62ADEFD76003B5AE1 /* FastingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingManager.swift; sourceTree = "<group>"; };
+		07C20B3A2AE027DF00FFF3EE /* TrackWeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackWeightView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		07B9F2A02ADEF474003B5AE1 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0786C9512AEF3644002B252D /* SwiftUICharts in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		073B46132AF3534F000687B2 /* ContentViewLogic */ = {
+			isa = PBXGroup;
+			children = (
+				07B9F2B42ADEF56F003B5AE1 /* ProgressRing.swift */,
+				07B9F2B62ADEFD76003B5AE1 /* FastingManager.swift */,
+				073B46272AF487C8000687B2 /* DataBase */,
+			);
+			path = ContentViewLogic;
+			sourceTree = "<group>";
+		};
+		073B46142AF35387000687B2 /* DataStorageWeight */ = {
+			isa = PBXGroup;
+			children = (
+				0786C95F2AEF4CB8002B252D /* PersistenceController.swift */,
+				0786C9542AEF3C9E002B252D /* WeightTracker.xcdatamodeld */,
+			);
+			path = DataStorageWeight;
+			sourceTree = "<group>";
+		};
+		073B46152AF353BA000687B2 /* CalculationAlgorithm */ = {
+			isa = PBXGroup;
+			children = (
+				0786C9642AEF5688002B252D /* WeightGoalDate.swift */,
+			);
+			path = CalculationAlgorithm;
+			sourceTree = "<group>";
+		};
+		073B46162AF4357A000687B2 /* DataViews */ = {
+			isa = PBXGroup;
+			children = (
+				0786C9522AEF3B48002B252D /* WeightEntrySheet.swift */,
+				0786C9622AEF517B002B252D /* WeightHistoryView.swift */,
+			);
+			path = DataViews;
+			sourceTree = "<group>";
+		};
+		073B46172AF43643000687B2 /* GoalWeight */ = {
+			isa = PBXGroup;
+			children = (
+				073B46182AF4365A000687B2 /* GoalPickerView.swift */,
+			);
+			path = GoalWeight;
+			sourceTree = "<group>";
+		};
+		073B46272AF487C8000687B2 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				073B461F2AF47BA2000687B2 /* CoreDataManager.swift */,
+				073B46212AF47E14000687B2 /* FastingHistoryView.swift */,
+				073B46292AF489CF000687B2 /* FastingPersistenceController.swift */,
+				073B462B2AF48A72000687B2 /* EnvironmentExtensions.swift */,
+				073B461C2AF46CD7000687B2 /* TotalFastingRecord.xcdatamodeld */,
+				073B46282AF487DE000687B2 /* CoreBaseSubClass */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
+		073B46282AF487DE000687B2 /* CoreBaseSubClass */ = {
+			isa = PBXGroup;
+			children = (
+				073B46232AF481C0000687B2 /* FastingSession+CoreDataClass.swift */,
+				073B46242AF481C0000687B2 /* FastingSession+CoreDataProperties.swift */,
+			);
+			path = CoreBaseSubClass;
+			sourceTree = "<group>";
+		};
+		0786C9612AEF4FF0002B252D /* WeightTrackrFeature */ = {
+			isa = PBXGroup;
+			children = (
+				07C20B3A2AE027DF00FFF3EE /* TrackWeightView.swift */,
+				073B46172AF43643000687B2 /* GoalWeight */,
+				073B46162AF4357A000687B2 /* DataViews */,
+				073B46142AF35387000687B2 /* DataStorageWeight */,
+				073B46152AF353BA000687B2 /* CalculationAlgorithm */,
+			);
+			path = WeightTrackrFeature;
+			sourceTree = "<group>";
+		};
+		07B9F29A2ADEF474003B5AE1 = {
+			isa = PBXGroup;
+			children = (
+				07B9F2A52ADEF474003B5AE1 /* FastingApp */,
+				07B9F2A42ADEF474003B5AE1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		07B9F2A42ADEF474003B5AE1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				07B9F2A32ADEF474003B5AE1 /* FastingApp.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		07B9F2A52ADEF474003B5AE1 /* FastingApp */ = {
+			isa = PBXGroup;
+			children = (
+				07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */,
+				07B9F2A82ADEF474003B5AE1 /* ContentView.swift */,
+				073B46132AF3534F000687B2 /* ContentViewLogic */,
+				0786C9612AEF4FF0002B252D /* WeightTrackrFeature */,
+				07B9F2AA2ADEF475003B5AE1 /* Assets.xcassets */,
+				07B9F2AC2ADEF475003B5AE1 /* Preview Content */,
+			);
+			path = FastingApp;
+			sourceTree = "<group>";
+		};
+		07B9F2AC2ADEF475003B5AE1 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				07B9F2AD2ADEF475003B5AE1 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		07B9F2A22ADEF474003B5AE1 /* FastingApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 07B9F2B12ADEF475003B5AE1 /* Build configuration list for PBXNativeTarget "FastingApp" */;
+			buildPhases = (
+				07B9F29F2ADEF474003B5AE1 /* Sources */,
+				07B9F2A02ADEF474003B5AE1 /* Frameworks */,
+				07B9F2A12ADEF474003B5AE1 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FastingApp;
+			packageProductDependencies = (
+				0786C9502AEF3644002B252D /* SwiftUICharts */,
+			);
+			productName = FastingApp;
+			productReference = 07B9F2A32ADEF474003B5AE1 /* FastingApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		07B9F29B2ADEF474003B5AE1 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1500;
+				LastUpgradeCheck = 1500;
+				TargetAttributes = {
+					07B9F2A22ADEF474003B5AE1 = {
+						CreatedOnToolsVersion = 15.0;
+					};
+				};
+			};
+			buildConfigurationList = 07B9F29E2ADEF474003B5AE1 /* Build configuration list for PBXProject "FastingApp" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 07B9F29A2ADEF474003B5AE1;
+			packageReferences = (
+				0786C94F2AEF3644002B252D /* XCRemoteSwiftPackageReference "chartview" */,
+			);
+			productRefGroup = 07B9F2A42ADEF474003B5AE1 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				07B9F2A22ADEF474003B5AE1 /* FastingApp */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		07B9F2A12ADEF474003B5AE1 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				07B9F2AE2ADEF475003B5AE1 /* Preview Assets.xcassets in Resources */,
+				07B9F2AB2ADEF475003B5AE1 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		07B9F29F2ADEF474003B5AE1 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0786C9632AEF517B002B252D /* WeightHistoryView.swift in Sources */,
+				07B9F2A92ADEF474003B5AE1 /* ContentView.swift in Sources */,
+				073B46222AF47E14000687B2 /* FastingHistoryView.swift in Sources */,
+				073B461E2AF46CD7000687B2 /* TotalFastingRecord.xcdatamodeld in Sources */,
+				0786C9562AEF3C9E002B252D /* WeightTracker.xcdatamodeld in Sources */,
+				07B9F2A72ADEF474003B5AE1 /* FastingAppApp.swift in Sources */,
+				07C20B3B2AE027DF00FFF3EE /* TrackWeightView.swift in Sources */,
+				073B462C2AF48A72000687B2 /* EnvironmentExtensions.swift in Sources */,
+				0786C9532AEF3B48002B252D /* WeightEntrySheet.swift in Sources */,
+				073B46252AF481C0000687B2 /* FastingSession+CoreDataClass.swift in Sources */,
+				073B46202AF47BA2000687B2 /* CoreDataManager.swift in Sources */,
+				0786C9652AEF5688002B252D /* WeightGoalDate.swift in Sources */,
+				07B9F2B72ADEFD76003B5AE1 /* FastingManager.swift in Sources */,
+				073B462A2AF489CF000687B2 /* FastingPersistenceController.swift in Sources */,
+				07B9F2B52ADEF56F003B5AE1 /* ProgressRing.swift in Sources */,
+				073B46262AF481C0000687B2 /* FastingSession+CoreDataProperties.swift in Sources */,
+				0786C9602AEF4CB8002B252D /* PersistenceController.swift in Sources */,
+				073B46192AF4365A000687B2 /* GoalPickerView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		07B9F2AF2ADEF475003B5AE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		07B9F2B02ADEF475003B5AE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		07B9F2B22ADEF475003B5AE1 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FastingApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 346FH2MR7L;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.FastingApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		07B9F2B32ADEF475003B5AE1 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_ASSET_PATHS = "\"FastingApp/Preview Content\"";
+				DEVELOPMENT_TEAM = 346FH2MR7L;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.test.FastingApp;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		07B9F29E2ADEF474003B5AE1 /* Build configuration list for PBXProject "FastingApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07B9F2AF2ADEF475003B5AE1 /* Debug */,
+				07B9F2B02ADEF475003B5AE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		07B9F2B12ADEF475003B5AE1 /* Build configuration list for PBXNativeTarget "FastingApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				07B9F2B22ADEF475003B5AE1 /* Debug */,
+				07B9F2B32ADEF475003B5AE1 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0786C94F2AEF3644002B252D /* XCRemoteSwiftPackageReference "chartview" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/apppear/chartview.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.5.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0786C9502AEF3644002B252D /* SwiftUICharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0786C94F2AEF3644002B252D /* XCRemoteSwiftPackageReference "chartview" */;
+			productName = SwiftUICharts;
+		};
+/* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		073B461C2AF46CD7000687B2 /* TotalFastingRecord.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				073B461D2AF46CD7000687B2 /* TotalFastingRecord.xcdatamodel */,
+			);
+			currentVersion = 073B461D2AF46CD7000687B2 /* TotalFastingRecord.xcdatamodel */;
+			path = TotalFastingRecord.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		0786C9542AEF3C9E002B252D /* WeightTracker.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				0786C9552AEF3C9E002B252D /* WeightTracker.xcdatamodel */,
+			);
+			currentVersion = 0786C9552AEF3C9E002B252D /* WeightTracker.xcdatamodel */;
+			path = WeightTracker.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 07B9F29B2ADEF474003B5AE1 /* Project object */;
+}

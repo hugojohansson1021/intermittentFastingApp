@@ -11,7 +11,7 @@ import SwiftUI
 struct FastingAppApp: App {
     @StateObject var fastingManager = FastingManager(initialFastingPlan: .intermediate)
     let persistenceController = PersistenceController.shared
-    let fastingPersistenceController = FastingPersistenceController.shared
+    
 
 
     var body: some Scene {
@@ -19,7 +19,7 @@ struct FastingAppApp: App {
             ContentView()
                 .environmentObject(fastingManager)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                .environment(\.fastingManagedObjectContext, fastingPersistenceController.container.viewContext)
+                
                 
                 
                 

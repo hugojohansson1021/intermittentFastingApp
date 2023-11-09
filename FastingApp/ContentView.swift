@@ -6,16 +6,14 @@
 //
 
 import SwiftUI
-import CoreData
+
 
 
 
 struct ContentView: View {
     @EnvironmentObject var fastingManager: FastingManager
     
-    @State private var isFastingHistoryViewPresented = false
-
-    @Environment(\.fastingManagedObjectContext) private var fastingViewContext
+    
 
 
     @State private var selectedFastingPlan: FastingPlan = .intermediate
@@ -164,23 +162,24 @@ struct ContentView: View {
              
                 
 
-                //MARK: Button
+                //MARK: start and end Button
                 Button {
-                    fastingManager.tuggleFastingState()
-                } label: {
-                    Text(fastingManager.fastingState == .fasting ? "End fast" : "Start fasting")
-                        .fontWeight(.bold)
-                        .padding(.horizontal, 24)
-                        .padding(.vertical, 8)
-                        .background(.thinMaterial)
-                        .cornerRadius(20)
-                        .foregroundColor(.white)
-                }
+                         
+                               // Start fasting
+                               fastingManager.toggleFastingState()
+                           
+                       } label: {
+                           Text(fastingManager.fastingState == .fasting ? "End fast" : "Start fasting")
+                               .fontWeight(.bold)
+                               .padding(.horizontal, 24)
+                               .padding(.vertical, 8)
+                               .background(.thinMaterial)
+                               .cornerRadius(20)
+                               .foregroundColor(.white)
+                       }
+                       
                  
-                    // Provide the environment object here
-                    //AddFastingDataView()
-                        //.environmentObject(fastingManager)
-                
+                  
 
                
 
@@ -206,14 +205,8 @@ struct ContentView: View {
                     Button("OK", role: .cancel) { }
                 }
 
-                //MARK: Button to Show Data List'
-                Button("Show Fasting History") {
-                    isFastingHistoryViewPresented = true
-                }
-                .sheet(isPresented: $isFastingHistoryViewPresented) {
-                    FastingHistoryView()
-                        .environment(\.managedObjectContext, fastingViewContext)
-                }
+                
+                
 
 
 

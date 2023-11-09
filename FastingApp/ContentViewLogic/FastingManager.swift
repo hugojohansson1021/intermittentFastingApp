@@ -100,34 +100,14 @@ class FastingManager: ObservableObject {
     }
     
     func toggleFastingState() {
-        if fastingState == .fasting {
-            // Start fasting
-            fastingState = .fasting
-            startTime = Date()
-            elapsedTime = 0.0
-        } else {
-            // Stop fasting
-            fastingState = .feeding
-            let endTime = Date()
-            let fastingDuration = endTime.timeIntervalSince(startTime)
-            CoreDataManager.shared.addFastingRecord(startDate: startTime, endDate: endTime, fastingPlan: "Ditt fasteplan här", notes: "Eventuella anteckningar här")
-            logFastingSession()
-            if fastingState == .feeding {
-                    let sessions = CoreDataManager.shared.fetchAllFastingSessions()
-                    for session in sessions {
-                        print("Start: \(session.startDate ?? Date()), End: \(session.endDate ?? Date()), Duration: \(session.duration), Plan: \(session.fastingPlan ?? ""), Notes: \(session.notes ?? "")")
-                    }
-                }
-        }
+        fastingState = fastingState == .fasting ? .feeding : .fasting
+        startTime = Date()
     }
 
 
     
     
-    func logFastingSession() {
-        let fastingDuration = endTime.timeIntervalSince(startTime)
-        print("Fasted for \(fastingDuration) seconds")  // Ersätt detta med faktisk kod för att spara loggen
-    }
+    
 
     
   
@@ -169,10 +149,8 @@ class FastingManager: ObservableObject {
             // If fasting state changed to feeding, add completed fast data
             let fastingDuration = endTime.timeIntervalSince(startTime)
             //addCompletedFast(date: Date(), fastingDuration: fastingDuration)
-            let sessions = CoreDataManager.shared.fetchAllFastingSessions()
-            for session in sessions {
-                print("Start: \(session.startDate ?? Date()), End: \(session.endDate ?? Date()), Duration: \(session.duration), Plan: \(session.fastingPlan ?? ""), Notes: \(session.notes ?? "")")
-            }
+            
+            
         }
     }
     
@@ -188,14 +166,6 @@ class FastingManager: ObservableObject {
         return (hours, minutes, seconds)
     }
 
-    
-    
-    
-    
-
-    
-    
-    
     
     
     

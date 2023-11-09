@@ -8,16 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		073B46192AF4365A000687B2 /* GoalPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073B46182AF4365A000687B2 /* GoalPickerView.swift */; };
-		073B461E2AF46CD7000687B2 /* TotalFastingRecord.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 073B461C2AF46CD7000687B2 /* TotalFastingRecord.xcdatamodeld */; };
-		073B46202AF47BA2000687B2 /* CoreDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073B461F2AF47BA2000687B2 /* CoreDataManager.swift */; };
-		073B46222AF47E14000687B2 /* FastingHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073B46212AF47E14000687B2 /* FastingHistoryView.swift */; };
-		073B46252AF481C0000687B2 /* FastingSession+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073B46232AF481C0000687B2 /* FastingSession+CoreDataClass.swift */; };
-		073B46262AF481C0000687B2 /* FastingSession+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073B46242AF481C0000687B2 /* FastingSession+CoreDataProperties.swift */; };
-		073B462A2AF489CF000687B2 /* FastingPersistenceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073B46292AF489CF000687B2 /* FastingPersistenceController.swift */; };
-		073B462C2AF48A72000687B2 /* EnvironmentExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 073B462B2AF48A72000687B2 /* EnvironmentExtensions.swift */; };
-		073B462F2AF6ECB5000687B2 /* fastingApp1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 073B462E2AF6ECB5000687B2 /* fastingApp1.jpg */; };
-		073B46312AF6ECBD000687B2 /* fastingApp2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 073B46302AF6ECBD000687B2 /* fastingApp2.jpg */; };
-		073B46332AF6ECC2000687B2 /* fastingApp3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 073B46322AF6ECC2000687B2 /* fastingApp3.jpg */; };
 		0786C9512AEF3644002B252D /* SwiftUICharts in Frameworks */ = {isa = PBXBuildFile; productRef = 0786C9502AEF3644002B252D /* SwiftUICharts */; };
 		0786C9532AEF3B48002B252D /* WeightEntrySheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786C9522AEF3B48002B252D /* WeightEntrySheet.swift */; };
 		0786C9562AEF3C9E002B252D /* WeightTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0786C9542AEF3C9E002B252D /* WeightTracker.xcdatamodeld */; };
@@ -35,16 +25,6 @@
 
 /* Begin PBXFileReference section */
 		073B46182AF4365A000687B2 /* GoalPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalPickerView.swift; sourceTree = "<group>"; };
-		073B461D2AF46CD7000687B2 /* TotalFastingRecord.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TotalFastingRecord.xcdatamodel; sourceTree = "<group>"; };
-		073B461F2AF47BA2000687B2 /* CoreDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataManager.swift; sourceTree = "<group>"; };
-		073B46212AF47E14000687B2 /* FastingHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingHistoryView.swift; sourceTree = "<group>"; };
-		073B46232AF481C0000687B2 /* FastingSession+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FastingSession+CoreDataClass.swift"; path = "FastingApp/ContentViewLogic/DataBase/CoreBaseSubClass/FastingSession+CoreDataClass.swift"; sourceTree = SOURCE_ROOT; };
-		073B46242AF481C0000687B2 /* FastingSession+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "FastingSession+CoreDataProperties.swift"; path = "FastingApp/ContentViewLogic/DataBase/CoreBaseSubClass/FastingSession+CoreDataProperties.swift"; sourceTree = SOURCE_ROOT; };
-		073B46292AF489CF000687B2 /* FastingPersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingPersistenceController.swift; sourceTree = "<group>"; };
-		073B462B2AF48A72000687B2 /* EnvironmentExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnvironmentExtensions.swift; sourceTree = "<group>"; };
-		073B462E2AF6ECB5000687B2 /* fastingApp1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = fastingApp1.jpg; path = ../../../../AppProjektBilder/fastingApp1.jpg; sourceTree = "<group>"; };
-		073B46302AF6ECBD000687B2 /* fastingApp2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = fastingApp2.jpg; path = ../../../../AppProjektBilder/fastingApp2.jpg; sourceTree = "<group>"; };
-		073B46322AF6ECC2000687B2 /* fastingApp3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = fastingApp3.jpg; path = ../../../../AppProjektBilder/fastingApp3.jpg; sourceTree = "<group>"; };
 		0786C9522AEF3B48002B252D /* WeightEntrySheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightEntrySheet.swift; sourceTree = "<group>"; };
 		0786C9552AEF3C9E002B252D /* WeightTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = WeightTracker.xcdatamodel; sourceTree = "<group>"; };
 		0786C95F2AEF4CB8002B252D /* PersistenceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceController.swift; sourceTree = "<group>"; };
@@ -77,7 +57,6 @@
 			children = (
 				07B9F2B42ADEF56F003B5AE1 /* ProgressRing.swift */,
 				07B9F2B62ADEFD76003B5AE1 /* FastingManager.swift */,
-				073B46272AF487C8000687B2 /* DataBase */,
 			);
 			path = ContentViewLogic;
 			sourceTree = "<group>";
@@ -116,42 +95,9 @@
 			path = GoalWeight;
 			sourceTree = "<group>";
 		};
-		073B46272AF487C8000687B2 /* DataBase */ = {
-			isa = PBXGroup;
-			children = (
-				073B461F2AF47BA2000687B2 /* CoreDataManager.swift */,
-				073B46212AF47E14000687B2 /* FastingHistoryView.swift */,
-				073B46292AF489CF000687B2 /* FastingPersistenceController.swift */,
-				073B462B2AF48A72000687B2 /* EnvironmentExtensions.swift */,
-				073B461C2AF46CD7000687B2 /* TotalFastingRecord.xcdatamodeld */,
-				073B46282AF487DE000687B2 /* CoreBaseSubClass */,
-			);
-			path = DataBase;
-			sourceTree = "<group>";
-		};
-		073B46282AF487DE000687B2 /* CoreBaseSubClass */ = {
-			isa = PBXGroup;
-			children = (
-				073B46232AF481C0000687B2 /* FastingSession+CoreDataClass.swift */,
-				073B46242AF481C0000687B2 /* FastingSession+CoreDataProperties.swift */,
-			);
-			path = CoreBaseSubClass;
-			sourceTree = "<group>";
-		};
-		073B462D2AF6ECA9000687B2 /* Images */ = {
-			isa = PBXGroup;
-			children = (
-				073B462E2AF6ECB5000687B2 /* fastingApp1.jpg */,
-				073B46302AF6ECBD000687B2 /* fastingApp2.jpg */,
-				073B46322AF6ECC2000687B2 /* fastingApp3.jpg */,
-			);
-			path = Images;
-			sourceTree = "<group>";
-		};
 		0786C9612AEF4FF0002B252D /* WeightTrackrFeature */ = {
 			isa = PBXGroup;
 			children = (
-				073B462D2AF6ECA9000687B2 /* Images */,
 				07C20B3A2AE027DF00FFF3EE /* TrackWeightView.swift */,
 				073B46172AF43643000687B2 /* GoalWeight */,
 				073B46162AF4357A000687B2 /* DataViews */,
@@ -263,10 +209,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				07B9F2AE2ADEF475003B5AE1 /* Preview Assets.xcassets in Resources */,
-				073B46312AF6ECBD000687B2 /* fastingApp2.jpg in Resources */,
-				073B462F2AF6ECB5000687B2 /* fastingApp1.jpg in Resources */,
 				07B9F2AB2ADEF475003B5AE1 /* Assets.xcassets in Resources */,
-				073B46332AF6ECC2000687B2 /* fastingApp3.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -279,20 +222,13 @@
 			files = (
 				0786C9632AEF517B002B252D /* WeightHistoryView.swift in Sources */,
 				07B9F2A92ADEF474003B5AE1 /* ContentView.swift in Sources */,
-				073B46222AF47E14000687B2 /* FastingHistoryView.swift in Sources */,
-				073B461E2AF46CD7000687B2 /* TotalFastingRecord.xcdatamodeld in Sources */,
 				0786C9562AEF3C9E002B252D /* WeightTracker.xcdatamodeld in Sources */,
 				07B9F2A72ADEF474003B5AE1 /* FastingAppApp.swift in Sources */,
 				07C20B3B2AE027DF00FFF3EE /* TrackWeightView.swift in Sources */,
-				073B462C2AF48A72000687B2 /* EnvironmentExtensions.swift in Sources */,
 				0786C9532AEF3B48002B252D /* WeightEntrySheet.swift in Sources */,
-				073B46252AF481C0000687B2 /* FastingSession+CoreDataClass.swift in Sources */,
-				073B46202AF47BA2000687B2 /* CoreDataManager.swift in Sources */,
 				0786C9652AEF5688002B252D /* WeightGoalDate.swift in Sources */,
 				07B9F2B72ADEFD76003B5AE1 /* FastingManager.swift in Sources */,
-				073B462A2AF489CF000687B2 /* FastingPersistenceController.swift in Sources */,
 				07B9F2B52ADEF56F003B5AE1 /* ProgressRing.swift in Sources */,
-				073B46262AF481C0000687B2 /* FastingSession+CoreDataProperties.swift in Sources */,
 				0786C9602AEF4CB8002B252D /* PersistenceController.swift in Sources */,
 				073B46192AF4365A000687B2 /* GoalPickerView.swift in Sources */,
 			);
@@ -521,16 +457,6 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		073B461C2AF46CD7000687B2 /* TotalFastingRecord.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				073B461D2AF46CD7000687B2 /* TotalFastingRecord.xcdatamodel */,
-			);
-			currentVersion = 073B461D2AF46CD7000687B2 /* TotalFastingRecord.xcdatamodel */;
-			path = TotalFastingRecord.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
 		0786C9542AEF3C9E002B252D /* WeightTracker.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (

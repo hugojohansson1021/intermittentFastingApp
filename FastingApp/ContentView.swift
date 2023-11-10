@@ -25,7 +25,7 @@ struct ContentView: View {
     
     
     enum CurrentView {
-            case data, trackWeight
+            case data, trackWeight, ai
         }
     
     
@@ -71,6 +71,24 @@ struct ContentView: View {
             .disabled(currentView == .trackWeight)
 
             Spacer()
+            
+            
+            Divider()
+                .frame(height: 20)
+                .background(Color.black)
+            
+            Spacer()
+            
+            NavigationLink(destination: Ai()) {
+                Image(systemName: "chart.xyaxis.line")
+                    .imageScale(.large)
+                    .foregroundColor(.white)
+            }
+            .buttonStyle(PlainButtonStyle())
+            .disabled(currentView == .ai)
+            
+            Spacer()
+            
         }
         .padding(.vertical, 8)
         .padding(.horizontal, 16)

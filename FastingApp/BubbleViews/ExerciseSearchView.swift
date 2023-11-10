@@ -13,35 +13,72 @@ struct ExerciseSearchView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                HStack {
-                    TextField("Search Exercises", text: $searchText)
-                        .padding()
-                        .border(Color.gray)
+            ZStack {
+                //MARK: Background
+                LinearGradient(gradient: Gradient(colors: [Color.darkPurple, Color.purpleDark, Color.darkPink]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    .ignoresSafeArea()
+                
+                
+                
+                VStack {
                     
-                    Button("Search") {
+                    
+                    Text("Search Exercise")
+                        .font(.title)
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        .foregroundStyle(.white)
+                    
+                    
+                    TextField("Search Exercises", text: $searchText)
+                        .padding(.horizontal, 24)  // Adjust horizontal padding to control width
+                        .padding(.vertical, 8)
+                        .foregroundColor(.white)
+                        .background(.thinMaterial)
+                        .cornerRadius(20)
+                        .frame(maxWidth: .infinity, alignment: .leading)  // You can set a maxWidth or a fixed width
+
+                        
+                        
+                    
+                    
+                    
+                    Button {
                         loadExercises()
+                    } label: {
+                        Text("Search")
+                            .fontWeight(.bold)
+                            .padding(.horizontal, 24)
+                            .padding(.vertical, 8)
+                            .background(.thinMaterial)
+                            .cornerRadius(20)
+                            .foregroundColor(.white)
                     }
-                    .padding()
+                    
+                    
+                    
+                    
+                    Spacer()
+                    
+                    List(exercises, id: \.id) { exercise in
+                        VStack(alignment: .leading) {
+                            Text(exercise.name)
+                                .font(.headline)
+                            Text(exercise.muscle)
+                                .font(.subheadline)
+                            Button("Exercise Info") {
+                                if let url = URL(string: exercise.infoLink) {
+                                    UIApplication.shared.open(url)
+                                }
+                            }
+                            .font(.footnote)
+                        }
+                    }
                 }
                 
-                List(exercises, id: \.id) { exercise in
-                    VStack(alignment: .leading) {
-                        Text(exercise.name)
-                            .font(.headline)
-                        Text(exercise.muscle)
-                            .font(.subheadline)
-                        Button("Exercise Info") {
-                            if let url = URL(string: exercise.infoLink) {
-                                UIApplication.shared.open(url)
-                            }
-                        }
-                        .font(.footnote)
-                    }
-                }
+                
             }
-            .navigationTitle("Exercise Search")
         }
+        
     }
     
     

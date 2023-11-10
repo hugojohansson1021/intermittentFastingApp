@@ -146,6 +146,7 @@ struct ContentView: View {
                     // Update the fasting plan when the user makes a selection
                     fastingManager.fastingPlan = newValue
                 }
+                .background(.thinMaterial)
                 .disabled(!fastingManager.isPickerEnabled)  // Disable the picker based on fasting state
 
                 //MARK: Progressring

@@ -25,7 +25,7 @@ struct ContentView: View {
     
     
     enum CurrentView {
-            case data, trackWeight, ai
+            case data, trackWeight, ai, profil
         }
     
     
@@ -46,13 +46,13 @@ struct ContentView: View {
         HStack {
             Spacer()
 
-            NavigationLink(destination: ContentView()) {
-                Image(systemName: "circle.dashed")
+            NavigationLink(destination: ProfileView()) {
+                Image(systemName: "person.circle")
                     .imageScale(.large)
                     .foregroundColor(.white)
             }
             .buttonStyle(PlainButtonStyle())
-            .disabled(currentView == .data)
+            .disabled(currentView == .profil)
 
             Spacer()
 
@@ -80,7 +80,7 @@ struct ContentView: View {
             Spacer()
             
             NavigationLink(destination: Ai()) {
-                Image(systemName: "chart.xyaxis.line")
+                Image(systemName: "text.bubble")
                     .imageScale(.large)
                     .foregroundColor(.white)
             }
@@ -222,7 +222,73 @@ struct ContentView: View {
                 .alert("End Fasting to restart session", isPresented: $showRestartAlert) {
                     Button("OK", role: .cancel) { }
                 }
+                
+                
+                
+                
+                
+                
+                NavigationLink(destination: InfoViews()) {
+                    HStack {
+                        Image(systemName: "info.bubble")
+                            .imageScale(.large)
+                            .foregroundColor(.white)
 
+                        Text("info")
+                            .foregroundColor(.white)
+                            .font(.title) // Anpassa fontstorleken här
+                    }
+                    .frame(width: 300, height: 120)
+                    .background(.thinMaterial)
+                    .cornerRadius(20)
+                }
+                
+                
+                
+                
+                NavigationLink(destination: ExerciseSearchView()) {
+                    HStack {
+                        Image(systemName: "figure.strengthtraining.traditional")
+                            .imageScale(.large)
+                            .foregroundColor(.white)
+
+                        Text("Exersciese")
+                            .foregroundColor(.white)
+                            .font(.title) // Anpassa fontstorleken här
+                    }
+                    .frame(width: 300, height: 120)
+                    .background(.thinMaterial)
+                    .cornerRadius(20)
+                }
+
+                
+                
+                
+                
+                NavigationLink(destination: TrackWeightView()) {
+                    HStack {
+                        Image(systemName: "cross.vial")
+                            .imageScale(.large)
+                            .foregroundColor(.white)
+
+                        Text("Vitamins")
+                            .foregroundColor(.white)
+                            .font(.title) // Anpassa fontstorleken här
+                    }
+                    .frame(width: 300, height: 120)
+                    .background(.thinMaterial)
+                    .cornerRadius(20)
+                }
+                
+                
+                
+                
+                
+                Spacer()
+
+                
+
+                
                 
                 
 

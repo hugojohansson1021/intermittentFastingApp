@@ -166,6 +166,7 @@ struct ContentView: View {
                         Text(fastingManager.startTime, format: .dateTime.weekday().hour().minute().second())
                             .fontWeight(.bold)
                             .foregroundStyle(.white)
+                        
                     }
 
                     //MARK: End Time
@@ -178,26 +179,36 @@ struct ContentView: View {
                             .fontWeight(.bold)
                             .foregroundStyle(.white)
                     }
+                    
                 }
 
              
                 
 
                 //MARK: start and end Button
+                
+                //MARK: start and end Button
                 Button {
-                         
-                               // Start fasting
-                               fastingManager.toggleFastingState()
-                           
-                       } label: {
-                           Text(fastingManager.fastingState == .fasting ? "End fast" : "Start fasting")
-                               .fontWeight(.bold)
-                               .padding(.horizontal, 24)
-                               .padding(.vertical, 8)
-                               .background(.thinMaterial)
-                               .cornerRadius(20)
-                               .foregroundColor(.white)
-                       }
+                    // Växlar fastans tillstånd
+                    fastingManager.toggleFastingState()
+                    fastingManager.scheduleCompletionNotification(for: selectedFastingPlan)
+
+                    // Kontrollera om fastan startas och schemalägg en startnotifikation
+                    if fastingManager.fastingState == .fasting {
+                        fastingManager.scheduleStartNotification()
+                        
+                        
+                    }
+                } label: {
+                    Text(fastingManager.fastingState == .fasting ? "End fast" : "Start fasting")
+                        .fontWeight(.bold)
+                        .padding(.horizontal, 24)
+                        .padding(.vertical, 8)
+                        .background(.thinMaterial)
+                        .cornerRadius(20)
+                        .foregroundColor(.white)
+                }
+
                        
                  
                   

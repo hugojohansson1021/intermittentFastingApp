@@ -16,13 +16,22 @@ struct SplashScreenView: View {
     var body: some View {
        
            
+        
+        
+        ZStack{
+            LinearGradient(gradient: Gradient(colors: [Color.darkPurple, Color.purpleDark, Color.darkPink]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                .ignoresSafeArea()
+            
+            
             
             VStack{
+                
                 VStack{
-                    Image(systemName: "hare.fill")
-                        .font(.system(size: 80))
+                    Image(systemName: "circle.dashed.inset.fill")
+                        .font(.system(size: 150))
                         .foregroundStyle(.blueBack)
-                    Text("Ittermittentfastinh")
+                    Text("Inttermittent Fasting")
+                        .foregroundStyle(.white)
                         .fontWeight(.bold)
                         .foregroundStyle(.black.opacity(0.80))
                 }
@@ -40,13 +49,13 @@ struct SplashScreenView: View {
                     self.isActive = true
                 }
             }
-        
-        
-        
-        
-        
-        
-        
+            
+            
+            
+            
+            
+            
+        }
         
         
     }

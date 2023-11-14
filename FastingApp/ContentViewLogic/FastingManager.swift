@@ -10,7 +10,7 @@
 
 
 import Foundation
-
+import UserNotifications
 
 
 
@@ -172,7 +172,77 @@ class FastingManager: ObservableObject {
     
     
     
-}
+    
+    
+    
+    class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
+        override init() {
+            super.init()
+            UNUserNotificationCenter.current().delegate = self
+        }
+
+        func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+            completionHandler([.alert, .sound])
+        }
+
+                
+    }
+    
+    // Funktion för att skicka en notifikation en minut efter att fastan har börjat
+    func scheduleStartNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "Grattis!"
+        content.body = "Du har startat din fasta."
+
+        // En minut efter att fastan har börjat
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 60, repeats: false)
+
+        let request = UNNotificationRequest(identifier: "fastingStart", content: content, trigger: trigger)
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                print("Det gick inte att schemalägga startnotifikation: \(error)")
+            }
+        }
+    }
+    
+    
+    
+   // Fasting Node Notifacation
+    
+    func scheduleCompletionNotification(for selectedPlan: FastingPlan) {
+        let fastingDuration = getFastingDuration(for: selectedPlan)
+        
+            let content = UNMutableNotificationContent()
+            content.title = "Grattis!"
+            content.body = "Din fasta är nu klar. Bra jobbat!"
+
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: fastingDuration, repeats: false)
+
+            let request = UNNotificationRequest(identifier: "fastingCompletion", content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request) { error in
+                if let error = error {
+                    print("Det gick inte att schemalägga notifikation: \(error)")
+                }
+            }
+        }
+
+        // Hjälpfunktion för att få den totala fastetiden i sekunder
+        private func getFastingDuration(for plan: FastingPlan) -> TimeInterval {
+            switch plan {
+            case .beginner:
+                return 12 * 60 * 60  // 12 timmar
+            case .intermediate:
+                return 16 * 60 * 60  // 16 timmar
+            case .advanced:
+                return 20 * 60 * 60  // 20 timmar
+            }
+        }
+    
+    
+    
+    
+    
+}//last
     
 
 

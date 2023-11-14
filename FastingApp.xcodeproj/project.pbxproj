@@ -21,6 +21,7 @@
 		0786CC882AFDBE3000685BBB /* ExerciseSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC872AFDBE3000685BBB /* ExerciseSearchView.swift */; };
 		0786CC8A2AFDC65100685BBB /* VitaminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC892AFDC65000685BBB /* VitaminView.swift */; };
 		0786CC8C2B03EA6800685BBB /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC8B2B03EA6800685BBB /* SplashScreenView.swift */; };
+		0786CC902B0405E200685BBB /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC8F2B0405E200685BBB /* NotificationManager.swift */; };
 		07B9F2A72ADEF474003B5AE1 /* FastingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */; };
 		07B9F2A92ADEF474003B5AE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2A82ADEF474003B5AE1 /* ContentView.swift */; };
 		07B9F2AB2ADEF475003B5AE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07B9F2AA2ADEF475003B5AE1 /* Assets.xcassets */; };
@@ -44,6 +45,7 @@
 		0786CC872AFDBE3000685BBB /* ExerciseSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSearchView.swift; sourceTree = "<group>"; };
 		0786CC892AFDC65000685BBB /* VitaminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitaminView.swift; sourceTree = "<group>"; };
 		0786CC8B2B03EA6800685BBB /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
+		0786CC8F2B0405E200685BBB /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		07B9F2A32ADEF474003B5AE1 /* FastingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingAppApp.swift; sourceTree = "<group>"; };
 		07B9F2A82ADEF474003B5AE1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -170,6 +172,7 @@
 			children = (
 				07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */,
 				0786CC8B2B03EA6800685BBB /* SplashScreenView.swift */,
+				0786CC8F2B0405E200685BBB /* NotificationManager.swift */,
 				07B9F2A82ADEF474003B5AE1 /* ContentView.swift */,
 				0786CC842AFDBC3B00685BBB /* BubbleViews */,
 				0786CC832AFDB50800685BBB /* InställningarProfil */,
@@ -281,6 +284,7 @@
 				07B9F2B72ADEFD76003B5AE1 /* FastingManager.swift in Sources */,
 				07B9F2B52ADEF56F003B5AE1 /* ProgressRing.swift in Sources */,
 				0786CC882AFDBE3000685BBB /* ExerciseSearchView.swift in Sources */,
+				0786CC902B0405E200685BBB /* NotificationManager.swift in Sources */,
 				0786C9602AEF4CB8002B252D /* PersistenceController.swift in Sources */,
 				0786CC822AFDB4FC00685BBB /* ProfileView.swift in Sources */,
 				073B46192AF4365A000687B2 /* GoalPickerView.swift in Sources */,

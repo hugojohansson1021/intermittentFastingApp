@@ -20,6 +20,7 @@
 		0786CC862AFDBC5A00685BBB /* InfoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC852AFDBC5A00685BBB /* InfoViews.swift */; };
 		0786CC882AFDBE3000685BBB /* ExerciseSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC872AFDBE3000685BBB /* ExerciseSearchView.swift */; };
 		0786CC8A2AFDC65100685BBB /* VitaminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC892AFDC65000685BBB /* VitaminView.swift */; };
+		0786CC8C2B03EA6800685BBB /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC8B2B03EA6800685BBB /* SplashScreenView.swift */; };
 		07B9F2A72ADEF474003B5AE1 /* FastingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */; };
 		07B9F2A92ADEF474003B5AE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2A82ADEF474003B5AE1 /* ContentView.swift */; };
 		07B9F2AB2ADEF475003B5AE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07B9F2AA2ADEF475003B5AE1 /* Assets.xcassets */; };
@@ -42,6 +43,7 @@
 		0786CC852AFDBC5A00685BBB /* InfoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViews.swift; sourceTree = "<group>"; };
 		0786CC872AFDBE3000685BBB /* ExerciseSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSearchView.swift; sourceTree = "<group>"; };
 		0786CC892AFDC65000685BBB /* VitaminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitaminView.swift; sourceTree = "<group>"; };
+		0786CC8B2B03EA6800685BBB /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		07B9F2A32ADEF474003B5AE1 /* FastingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingAppApp.swift; sourceTree = "<group>"; };
 		07B9F2A82ADEF474003B5AE1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */,
+				0786CC8B2B03EA6800685BBB /* SplashScreenView.swift */,
 				07B9F2A82ADEF474003B5AE1 /* ContentView.swift */,
 				0786CC842AFDBC3B00685BBB /* BubbleViews */,
 				0786CC832AFDB50800685BBB /* InställningarProfil */,
@@ -274,6 +277,7 @@
 				0786CC862AFDBC5A00685BBB /* InfoViews.swift in Sources */,
 				0786C9652AEF5688002B252D /* WeightGoalDate.swift in Sources */,
 				0786CC8A2AFDC65100685BBB /* VitaminView.swift in Sources */,
+				0786CC8C2B03EA6800685BBB /* SplashScreenView.swift in Sources */,
 				07B9F2B72ADEFD76003B5AE1 /* FastingManager.swift in Sources */,
 				07B9F2B52ADEF56F003B5AE1 /* ProgressRing.swift in Sources */,
 				0786CC882AFDBE3000685BBB /* ExerciseSearchView.swift in Sources */,

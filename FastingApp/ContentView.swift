@@ -149,12 +149,14 @@ struct ContentView: View {
                 .background(.thinMaterial)
                 .disabled(!fastingManager.isPickerEnabled)  // Disable the picker based on fasting state
 
+
                 //MARK: Progressring
                 ProgressRing()
                     .environmentObject(fastingManager)
                     .foregroundStyle(.white)
 
                 HStack(spacing: 60) {
+                    
                     //MARK: Start Time
                     VStack(spacing: 5) {
                         Text(fastingManager.fastingState == .notStarted ? "Start" : "Started")
@@ -255,8 +257,7 @@ struct ContentView: View {
 
                         Text("Exersciese")
                             .foregroundColor(.white)
-                            .font(.title) // Anpassa fontstorleken här
-                    }
+                            .font(.title)                     }
                     .frame(width: 300, height: 120)
                     .background(.thinMaterial)
                     .cornerRadius(20)
@@ -274,7 +275,7 @@ struct ContentView: View {
 
                         Text("Vitamins")
                             .foregroundColor(.white)
-                            .font(.title) // Anpassa fontstorleken här
+                            .font(.title)
                     }
                     .frame(width: 300, height: 120)
                     .background(.thinMaterial)
@@ -307,6 +308,6 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(FastingManager()) // Provide a mock FastingManager for preview
+            .environmentObject(FastingManager()) 
     }
 }

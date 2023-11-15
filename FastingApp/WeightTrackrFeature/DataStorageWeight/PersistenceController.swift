@@ -10,6 +10,8 @@ import Foundation
 
 import CoreData
 
+
+// structure responsible for seting up and managing the Core Data stack, and reachable from anywere
 struct PersistenceController {
     static let shared = PersistenceController()
 

@@ -152,7 +152,7 @@ struct WeightEntrySheet: View {
     }
 }
 
-// Definiera färgerna om de inte redan är definierade
+
 extension Color {
     static let customDarkPurple = Color("darkPurple")
     static let customPurpleDark = Color("purpleDark")

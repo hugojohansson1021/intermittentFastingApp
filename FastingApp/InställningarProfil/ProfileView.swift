@@ -140,7 +140,7 @@ struct ProfileView: View {
                     print("Error sending feedback: \(error)")
                     return
                 }
-                // Hantera svar eller data här om nödvändigt...
+                
             }.resume()
         
         

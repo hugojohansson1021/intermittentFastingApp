@@ -7,15 +7,8 @@
 
 import SwiftUI
 
-
-
-
 struct ContentView: View {
     @EnvironmentObject var fastingManager: FastingManager
-    
-    
-
-
     @State private var selectedFastingPlan: FastingPlan = .intermediate
     @State private var isAddFastingDataViewVisible = false
     @State private var currentView: CurrentView = .data
@@ -27,9 +20,7 @@ struct ContentView: View {
     enum CurrentView {
             case data, trackWeight, ai, profil
         }
-    
-    
-    
+
     var title: String {
         switch fastingManager.fastingState {
         case .notStarted:
@@ -108,8 +99,7 @@ struct ContentView: View {
                 LinearGradient(gradient: Gradient(colors: [Color.darkPurple, Color.purpleDark, Color.darkPink]), startPoint: .topLeading, endPoint: .bottomTrailing)
                     .ignoresSafeArea()
                 content
-                    //.padding()
-                    //.background(Color.clear)
+                    
                 VStack {
                         Spacer()
                         bottomNavBar
@@ -120,7 +110,7 @@ struct ContentView: View {
             
             
         }
-        .accentColor(.white)  // Sätter accentfärgen för NavigationView
+        .accentColor(.white)
         .navigationBarHidden(true)
     
     }
@@ -185,15 +175,15 @@ struct ContentView: View {
              
                 
 
-                //MARK: start and end Button
+                
                 
                 //MARK: start and end Button
                 Button {
-                    // Växlar fastans tillstånd
+                    
                     fastingManager.toggleFastingState()
                     fastingManager.scheduleCompletionNotification(for: selectedFastingPlan)
 
-                    // Kontrollera om fastan startas och schemalägg en startnotifikation
+                    
                     if fastingManager.fastingState == .fasting {
                         fastingManager.scheduleStartNotification()
                         
@@ -218,10 +208,10 @@ struct ContentView: View {
                 //MARK: New Restart Fasting button
                 Button {
                     if fastingManager.fastingState == .fasting {
-                        // Om fastan pågår, visa toasten
+                        
                         showRestartAlert = true
                     } else {
-                        //  fitt kod asså Om inte, restarta fastan som vanligt
+                        
                         fastingManager.resetFasting()
                     }
                 } label: {
@@ -250,7 +240,7 @@ struct ContentView: View {
 
                         Text("info")
                             .foregroundColor(.white)
-                            .font(.title) // Anpassa fontstorleken här
+                            .font(.title) 
                     }
                     .frame(width: 300, height: 120)
                     .background(.thinMaterial)
@@ -278,20 +268,6 @@ struct ContentView: View {
                 
                 
                 
-                NavigationLink(destination: TrackWeightView()) {
-                    HStack {
-                        Image(systemName: "cross.vial")
-                            .imageScale(.large)
-                            .foregroundColor(.white)
-
-                        Text("Vitamins")
-                            .foregroundColor(.white)
-                            .font(.title)
-                    }
-                    .frame(width: 300, height: 120)
-                    .background(.thinMaterial)
-                    .cornerRadius(20)
-                }
                 
                 
                 
@@ -299,15 +275,7 @@ struct ContentView: View {
                 
                 Spacer()
 
-                
 
-                
-                
-                
-
-
-
-               
             }
             
         }

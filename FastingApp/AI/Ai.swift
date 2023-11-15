@@ -11,6 +11,8 @@ import SwiftUI
 struct Ai: View {
     @State private var userInput: String = ""
     @State private var assistantResponse: String = ""
+    @State private var isLoading: Bool = false
+        
     
     var body: some View {
         ZStack {
@@ -22,10 +24,10 @@ struct Ai: View {
             
             
             
-            VStack(spacing: 15) {
+            VStack(spacing: 5) {
                 Spacer()
                 
-                Text("Ai Fasting Assistent")
+                Text("FastingGPT")
                     .foregroundStyle(.white)
                     .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
                     .fontWeight(.bold)
@@ -33,24 +35,60 @@ struct Ai: View {
                 
                 Spacer()
                 
-                Text("ask any health related question")
+                Text("ask me any health related question")
                     .foregroundStyle(.white)
                     .font(.headline)
                     .fontWeight(.bold)
                 
                 Spacer()
                 
+                Image(systemName: "brain.head.profile")
+                    .imageScale(.large)
+                    .foregroundColor(.white)
+                
+                Spacer()
+                
+                Text("The gpt may take a few seconds")
+                    .foregroundStyle(.white)
+                    .font(.caption)
+                    .fontWeight(.bold)
+                
                 
                 TextField("Ask your question here..", text: $userInput)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
-                    .padding()
-                    .foregroundColor(.blue)
+                                    .padding(10) // Adjust padding to increase the size of the TextField
+                                    .background(Color.white) // Set the background color to white
+                                    .cornerRadius(5) // Rounded corners
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: 5)
+                                            .stroke(Color.gray, lineWidth: 1) // Border with color and line width
+                                    )
+                                    .foregroundColor(.black) // Text color
+                                    .padding() // Padding around the TextField to match your layout
+                                
                 
                 Button("Send") {
-                    //send 
-                    print("button pressed")
+                    isLoading = true  // Start loading when button is pressed
+                    APIManager.shared.fetchResponse(for: userInput) { response in
+                        self.assistantResponse = response
+                        isLoading = false  // Stop loading when response is received
+                    }
+                    userInput = "" 
                 }
-                .foregroundStyle(.white)
+                .disabled(isLoading)
+                .fontWeight(.bold)
+                .padding(.horizontal, 54)
+                .padding(.vertical, 15)
+                .background(.thinMaterial)
+                .cornerRadius(20)
+                .foregroundColor(.white)
+                
+                Spacer()
+                
+                if isLoading {
+                ProgressView()
+                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                .scaleEffect(1.5, anchor: .center)
+                }
                 
                 
                 

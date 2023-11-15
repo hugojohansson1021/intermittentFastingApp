@@ -15,13 +15,13 @@
 		0786C9632AEF517B002B252D /* WeightHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786C9622AEF517B002B252D /* WeightHistoryView.swift */; };
 		0786C9652AEF5688002B252D /* WeightGoalDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786C9642AEF5688002B252D /* WeightGoalDate.swift */; };
 		0786CC7E2AFD89C700685BBB /* Ai.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC7D2AFD89C700685BBB /* Ai.swift */; };
-		0786CC802AFD89F400685BBB /* OpenAIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC7F2AFD89F400685BBB /* OpenAIService.swift */; };
 		0786CC822AFDB4FC00685BBB /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC812AFDB4FC00685BBB /* ProfileView.swift */; };
 		0786CC862AFDBC5A00685BBB /* InfoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC852AFDBC5A00685BBB /* InfoViews.swift */; };
 		0786CC882AFDBE3000685BBB /* ExerciseSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC872AFDBE3000685BBB /* ExerciseSearchView.swift */; };
 		0786CC8A2AFDC65100685BBB /* VitaminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC892AFDC65000685BBB /* VitaminView.swift */; };
 		0786CC8C2B03EA6800685BBB /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC8B2B03EA6800685BBB /* SplashScreenView.swift */; };
 		0786CC902B0405E200685BBB /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC8F2B0405E200685BBB /* NotificationManager.swift */; };
+		0786CC932B057E4A00685BBB /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC922B057E4A00685BBB /* APIManager.swift */; };
 		07B9F2A72ADEF474003B5AE1 /* FastingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */; };
 		07B9F2A92ADEF474003B5AE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2A82ADEF474003B5AE1 /* ContentView.swift */; };
 		07B9F2AB2ADEF475003B5AE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07B9F2AA2ADEF475003B5AE1 /* Assets.xcassets */; };
@@ -39,13 +39,13 @@
 		0786C9622AEF517B002B252D /* WeightHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightHistoryView.swift; sourceTree = "<group>"; };
 		0786C9642AEF5688002B252D /* WeightGoalDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightGoalDate.swift; sourceTree = "<group>"; };
 		0786CC7D2AFD89C700685BBB /* Ai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ai.swift; sourceTree = "<group>"; };
-		0786CC7F2AFD89F400685BBB /* OpenAIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIService.swift; sourceTree = "<group>"; };
 		0786CC812AFDB4FC00685BBB /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		0786CC852AFDBC5A00685BBB /* InfoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViews.swift; sourceTree = "<group>"; };
 		0786CC872AFDBE3000685BBB /* ExerciseSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSearchView.swift; sourceTree = "<group>"; };
 		0786CC892AFDC65000685BBB /* VitaminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitaminView.swift; sourceTree = "<group>"; };
 		0786CC8B2B03EA6800685BBB /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		0786CC8F2B0405E200685BBB /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
+		0786CC922B057E4A00685BBB /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		07B9F2A32ADEF474003B5AE1 /* FastingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingAppApp.swift; sourceTree = "<group>"; };
 		07B9F2A82ADEF474003B5AE1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -127,7 +127,7 @@
 			isa = PBXGroup;
 			children = (
 				0786CC7D2AFD89C700685BBB /* Ai.swift */,
-				0786CC7F2AFD89F400685BBB /* OpenAIService.swift */,
+				0786CC922B057E4A00685BBB /* APIManager.swift */,
 			);
 			path = AI;
 			sourceTree = "<group>";
@@ -271,7 +271,6 @@
 			files = (
 				0786C9632AEF517B002B252D /* WeightHistoryView.swift in Sources */,
 				07B9F2A92ADEF474003B5AE1 /* ContentView.swift in Sources */,
-				0786CC802AFD89F400685BBB /* OpenAIService.swift in Sources */,
 				0786C9562AEF3C9E002B252D /* WeightTracker.xcdatamodeld in Sources */,
 				07B9F2A72ADEF474003B5AE1 /* FastingAppApp.swift in Sources */,
 				07C20B3B2AE027DF00FFF3EE /* TrackWeightView.swift in Sources */,
@@ -281,6 +280,7 @@
 				0786C9652AEF5688002B252D /* WeightGoalDate.swift in Sources */,
 				0786CC8A2AFDC65100685BBB /* VitaminView.swift in Sources */,
 				0786CC8C2B03EA6800685BBB /* SplashScreenView.swift in Sources */,
+				0786CC932B057E4A00685BBB /* APIManager.swift in Sources */,
 				07B9F2B72ADEFD76003B5AE1 /* FastingManager.swift in Sources */,
 				07B9F2B52ADEF56F003B5AE1 /* ProgressRing.swift in Sources */,
 				0786CC882AFDBE3000685BBB /* ExerciseSearchView.swift in Sources */,

@@ -9,12 +9,12 @@ import CoreData
 import SwiftUI
 
 struct WeightHistoryView: View {
-    @Environment(\.managedObjectContext) private var managedObjectContext
+    @Environment(\.managedObjectContext) private var managedObjectContext//hold core data object
     @FetchRequest(
         entity: CDWeightEntry.entity(),
         sortDescriptors: [NSSortDescriptor(keyPath: \CDWeightEntry.date, ascending: false)]
-    ) var weightEntries: FetchedResults<CDWeightEntry>
-    @Environment(\.dismiss) private var dismiss
+    ) var weightEntries: FetchedResults<CDWeightEntry>//feach CDWeightEntry
+    @Environment(\.dismiss) private var dismiss//Button to dissmiss
 
     var body: some View {
         NavigationView {

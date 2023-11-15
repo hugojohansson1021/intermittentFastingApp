@@ -110,7 +110,7 @@ class FastingManager: ObservableObject {
     
 
     
-  
+  //MARK: Track Time
     
     func track() {
         let currentTime = Date()
@@ -136,10 +136,6 @@ class FastingManager: ObservableObject {
     
     
     
-    
-
-    
-    
     func tuggleFastingState() {
         fastingState = fastingState == .fasting ? .feeding : .fasting
         startTime = Date()
@@ -155,8 +151,6 @@ class FastingManager: ObservableObject {
     }
     
     
-   
-        
     
     func elapsedTimeComponents() -> (hours: Int, minutes: Int, seconds: Int) {
         let totalSeconds = Int(elapsedTime)
@@ -172,7 +166,7 @@ class FastingManager: ObservableObject {
     
     
     
-    
+    //MARK: Notifications
     
     
     class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
@@ -226,7 +220,7 @@ class FastingManager: ObservableObject {
             }
         }
 
-        // Hjälpfunktion för att få den totala fastetiden i sekunder
+        
         private func getFastingDuration(for plan: FastingPlan) -> TimeInterval {
             switch plan {
             case .beginner:

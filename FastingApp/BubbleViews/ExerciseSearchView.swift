@@ -20,7 +20,7 @@ struct ExerciseSearchView: View {
                 
                 
                 
-                VStack(spacing:25) {
+                VStack(spacing:10) {
                     
                     
                     Text("Search Exercise")
@@ -29,7 +29,7 @@ struct ExerciseSearchView: View {
                         .foregroundStyle(.white)
                     
                     
-                    Text("Search for specific mucle grups you whant to train")
+                    Text("Search for specific mucle grups you want to train")
                         .font(.title2)
                         .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                         .foregroundStyle(.white)
@@ -100,13 +100,13 @@ struct ExerciseSearchView: View {
     }
     
     struct Exercise: Codable, Identifiable {
-        let id = UUID()  // If each exercise doesn't have an unique id, you can use UUID
+        let id = UUID()
         let name: String
         let muscle: String
         let infoLink: String
     }
     
-    // In your loadExercises function, decode to ExerciseResponse
+    
     func loadExercises() {
         guard let url = URL(string: "https://api.algobook.info/v1/gym/categories/\(searchText)") else { return }
         

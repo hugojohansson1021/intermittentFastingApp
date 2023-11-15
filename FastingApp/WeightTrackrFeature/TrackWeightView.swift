@@ -151,6 +151,7 @@ struct TrackWeightView: View {
                         
                         
                         VStack(spacing: 10){
+                            
                             // MARK: Text current weight
                             Text("Current Weight:")
                                 .foregroundStyle(.white)
@@ -190,11 +191,8 @@ struct TrackWeightView: View {
                     }//H-stack
                     
                   
-                    
-                    
-                    
-                    
                     Spacer()
+                    
                     VStack {
                         // Button to add new weight entry
                         Button("Track Weight") {

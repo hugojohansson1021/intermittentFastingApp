@@ -27,8 +27,7 @@ struct FastingAppApp: App {
             }
         }
 
-        // Ställ in NotificationManager som delegat
-        // Detta är redan gjort i NotificationManager-konstruktorn
+        
     }
 
     var body: some Scene {

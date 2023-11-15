@@ -1,20 +1,11 @@
 # intermittentFastingApp
 intermittent fasting written in swiftUI 
 
-![IphoneApp](Images/FastingApp1.jpg)
+<img src="Images/FastingApp1.jpg" alt="IphoneApp" width="500" height="300">
 
+<img src="Images/FastingApp2.jpg" alt="chart" width="500" height="300">
 
-
-
-
-![chart](Images/FastingApp2.jpg)
-
-
-
-
-
-![popover](Images/FastingApp3.jpg)
-
+<img src="Images/FastingApp3.jpg" alt="popover" width="500" height="300">
 
 
 

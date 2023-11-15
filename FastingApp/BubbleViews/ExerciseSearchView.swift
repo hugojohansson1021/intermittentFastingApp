@@ -20,7 +20,7 @@ struct ExerciseSearchView: View {
                 
                 
                 
-                VStack {
+                VStack(spacing:25) {
                     
                     
                     Text("Search Exercise")
@@ -29,13 +29,21 @@ struct ExerciseSearchView: View {
                         .foregroundStyle(.white)
                     
                     
+                    Text("Search for specific mucle grups you whant to train")
+                        .font(.title2)
+                        .fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
+                        .foregroundStyle(.white)
+                        .padding()
+                    
+                    
                     TextField("Search Exercises", text: $searchText)
-                        .padding(.horizontal, 24)  // Adjust horizontal padding to control width
+                        .padding(.horizontal, 24)
                         .padding(.vertical, 8)
                         .foregroundColor(.white)
                         .background(.thinMaterial)
                         .cornerRadius(20)
-                        .frame(maxWidth: .infinity, alignment: .leading)  // You can set a maxWidth or a fixed width
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding()
 
                         
                         

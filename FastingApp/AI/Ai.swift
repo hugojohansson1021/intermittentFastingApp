@@ -59,6 +59,7 @@ struct Ai: View {
                 ScrollView {
                     Text(assistantResponse)
                         .padding()
+                        .foregroundStyle(.white)
                 }
             }
         }

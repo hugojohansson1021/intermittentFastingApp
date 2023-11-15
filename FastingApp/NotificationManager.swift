@@ -18,5 +18,5 @@ class NotificationManager: NSObject, UNUserNotificationCenterDelegate {
         completionHandler([.alert, .sound])
     }
 
-    // Här kan du lägga till fler metoder relaterade till notifikationer om nödvändigt
+    
 }

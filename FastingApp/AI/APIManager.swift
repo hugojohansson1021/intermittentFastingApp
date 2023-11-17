@@ -23,7 +23,9 @@ class APIManager {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.setValue("Bearer \("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")", forHTTPHeaderField: "Authorization")
+        request.setValue("Bearer \(Configuration.aiApiKey)", forHTTPHeaderField: "Authorization")
+
+
 
 
         let parameters: [String: Any] = [

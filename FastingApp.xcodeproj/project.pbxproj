@@ -22,6 +22,7 @@
 		0786CC8C2B03EA6800685BBB /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC8B2B03EA6800685BBB /* SplashScreenView.swift */; };
 		0786CC902B0405E200685BBB /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC8F2B0405E200685BBB /* NotificationManager.swift */; };
 		0786CC932B057E4A00685BBB /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC922B057E4A00685BBB /* APIManager.swift */; };
+		0786CC952B07E1D300685BBB /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC942B07E1D300685BBB /* Configuration.swift */; };
 		07B9F2A72ADEF474003B5AE1 /* FastingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */; };
 		07B9F2A92ADEF474003B5AE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2A82ADEF474003B5AE1 /* ContentView.swift */; };
 		07B9F2AB2ADEF475003B5AE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07B9F2AA2ADEF475003B5AE1 /* Assets.xcassets */; };
@@ -46,6 +47,7 @@
 		0786CC8B2B03EA6800685BBB /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		0786CC8F2B0405E200685BBB /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		0786CC922B057E4A00685BBB /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		0786CC942B07E1D300685BBB /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		07B9F2A32ADEF474003B5AE1 /* FastingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingAppApp.swift; sourceTree = "<group>"; };
 		07B9F2A82ADEF474003B5AE1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -127,6 +129,7 @@
 			isa = PBXGroup;
 			children = (
 				0786CC7D2AFD89C700685BBB /* Ai.swift */,
+				0786CC942B07E1D300685BBB /* Configuration.swift */,
 				0786CC922B057E4A00685BBB /* APIManager.swift */,
 			);
 			path = AI;
@@ -275,6 +278,7 @@
 				07B9F2A72ADEF474003B5AE1 /* FastingAppApp.swift in Sources */,
 				07C20B3B2AE027DF00FFF3EE /* TrackWeightView.swift in Sources */,
 				0786CC7E2AFD89C700685BBB /* Ai.swift in Sources */,
+				0786CC952B07E1D300685BBB /* Configuration.swift in Sources */,
 				0786C9532AEF3B48002B252D /* WeightEntrySheet.swift in Sources */,
 				0786CC862AFDBC5A00685BBB /* InfoViews.swift in Sources */,
 				0786C9652AEF5688002B252D /* WeightGoalDate.swift in Sources */,
@@ -416,6 +420,7 @@
 		07B9F2B22ADEF475003B5AE1 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				AI_API_KEY = "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";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
@@ -445,6 +450,7 @@
 		07B9F2B32ADEF475003B5AE1 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				AI_API_KEY = "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";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;

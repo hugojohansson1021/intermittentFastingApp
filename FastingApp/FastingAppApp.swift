@@ -36,6 +36,7 @@ struct FastingAppApp: App {
                 ContentView()
                     .environmentObject(fastingManager)
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
+                    .environment(\.colorScheme, .light)//set to only LightMode
             } else {
                 SplashScreenView(isActive: $isActive)
             }

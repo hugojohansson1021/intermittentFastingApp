@@ -11,6 +11,7 @@
 
 import Foundation
 import UserNotifications
+import CoreData
 
 
 
@@ -182,6 +183,11 @@ class FastingManager: ObservableObject {
                 
     }
     
+    
+    
+    
+    
+    
     // Funktion för att skicka en notifikation en minut efter att fastan har börjat
     func scheduleStartNotification() {
         let content = UNMutableNotificationContent()
@@ -234,6 +240,49 @@ class FastingManager: ObservableObject {
     
     
     
+    func scheduleFastingLoggedNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "Fasting Complete"
+        content.body = "Your fasting time is logged."
+
+        // Deliver the notification immediately
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 1, repeats: false)
+
+        // Create the request
+        let request = UNNotificationRequest(identifier: "fastingLogged", content: content, trigger: trigger)
+
+        // Schedule the request with the system
+        UNUserNotificationCenter.current().add(request) { error in
+            if let error = error {
+                // Handle any errors
+                print("Error scheduling notification: \(error)")
+            }
+        }
+    }
+
+    
+    
+    
+    //MARK: saving fasting time data
+    
+    func saveFastingData() {
+        // Use an existing elapsedTime property if available
+        let totalFastingTime = elapsedTime
+
+        // Create a new FastingRecord
+        let newRecord = FastingRecord(context: PersistenceController.shared.container.viewContext)
+        newRecord.totalFastingTime = totalFastingTime
+        newRecord.endDate = Date()  // Consider using the current date as the end date
+
+        // Save the record
+        do {
+            try PersistenceController.shared.container.viewContext.save()
+        } catch {
+            // Handle the error
+            print("Error saving fasting data: \(error)")
+        }
+    }
+
     
     
 }//last

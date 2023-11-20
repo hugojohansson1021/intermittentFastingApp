@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreData
 
 struct WeightEntrySheet: View {
     @Environment(\.managedObjectContext) private var managedObjectContext
@@ -35,6 +36,15 @@ struct WeightEntrySheet: View {
             return "N/A kg"
         }
     }
+    
+    
+    init(initialWeight: Double) {
+            _hundreds = State(initialValue: Int(initialWeight / 100))
+            _tens = State(initialValue: Int((initialWeight / 10).truncatingRemainder(dividingBy: 10)))
+            _ones = State(initialValue: Int(initialWeight.truncatingRemainder(dividingBy: 10)))
+            _tenths = State(initialValue: Int((initialWeight * 10).truncatingRemainder(dividingBy: 10)))
+        }
+    
     
     var body: some View {
         NavigationView {
@@ -159,9 +169,27 @@ extension Color {
     static let customDarkPink = Color("darkPink")
 }
 
-struct WeightEntrySheet_Previews: PreviewProvider {
-    static var previews: some View {
-        WeightEntrySheet()
+
+func fetchLastWeight(managedObjectContext: NSManagedObjectContext) -> Double {
+    let request: NSFetchRequest<CDWeightEntry> = CDWeightEntry.fetchRequest()
+    request.sortDescriptors = [NSSortDescriptor(keyPath: \CDWeightEntry.date, ascending: false)]
+    request.fetchLimit = 1
+
+    do {
+        let result = try managedObjectContext.fetch(request)
+        return result.first?.weight ?? 0.0
+    } catch {
+        print("Error fetching last weight: \(error)")
+        return 0.0
     }
 }
+
+
+
+struct WeightEntrySheet_Previews: PreviewProvider {
+    static var previews: some View {
+        WeightEntrySheet(initialWeight: 0.0)
+    }
+}
+
 

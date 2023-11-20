@@ -69,6 +69,10 @@ struct WeightHistoryView: View {
         .navigationViewStyle(StackNavigationViewStyle())
     }
 
+    
+    
+    
+    
     private func deleteItems(offsets: IndexSet) {
         withAnimation {
             offsets.map { weightEntries[$0] }.forEach(managedObjectContext.delete)

@@ -13,7 +13,7 @@ struct ContentView: View {
     @State private var isAddFastingDataViewVisible = false
     @State private var currentView: CurrentView = .data
     @State private var showRestartAlert = false
-
+    @State private var showFastingEndPopup = false
 
     
     
@@ -179,15 +179,16 @@ struct ContentView: View {
                 
                 //MARK: start and end Button
                 Button {
-                    
                     fastingManager.toggleFastingState()
-                    fastingManager.scheduleCompletionNotification(for: selectedFastingPlan)
 
-                    
                     if fastingManager.fastingState == .fasting {
+                        // Fasting is starting
                         fastingManager.scheduleStartNotification()
-                        
-                        
+                    } else {
+                        // Fasting is ending
+                        fastingManager.saveFastingData()  // Save the fasting data
+                        fastingManager.scheduleFastingLoggedNotification()  // Schedule the notification
+                        fastingManager.scheduleCompletionNotification(for: selectedFastingPlan)
                     }
                 } label: {
                     Text(fastingManager.fastingState == .fasting ? "End fast" : "Start fasting")
@@ -198,6 +199,7 @@ struct ContentView: View {
                         .cornerRadius(20)
                         .foregroundColor(.white)
                 }
+
 
                        
                  
@@ -247,6 +249,23 @@ struct ContentView: View {
                     .cornerRadius(20)
                 }
                 
+                
+                
+                
+                NavigationLink(destination: FastingRecordsView()) {
+                    HStack {
+                        Image(systemName: "timer.circle")
+                            .imageScale(.large)
+                            .foregroundColor(.white)
+
+                        Text("Fasting Logs")
+                            .foregroundColor(.white)
+                            .font(.title)
+                    }
+                    .frame(width: 300, height: 120)
+                    .background(.thinMaterial)
+                    .cornerRadius(20)
+                }
                 
                 
                 

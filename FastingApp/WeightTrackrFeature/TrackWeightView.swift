@@ -206,6 +206,17 @@ struct TrackWeightView: View {
                         .background(.thinMaterial)
                         .cornerRadius(20)
                         .foregroundColor(.white)
+                        .sheet(isPresented: $showingAddWeightSheet) {
+                            // Fetch the latest weight and pass it to the WeightEntrySheet
+                            if let latestWeight = latestWeightEntry(), let weight = latestWeight.weight as? Double {
+                                WeightEntrySheet(initialWeight: weight)
+                                    .environment(\.managedObjectContext, managedObjectContext)
+                            } else {
+                                // In case there is no previous weight entry, initialize with default value (e.g., 0.0)
+                                WeightEntrySheet(initialWeight: 0.0)
+                                    .environment(\.managedObjectContext, managedObjectContext)
+                            }
+                        }
                         
                         // Button to show weight history
                         Button("Track History") {
@@ -222,9 +233,11 @@ struct TrackWeightView: View {
                     }
                     .padding()
                     .sheet(isPresented: $showingAddWeightSheet) {
-                        WeightEntrySheet()
+                        let lastWeight = fetchLastWeight(managedObjectContext: managedObjectContext)
+                        WeightEntrySheet(initialWeight: lastWeight)
                             .environment(\.managedObjectContext, managedObjectContext)
                     }
+
                     .popover(isPresented: $showingWeightHistory) {
                         WeightHistoryView()
                             .environment(\.managedObjectContext, managedObjectContext)

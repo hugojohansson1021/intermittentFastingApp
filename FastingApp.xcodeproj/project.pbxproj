@@ -24,6 +24,7 @@
 		0786CC932B057E4A00685BBB /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC922B057E4A00685BBB /* APIManager.swift */; };
 		0786CC952B07E1D300685BBB /* Configuration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC942B07E1D300685BBB /* Configuration.swift */; };
 		0786CC992B0BE3F600685BBB /* FastingRecordsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC982B0BE3F600685BBB /* FastingRecordsView.swift */; };
+		0786CC9B2B0C14B100685BBB /* ExerciseLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC9A2B0C14B100685BBB /* ExerciseLog.swift */; };
 		07B9F2A72ADEF474003B5AE1 /* FastingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */; };
 		07B9F2A92ADEF474003B5AE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2A82ADEF474003B5AE1 /* ContentView.swift */; };
 		07B9F2AB2ADEF475003B5AE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07B9F2AA2ADEF475003B5AE1 /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		0786CC922B057E4A00685BBB /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		0786CC942B07E1D300685BBB /* Configuration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configuration.swift; sourceTree = "<group>"; };
 		0786CC982B0BE3F600685BBB /* FastingRecordsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingRecordsView.swift; sourceTree = "<group>"; };
+		0786CC9A2B0C14B100685BBB /* ExerciseLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseLog.swift; sourceTree = "<group>"; };
 		07B9F2A32ADEF474003B5AE1 /* FastingApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastingApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingAppApp.swift; sourceTree = "<group>"; };
 		07B9F2A82ADEF474003B5AE1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -179,6 +181,7 @@
 				0786CC8B2B03EA6800685BBB /* SplashScreenView.swift */,
 				0786CC8F2B0405E200685BBB /* NotificationManager.swift */,
 				07B9F2A82ADEF474003B5AE1 /* ContentView.swift */,
+				0786CC9A2B0C14B100685BBB /* ExerciseLog.swift */,
 				073B46142AF35387000687B2 /* DataStorageWeight */,
 				0786CC842AFDBC3B00685BBB /* BubbleViews */,
 				0786CC832AFDB50800685BBB /* InställningarProfil */,
@@ -275,6 +278,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0786CC9B2B0C14B100685BBB /* ExerciseLog.swift in Sources */,
 				0786C9632AEF517B002B252D /* WeightHistoryView.swift in Sources */,
 				07B9F2A92ADEF474003B5AE1 /* ContentView.swift in Sources */,
 				0786C9562AEF3C9E002B252D /* WeightTracker.xcdatamodeld in Sources */,

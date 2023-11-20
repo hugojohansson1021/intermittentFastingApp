@@ -268,8 +268,7 @@ struct ContentView: View {
                 }
                 
                 
-                
-                NavigationLink(destination: ExerciseSearchView()) {
+                NavigationLink(destination: ExerciseLog()) {
                     HStack {
                         Image(systemName: "figure.strengthtraining.traditional")
                             .imageScale(.large)
@@ -277,12 +276,16 @@ struct ContentView: View {
 
                         Text("Exersciese")
                             .foregroundColor(.white)
-                            .font(.title)                     }
+                            .font(.title)
+                    }
                     .frame(width: 300, height: 120)
                     .background(.thinMaterial)
                     .cornerRadius(20)
                 }
-
+                
+                
+                
+                
                 
                 
                 

@@ -85,6 +85,9 @@ struct InfoViews: View {
                     
                     Spacer()
                     
+                    Text("New features and updates will come in time ")
+                        .font(.footnote)
+                        .foregroundStyle(.white)
                     
                 }
             }

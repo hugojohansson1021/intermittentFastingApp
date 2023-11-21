@@ -28,9 +28,8 @@ struct TrackWeightView: View {
     @State private var goalWeight: Int = 60
     @State private var showingPicker = false
     
-    
-    
-    
+   
+  
     
     var body: some View {
         
@@ -49,6 +48,10 @@ struct TrackWeightView: View {
                         .foregroundStyle(.white)
                     
                     
+                    
+
+                    
+                      
                     
                     // MARK: Chart
                     
@@ -128,7 +131,7 @@ struct TrackWeightView: View {
                                     showingPicker.toggle()
                                 }
                             }) {
-                                Text("\(goalWeight) kg")
+                                Text("\(goalWeight).0")
                                     .fontWeight(.bold)
                                     .padding(.horizontal, 24)
                                     .padding(.vertical, 8)
@@ -136,9 +139,12 @@ struct TrackWeightView: View {
                                     .cornerRadius(20)
                                     .foregroundColor(.yellow)
                             }
-                            .popover(isPresented: $showingPicker) {
+                            .sheet(isPresented: $showingPicker) {
                                     GoalPickerView(goalWeight: $goalWeight)
+                                    .presentationDetents([.medium])
                                 }
+                            
+                            
 
                             .background(Color.clear.opacity(0))
                             .onChange(of: goalWeight) { _ in
@@ -163,7 +169,7 @@ struct TrackWeightView: View {
                                 }
                             }) {
                                 if let latestWeight = latestWeightEntry(), let weight = latestWeight.weight as? Double {
-                                    Text(String(format: "%.1f kg", weight))
+                                    Text(String(format: "%.1f ", weight))
                                 } else {
                                     Text("No Data")
                                 }
@@ -183,7 +189,7 @@ struct TrackWeightView: View {
                     
                     // Estimated Date Of Goal Weight
                     if let estimatedDate = calculateEstimatedDateOfGoalWeight(goalWeight: Double(goalWeight)) {
-                        Text("Estimated Time to Goal: \(estimatedDate, format: .dateTime.day().month().year())")
+                        Text("Estimated Date to Goal: \(estimatedDate, format: .dateTime.day().month().year())")
                             .padding()
                             .foregroundStyle(.white)
                             .fontWeight(.bold)
@@ -246,7 +252,12 @@ struct TrackWeightView: View {
                     .onAppear {
                         loadGoalWeight()
                     }
+                    
+                    Text("New features and updates will come in time ")
+                        .font(.footnote)
+                        .foregroundStyle(.white)
                 }
+                
             }
             
         

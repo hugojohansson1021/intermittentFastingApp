@@ -31,7 +31,7 @@ struct WeightHistoryView: View {
                         HStack {
                             Text("\(weightEntry.date ?? Date(), formatter: itemFormatter)")
                             Spacer()
-                            Text(String(format: "%.1f kg", weightEntry.weight))
+                            Text(String(format: "%.1f kg/lbs", weightEntry.weight))
                         }
                         foregroundColor(.white)
                         .padding()

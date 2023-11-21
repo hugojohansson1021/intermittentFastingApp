@@ -24,7 +24,11 @@ struct FastingRecordsView: View {
             
             VStack{
                 
-                
+                Text("This list all your loggs, if you want to delate list items swipe right to left")
+                    .fontWeight(.thin)
+                    .padding()
+                    .font(.subheadline)
+                    .foregroundStyle(.white)
                 
                 List {
                     ForEach(fastingRecords, id: \.self) { record in
@@ -92,6 +96,12 @@ struct FastingRecordsView: View {
         let minutes = Int(interval) % 3600 / 60
         return "\(hours) hours, \(minutes) minutes"
     }
+    
+    
+    
+   
+    
+    
 }
 
 // Preview Provider

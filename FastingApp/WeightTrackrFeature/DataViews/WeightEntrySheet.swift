@@ -105,7 +105,7 @@ struct WeightEntrySheet: View {
                     }
                     .pickerStyle(WheelPickerStyle())
                     
-                    Text("kg")
+                    Text("kg/lbs")
                         .font(.largeTitle)
                 }
                 .accentColor(.white)

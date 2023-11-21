@@ -14,5 +14,6 @@
     </entity>
     <entity name="MarkedDate" representedClassName="MarkedDate" syncable="YES" codeGenerationType="class">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="note" optional="YES" attributeType="String"/>
     </entity>
 </model>

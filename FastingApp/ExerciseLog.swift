@@ -25,6 +25,9 @@ struct ExerciseLog: View {
         }
     }
 
+    
+
+    
     var body: some View {
         
         
@@ -83,10 +86,25 @@ struct ExerciseLog: View {
                 .padding()
                 .foregroundStyle(.white)
                 
+                Text("All your logs are saved automatically")
+                    .font(.caption)
+                    .foregroundStyle(.white)
+                
                 Spacer()
+                
+                
+                Text("New features and updates will come in time ")
+                    .font(.footnote)
+                    .foregroundStyle(.white)
+                
             }
             
+            
+            
         }
+        
+        
+        
         
         
     }
@@ -129,7 +147,12 @@ struct ExerciseLog: View {
             // Hantera felet här
         }
     }
-}
+    
+    
+    
+    
+    
+}//view Last
 
 struct ExerciseLog_Previews: PreviewProvider {
     static var previews: some View {

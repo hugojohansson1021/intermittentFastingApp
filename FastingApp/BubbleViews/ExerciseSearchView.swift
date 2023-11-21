@@ -79,12 +79,17 @@ struct ExerciseSearchView: View {
                                 }
                             }
                             .font(.footnote)
+                            
+                            
+                            
                         }
+                        
                     }
                 }
                 
                 
             }
+            
         }
         
     }

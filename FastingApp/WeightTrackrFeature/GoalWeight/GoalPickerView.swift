@@ -39,7 +39,7 @@ struct GoalPickerView: View {
                     
                     
                 Picker("Goal Weight", selection: $goalWeight) {
-                    ForEach(30...150, id: \.self) {
+                    ForEach(50...350, id: \.self) {
                         Text("\($0)")
                     }
                 }
@@ -65,6 +65,7 @@ struct GoalPickerView: View {
                 Spacer()
             }
         }
+        
     }
 }
 

@@ -9,5 +9,5 @@ import Foundation
 
 
 struct Configuration {
-    static let aiApiKey = "sk-lGiV3RSjf4MKfptRSBCbT3BlbkFJovKtSJpQw08ingmRE1b//"//->d om du vill anväda apiet
+    static let aiApiKey = "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"
 }

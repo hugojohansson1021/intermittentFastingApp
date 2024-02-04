@@ -30,8 +30,8 @@ struct ProgressRing: View {
 
             Circle()
                 .trim(from: 0.0, to: min(fastingManager.progress, 1.0))
-                .stroke(AngularGradient(gradient: Gradient(colors: [Color.blueBack, Color.mintBack, Color.blueBack]), center: .center), style: StrokeStyle(lineWidth: 15.0, lineCap: .round, lineJoin: .round))
-                .rotationEffect((Angle.degrees(270)))
+                .stroke(AngularGradient(gradient: Gradient(colors: [Color("blueBack"), Color("mintBack"), Color("blueBack")]), center: .center), style: StrokeStyle(lineWidth: 15.0, lineCap: .round, lineJoin: .round))
+                .rotationEffect(Angle.degrees(270))
                 .animation(.easeInOut(duration: 1.0), value: fastingManager.progress)
 
             VStack(spacing: 30) {
@@ -82,6 +82,8 @@ struct ProgressRing: View {
         .onReceive(NotificationCenter.default.publisher(for: UIApplication.willEnterForegroundNotification)) { _ in
             fastingManager.track()
         }
+        
+
 
         
         .frame(width: 250, height: 250)

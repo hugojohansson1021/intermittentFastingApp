@@ -9,79 +9,97 @@ import CoreData
 import SwiftUI
 
 struct WeightHistoryView: View {
-    @Environment(\.managedObjectContext) private var managedObjectContext//hold core data object
+    @Environment(\.managedObjectContext) private var managedObjectContext
     @FetchRequest(
         entity: CDWeightEntry.entity(),
         sortDescriptors: [NSSortDescriptor(keyPath: \CDWeightEntry.date, ascending: false)]
-    ) var weightEntries: FetchedResults<CDWeightEntry>//feach CDWeightEntry
-    @Environment(\.dismiss) private var dismiss//Button to dissmiss
+    ) var weightEntries: FetchedResults<CDWeightEntry>
+    @Environment(\.dismiss) private var dismiss
+
+    @State private var weightEntryToDelete: CDWeightEntry?
+    @State private var showDeleteAlert = false
 
     var body: some View {
         NavigationView {
-            VStack {
-                
-                Text("This list all your loggs, if you want to delate list items swipe right to left")
-                    .fontWeight(.thin)
-                    .padding()
-                    .font(.subheadline)
-                    .foregroundStyle(.white)
-                
-                List {
-                    ForEach(weightEntries) { weightEntry in
-                        HStack {
-                            Text("\(weightEntry.date ?? Date(), formatter: itemFormatter)")
-                            Spacer()
-                            Text(String(format: "%.1f kg/lbs", weightEntry.weight))
-                        }
-                        foregroundColor(.white)
+            ZStack {
+                CustomBackground()
+
+                VStack {
+                    Text("This list all your logs, if you want to delete list items tap on them")
+                        .fontWeight(.thin)
                         .padding()
-                        .background(Color.white.opacity(0.8))
-                        .cornerRadius(10)
-                    }
-                    .onDelete(perform: deleteItems)
-                }
-                .listStyle(PlainListStyle())
-                .padding()
-                .background(Color.customPurpleDark)
-                
-                Button("Done") {
-                    dismiss()
-                }
-                .fontWeight(.bold)
-                .padding(.horizontal, 24)
-                .padding(.vertical, 8)
-                .background(.thinMaterial)
-                .cornerRadius(20)
-                .foregroundColor(.white)
-            }
-            .background(Color.customPurpleDark)
-            .navigationTitle("Weight History")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .principal) {
-                    Text("Weight History")
+                        .font(.subheadline)
                         .foregroundColor(.white)
-                        .font(.title2)
-                        .fontWeight(.bold)
+
+                    ScrollView {
+                        LazyVStack {
+                            ForEach(weightEntries, id: \.self) { weightEntry in
+                                HStack {
+                                    Text("\(weightEntry.date ?? Date(), formatter: itemFormatter)")
+                                    Spacer()
+                                    Text(String(format: "%.1f kg/lbs", weightEntry.weight))
+                                }
+                                .foregroundColor(.white)
+                                .padding()
+                                .background(Color.white.opacity(0.1))
+                                .cornerRadius(10)
+                                .onTapGesture {
+                                    self.weightEntryToDelete = weightEntry
+                                    self.showDeleteAlert = true
+                                }
+                            }
+                        }
+                    }
+                    .padding(.horizontal)
+
+                    Button("Done") {
+                        dismiss()
+                    }
+                    .fontWeight(.bold)
+                    .padding(.horizontal, 24)
+                    .padding(.vertical, 8)
+                    .background(.thinMaterial)
+                    .cornerRadius(20)
+                    .foregroundColor(.white)
+                }
+                .navigationTitle("Weight History")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Text("Weight History")
+                            .foregroundColor(.white)
+                            .font(.title2)
+                            .fontWeight(.bold)
+                    }
                 }
             }
+            .environment(\.colorScheme, .light) // Hårdk
+            .alert(isPresented: $showDeleteAlert) {
+                Alert(
+                    title: Text("Delete Weight Entry"),
+                    message: Text("Are you sure you want to delete this weight entry?"),
+                    primaryButton: .destructive(Text("Delete")) {
+                        if let weightEntryToDelete = weightEntryToDelete {
+                            deleteWeightEntry(weightEntryToDelete)
+                        }
+                    },
+                    secondaryButton: .cancel()
+                )
+            }
+            .navigationViewStyle(StackNavigationViewStyle())
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
 
-    
-    
-    
-    
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            offsets.map { weightEntries[$0] }.forEach(managedObjectContext.delete)
+    private func deleteWeightEntry(_ weightEntry: CDWeightEntry) {
+        managedObjectContext.delete(weightEntry)
+        saveContext()
+    }
 
-            do {
-                try managedObjectContext.save()
-            } catch {
-                print("Error deleting weight entries: \(error)")
-            }
+    private func saveContext() {
+        do {
+            try managedObjectContext.save()
+        } catch {
+            print("Error saving context after delete: \(error)")
         }
     }
 }
@@ -96,5 +114,6 @@ private let itemFormatter: DateFormatter = {
 struct WeightHistoryView_Previews: PreviewProvider {
     static var previews: some View {
         WeightHistoryView()
+            .environmentObject(UserSettings())
     }
 }

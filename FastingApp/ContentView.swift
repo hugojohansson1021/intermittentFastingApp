@@ -9,16 +9,33 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var fastingManager: FastingManager
-    @State private var selectedFastingPlan: FastingPlan = .intermediate
+    //@State private var selectedFastingPlan: FastingPlan = .intermediate
     @State private var isAddFastingDataViewVisible = false
     @State private var currentView: CurrentView = .data
     @State private var showRestartAlert = false
     @State private var showFastingEndPopup = false
+    
+    @State private var showingEndFastingAlert = false
+
+
+    @EnvironmentObject var userSettings: UserSettings
+    
+
+    @State private var selectedFastingPlan: FastingPlan = {
+        if let savedPlanRawValue = UserDefaults.standard.string(forKey: "savedFastingPlan"),
+           let savedPlan = FastingPlan(rawValue: savedPlanRawValue) {
+            return savedPlan
+        } else {
+            return .intermediate // eller något standardvärde
+        }
+    }()
 
     
     
+    
+    
     enum CurrentView {
-            case data, trackWeight, ai, profil
+            case data, trackWeight, ai, profil, Exercise
         }
 
     var title: String {
@@ -33,11 +50,22 @@ struct ContentView: View {
     }
 
     
+    
+    
+    
+    
+    
+    
+    
+    
     var bottomNavBar: some View {
-        HStack {
+        HStack {// h-stack for nav-bar
+            
             Spacer()
-
-            NavigationLink(destination: ProfileView()) {
+            
+            
+            //MARK: Profile View bar
+            NavigationLink(destination: ProfilView()) {
                 Image(systemName: "person.circle")
                     .imageScale(.large)
                     .foregroundColor(.white)
@@ -45,14 +73,16 @@ struct ContentView: View {
             .buttonStyle(PlainButtonStyle())
             .disabled(currentView == .profil)
 
+            
+            //MARK: Divider
             Spacer()
-
             Divider()
                 .frame(height: 20)
                 .background(Color.black)
-
             Spacer()
 
+            
+            //MARK: Track weight View bar
             NavigationLink(destination: TrackWeightView()) {
                 Image(systemName: "chart.xyaxis.line")
                     .imageScale(.large)
@@ -61,26 +91,27 @@ struct ContentView: View {
             .buttonStyle(PlainButtonStyle())
             .disabled(currentView == .trackWeight)
 
+            
+            //MARK: Divider
             Spacer()
-            
-            
             Divider()
                 .frame(height: 20)
                 .background(Color.black)
-            
             Spacer()
             
-            NavigationLink(destination: Ai()) {
-                Image(systemName: "text.bubble")
+            
+            //MARK: Exercise Log View bar
+            NavigationLink(destination: ExerciseLog()) {
+                Image(systemName: "figure.strengthtraining.traditional")
                     .imageScale(.large)
                     .foregroundColor(.white)
             }
             .buttonStyle(PlainButtonStyle())
-            .disabled(currentView == .ai)
+            .disabled(currentView == .Exercise)
             
             Spacer()
             
-        }
+        }// H-stack
         .padding(.vertical, 8)
         .padding(.horizontal, 16)
         .background(.ultraThinMaterial)
@@ -89,16 +120,15 @@ struct ContentView: View {
         .shadow(radius: 5)
         .padding(.horizontal, 16)
 
-    }
-    
+    }// Nav-stack
 
     var body: some View {
         NavigationView {
             ZStack {
                 //MARK: Background
-                LinearGradient(gradient: Gradient(colors: [Color.darkPurple, Color.purpleDark, Color.darkPink]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                    .ignoresSafeArea()
+                CustomBackground()
                 content
+
                     
                 VStack {
                         Spacer()
@@ -106,7 +136,7 @@ struct ContentView: View {
                     }
 
             }//Z-Stack
-            
+            .environment(\.colorScheme, .light) // Hårdk
             
             
         }
@@ -135,10 +165,12 @@ struct ContentView: View {
                 .onChange(of: selectedFastingPlan) { newValue in
                     // Update the fasting plan when the user makes a selection
                     fastingManager.fastingPlan = newValue
+                    UserDefaults.standard.set(newValue.rawValue, forKey: "savedFastingPlan")
+
                 }
                 .background(.thinMaterial)
                 .disabled(!fastingManager.isPickerEnabled)  // Disable the picker based on fasting state
-
+                
 
                 //MARK: Progressring
                 ProgressRing()
@@ -179,16 +211,15 @@ struct ContentView: View {
                 
                 //MARK: start and end Button
                 Button {
-                    fastingManager.toggleFastingState()
-
                     if fastingManager.fastingState == .fasting {
-                        // Fasting is starting
-                        fastingManager.scheduleStartNotification()
+                        // Visa en alert för att bekräfta att användaren vill avsluta fastan
+                        showingEndFastingAlert = true
                     } else {
-                        // Fasting is ending
-                        fastingManager.saveFastingData()  // Save the fasting data
-                        fastingManager.scheduleFastingLoggedNotification()  // Schedule the notification
-                        fastingManager.scheduleCompletionNotification(for: selectedFastingPlan)
+                        // Starta fastan
+                        fastingManager.tuggleFastingState()
+                        
+                        
+
                     }
                 } label: {
                     Text(fastingManager.fastingState == .fasting ? "End fast" : "Start fasting")
@@ -199,6 +230,23 @@ struct ContentView: View {
                         .cornerRadius(20)
                         .foregroundColor(.white)
                 }
+                .alert(isPresented: $showingEndFastingAlert) {
+                    Alert(
+                        title: Text("End Fast"),
+                        message: Text("Sure you want to en you fast?"),
+                        primaryButton: .destructive(Text("End")) {
+                            // Användaren har bekräftat att avsluta fastan
+                            fastingManager.toggleFastingState()
+                            fastingManager.saveFastingData()  // Spara fastedatan
+                            fastingManager.scheduleFastingLoggedNotification()  // Schemalägg notifikationen
+                            
+                            fastingManager.scheduleEndOfFastingNotification()
+                            
+                        },
+                        secondaryButton: .cancel()
+                    )
+                }
+
 
 
                        
@@ -215,6 +263,10 @@ struct ContentView: View {
                     } else {
                         
                         fastingManager.resetFasting()
+                        
+                        
+                        
+
                     }
                 } label: {
                     Text("Restart fasting")
@@ -234,23 +286,7 @@ struct ContentView: View {
                 
                 
                 
-                NavigationLink(destination: InfoViews()) {
-                    HStack {
-                        Image(systemName: "info.bubble")
-                            .imageScale(.large)
-                            .foregroundColor(.white)
-
-                        Text("info")
-                            .foregroundColor(.white)
-                            .font(.title) 
-                    }
-                    .frame(width: 300, height: 120)
-                    .background(.thinMaterial)
-                    .cornerRadius(20)
-                }
-                
-                
-                
+                //MARK: Fasting record View Bubble
                 
                 NavigationLink(destination: FastingRecordsView()) {
                     HStack {
@@ -268,13 +304,16 @@ struct ContentView: View {
                 }
                 
                 
-                NavigationLink(destination: ExerciseLog()) {
+                //MARK: Ai GPT View Bubble
+                
+                NavigationLink(destination: Ai()) {
                     HStack {
-                        Image(systemName: "figure.strengthtraining.traditional")
+                        
+                        Image(systemName: "text.bubble" )
                             .imageScale(.large)
                             .foregroundColor(.white)
 
-                        Text("Exersciese")
+                        Text("FastingGPT")
                             .foregroundColor(.white)
                             .font(.title)
                     }
@@ -286,21 +325,17 @@ struct ContentView: View {
                 
                 
                 
+                
                 Text("New features and updates will come in time ")
                     .font(.footnote)
                     .foregroundStyle(.white)
-                
-                
-                
-                
-                
-                
                 
                 
                 Spacer()
 
 
             }
+            
             
         }
     }
@@ -311,6 +346,7 @@ struct ContentView: View {
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
-            .environmentObject(FastingManager()) 
+            .environmentObject(FastingManager())
+            .environmentObject(UserSettings())
     }
 }

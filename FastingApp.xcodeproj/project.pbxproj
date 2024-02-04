@@ -15,10 +15,7 @@
 		0786C9632AEF517B002B252D /* WeightHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786C9622AEF517B002B252D /* WeightHistoryView.swift */; };
 		0786C9652AEF5688002B252D /* WeightGoalDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786C9642AEF5688002B252D /* WeightGoalDate.swift */; };
 		0786CC7E2AFD89C700685BBB /* Ai.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC7D2AFD89C700685BBB /* Ai.swift */; };
-		0786CC822AFDB4FC00685BBB /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC812AFDB4FC00685BBB /* ProfileView.swift */; };
 		0786CC862AFDBC5A00685BBB /* InfoViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC852AFDBC5A00685BBB /* InfoViews.swift */; };
-		0786CC882AFDBE3000685BBB /* ExerciseSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC872AFDBE3000685BBB /* ExerciseSearchView.swift */; };
-		0786CC8A2AFDC65100685BBB /* VitaminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC892AFDC65000685BBB /* VitaminView.swift */; };
 		0786CC8C2B03EA6800685BBB /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC8B2B03EA6800685BBB /* SplashScreenView.swift */; };
 		0786CC902B0405E200685BBB /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC8F2B0405E200685BBB /* NotificationManager.swift */; };
 		0786CC932B057E4A00685BBB /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0786CC922B057E4A00685BBB /* APIManager.swift */; };
@@ -28,10 +25,15 @@
 		07B9F2A72ADEF474003B5AE1 /* FastingAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */; };
 		07B9F2A92ADEF474003B5AE1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2A82ADEF474003B5AE1 /* ContentView.swift */; };
 		07B9F2AB2ADEF475003B5AE1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07B9F2AA2ADEF475003B5AE1 /* Assets.xcassets */; };
-		07B9F2AE2ADEF475003B5AE1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07B9F2AD2ADEF475003B5AE1 /* Preview Assets.xcassets */; };
 		07B9F2B52ADEF56F003B5AE1 /* ProgressRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2B42ADEF56F003B5AE1 /* ProgressRing.swift */; };
 		07B9F2B72ADEFD76003B5AE1 /* FastingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F2B62ADEFD76003B5AE1 /* FastingManager.swift */; };
 		07C20B3B2AE027DF00FFF3EE /* TrackWeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07C20B3A2AE027DF00FFF3EE /* TrackWeightView.swift */; };
+		07D4FAA52B4CCABC00AD25FB /* DateDetailsSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4FAA42B4CCABC00AD25FB /* DateDetailsSheet.swift */; };
+		07D4FAAA2B4DEF0C00AD25FB /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4FAA92B4DEF0C00AD25FB /* Settings.swift */; };
+		07D4FAAC2B4DF3A100AD25FB /* FeedBackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4FAAB2B4DF3A100AD25FB /* FeedBackView.swift */; };
+		07D4FAAE2B4DFA7100AD25FB /* ProfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4FAAD2B4DFA7100AD25FB /* ProfilView.swift */; };
+		07D4FAB12B4E001F00AD25FB /* CustomBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4FAB02B4E001F00AD25FB /* CustomBackground.swift */; };
+		07D4FAB32B4E07B200AD25FB /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4FAB22B4E07B200AD25FB /* UserSettings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,10 +44,7 @@
 		0786C9622AEF517B002B252D /* WeightHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightHistoryView.swift; sourceTree = "<group>"; };
 		0786C9642AEF5688002B252D /* WeightGoalDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightGoalDate.swift; sourceTree = "<group>"; };
 		0786CC7D2AFD89C700685BBB /* Ai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ai.swift; sourceTree = "<group>"; };
-		0786CC812AFDB4FC00685BBB /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		0786CC852AFDBC5A00685BBB /* InfoViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViews.swift; sourceTree = "<group>"; };
-		0786CC872AFDBE3000685BBB /* ExerciseSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseSearchView.swift; sourceTree = "<group>"; };
-		0786CC892AFDC65000685BBB /* VitaminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VitaminView.swift; sourceTree = "<group>"; };
 		0786CC8B2B03EA6800685BBB /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		0786CC8F2B0405E200685BBB /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		0786CC922B057E4A00685BBB /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
@@ -56,10 +55,15 @@
 		07B9F2A62ADEF474003B5AE1 /* FastingAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingAppApp.swift; sourceTree = "<group>"; };
 		07B9F2A82ADEF474003B5AE1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		07B9F2AA2ADEF475003B5AE1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		07B9F2AD2ADEF475003B5AE1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		07B9F2B42ADEF56F003B5AE1 /* ProgressRing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRing.swift; sourceTree = "<group>"; };
 		07B9F2B62ADEFD76003B5AE1 /* FastingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastingManager.swift; sourceTree = "<group>"; };
 		07C20B3A2AE027DF00FFF3EE /* TrackWeightView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrackWeightView.swift; sourceTree = "<group>"; };
+		07D4FAA42B4CCABC00AD25FB /* DateDetailsSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateDetailsSheet.swift; sourceTree = "<group>"; };
+		07D4FAA92B4DEF0C00AD25FB /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		07D4FAAB2B4DF3A100AD25FB /* FeedBackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedBackView.swift; sourceTree = "<group>"; };
+		07D4FAAD2B4DFA7100AD25FB /* ProfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilView.swift; sourceTree = "<group>"; };
+		07D4FAB02B4E001F00AD25FB /* CustomBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackground.swift; sourceTree = "<group>"; };
+		07D4FAB22B4E07B200AD25FB /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,7 +82,6 @@
 			isa = PBXGroup;
 			children = (
 				07B9F2B42ADEF56F003B5AE1 /* ProgressRing.swift */,
-				0786CC982B0BE3F600685BBB /* FastingRecordsView.swift */,
 				07B9F2B62ADEFD76003B5AE1 /* FastingManager.swift */,
 			);
 			path = ContentViewLogic;
@@ -139,21 +142,22 @@
 			path = AI;
 			sourceTree = "<group>";
 		};
-		0786CC832AFDB50800685BBB /* InställningarProfil */ = {
+		0786CC832AFDB50800685BBB /* InstallningarProfil */ = {
 			isa = PBXGroup;
 			children = (
-				0786CC812AFDB4FC00685BBB /* ProfileView.swift */,
+				07D4FAA92B4DEF0C00AD25FB /* Settings.swift */,
+				0786CC852AFDBC5A00685BBB /* InfoViews.swift */,
+				07D4FAAB2B4DF3A100AD25FB /* FeedBackView.swift */,
+				07D4FAAD2B4DFA7100AD25FB /* ProfilView.swift */,
 			);
-			name = "InställningarProfil";
+			name = InstallningarProfil;
 			path = "InställningarProfil";
 			sourceTree = "<group>";
 		};
 		0786CC842AFDBC3B00685BBB /* BubbleViews */ = {
 			isa = PBXGroup;
 			children = (
-				0786CC852AFDBC5A00685BBB /* InfoViews.swift */,
-				0786CC872AFDBE3000685BBB /* ExerciseSearchView.swift */,
-				0786CC892AFDC65000685BBB /* VitaminView.swift */,
+				0786CC982B0BE3F600685BBB /* FastingRecordsView.swift */,
 			);
 			path = BubbleViews;
 			sourceTree = "<group>";
@@ -181,10 +185,13 @@
 				0786CC8B2B03EA6800685BBB /* SplashScreenView.swift */,
 				0786CC8F2B0405E200685BBB /* NotificationManager.swift */,
 				07B9F2A82ADEF474003B5AE1 /* ContentView.swift */,
-				0786CC9A2B0C14B100685BBB /* ExerciseLog.swift */,
+				07D4FAB22B4E07B200AD25FB /* UserSettings.swift */,
+				07D4FAB02B4E001F00AD25FB /* CustomBackground.swift */,
+				07B9F2AA2ADEF475003B5AE1 /* Assets.xcassets */,
+				07D4FAA62B4DEC0C00AD25FB /* ExersiceLogViews */,
 				073B46142AF35387000687B2 /* DataStorageWeight */,
 				0786CC842AFDBC3B00685BBB /* BubbleViews */,
-				0786CC832AFDB50800685BBB /* InställningarProfil */,
+				0786CC832AFDB50800685BBB /* InstallningarProfil */,
 				073B46132AF3534F000687B2 /* ContentViewLogic */,
 				0786C9612AEF4FF0002B252D /* WeightTrackrFeature */,
 				0786CC7C2AFD899100685BBB /* AI */,
@@ -196,10 +203,17 @@
 		07B9F2AC2ADEF475003B5AE1 /* Preview Content */ = {
 			isa = PBXGroup;
 			children = (
-				07B9F2AA2ADEF475003B5AE1 /* Assets.xcassets */,
-				07B9F2AD2ADEF475003B5AE1 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		07D4FAA62B4DEC0C00AD25FB /* ExersiceLogViews */ = {
+			isa = PBXGroup;
+			children = (
+				0786CC9A2B0C14B100685BBB /* ExerciseLog.swift */,
+				07D4FAA42B4CCABC00AD25FB /* DateDetailsSheet.swift */,
+			);
+			path = ExersiceLogViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,7 +280,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				07B9F2AE2ADEF475003B5AE1 /* Preview Assets.xcassets in Resources */,
 				07B9F2AB2ADEF475003B5AE1 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -280,25 +293,28 @@
 			files = (
 				0786CC9B2B0C14B100685BBB /* ExerciseLog.swift in Sources */,
 				0786C9632AEF517B002B252D /* WeightHistoryView.swift in Sources */,
+				07D4FAAE2B4DFA7100AD25FB /* ProfilView.swift in Sources */,
 				07B9F2A92ADEF474003B5AE1 /* ContentView.swift in Sources */,
+				07D4FAB12B4E001F00AD25FB /* CustomBackground.swift in Sources */,
 				0786C9562AEF3C9E002B252D /* WeightTracker.xcdatamodeld in Sources */,
 				07B9F2A72ADEF474003B5AE1 /* FastingAppApp.swift in Sources */,
 				07C20B3B2AE027DF00FFF3EE /* TrackWeightView.swift in Sources */,
+				07D4FAA52B4CCABC00AD25FB /* DateDetailsSheet.swift in Sources */,
 				0786CC7E2AFD89C700685BBB /* Ai.swift in Sources */,
 				0786CC952B07E1D300685BBB /* Configuration.swift in Sources */,
+				07D4FAAC2B4DF3A100AD25FB /* FeedBackView.swift in Sources */,
 				0786C9532AEF3B48002B252D /* WeightEntrySheet.swift in Sources */,
 				0786CC862AFDBC5A00685BBB /* InfoViews.swift in Sources */,
 				0786C9652AEF5688002B252D /* WeightGoalDate.swift in Sources */,
 				0786CC992B0BE3F600685BBB /* FastingRecordsView.swift in Sources */,
-				0786CC8A2AFDC65100685BBB /* VitaminView.swift in Sources */,
 				0786CC8C2B03EA6800685BBB /* SplashScreenView.swift in Sources */,
 				0786CC932B057E4A00685BBB /* APIManager.swift in Sources */,
 				07B9F2B72ADEFD76003B5AE1 /* FastingManager.swift in Sources */,
 				07B9F2B52ADEF56F003B5AE1 /* ProgressRing.swift in Sources */,
-				0786CC882AFDBE3000685BBB /* ExerciseSearchView.swift in Sources */,
 				0786CC902B0405E200685BBB /* NotificationManager.swift in Sources */,
 				0786C9602AEF4CB8002B252D /* PersistenceController.swift in Sources */,
-				0786CC822AFDB4FC00685BBB /* ProfileView.swift in Sources */,
+				07D4FAAA2B4DEF0C00AD25FB /* Settings.swift in Sources */,
+				07D4FAB32B4E07B200AD25FB /* UserSettings.swift in Sources */,
 				073B46192AF4365A000687B2 /* GoalPickerView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -431,12 +447,15 @@
 				AI_API_KEY = "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";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FastingApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 346FH2MR7L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				"INFOPLIST_KEY_CFBundleDisplayName[sdk=*]" = "";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -447,6 +466,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.FastingApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -461,12 +481,14 @@
 				AI_API_KEY = "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";
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"FastingApp/Preview Content\"";
 				DEVELOPMENT_TEAM = 346FH2MR7L;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -477,6 +499,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
+				NEW_SETTING = "";
 				PRODUCT_BUNDLE_IDENTIFIER = com.test.FastingApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;

@@ -41,7 +41,7 @@ class APIManager {
                 ]
             ],
             "temperature": 0.7,
-            "max_tokens": 150
+            "max_tokens": 250
         ]
 
         guard let jsonData = try? JSONSerialization.data(withJSONObject: parameters) else {

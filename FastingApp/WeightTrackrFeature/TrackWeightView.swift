@@ -12,6 +12,20 @@ import CoreData
 import SwiftUICharts
 import Charts
 
+
+
+enum TimeRange: String, CaseIterable, Identifiable {
+    case oneMonth = "1 Month"
+    case treeMonths = "3 Month"
+    case sixMonths = "6 Month"
+
+    var id: String { self.rawValue }
+}
+
+
+
+
+
 struct TrackWeightView: View {
     
     @Environment(\.managedObjectContext) private var managedObjectContext
@@ -22,12 +36,15 @@ struct TrackWeightView: View {
     ) var weightEntries: FetchedResults<CDWeightEntry>
     
     
+    @State private var selectedTimeRange: TimeRange = .oneMonth
+
     
     @State private var showingAddWeightSheet = false
     @State private var showingWeightHistory = false
     @State private var goalWeight: Int = 60
     @State private var showingPicker = false
     
+    @EnvironmentObject var userSettings: UserSettings//color status
    
   
     
@@ -37,8 +54,8 @@ struct TrackWeightView: View {
             
             ZStack {
                 // Background
-                LinearGradient(gradient: Gradient(colors: [Color.darkPurple, Color.purpleDark, Color.darkPink]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                    .ignoresSafeArea()
+                CustomBackground()
+
                 
                 VStack {
                     // Title
@@ -50,6 +67,16 @@ struct TrackWeightView: View {
                     
                     
 
+                    Picker("Välj Tidsintervall", selection: $selectedTimeRange) {
+                        ForEach(TimeRange.allCases) { interval in
+                            Text(interval.rawValue).tag(interval)
+                        }
+                        
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    .accentColor(.purple)
+                    .background(.thinMaterial)
+
                     
                       
                     
@@ -60,34 +87,45 @@ struct TrackWeightView: View {
                             .foregroundColor(.white)
                     } else {
                         Chart {
-                            ForEach(weightEntries, id: \.self) { entry in
-                                LineMark(
-                                    x: .value("Date", entry.date ?? Date()),
-                                    y: .value("Weight", entry.weight)
-                                )
-                                .foregroundStyle(.mintBack)
+                                ForEach(filteredWeightEntries(for: selectedTimeRange), id: \.self) { entry in
+                                    
+                                    LineMark(
+                                        x: .value("Date", entry.date ?? Date()),
+                                        y: .value("Weight", entry.weight)
+                                    )
+                                    .foregroundStyle(Color("mintBack"))
+ 
+
+                                    PointMark(
+                                        x: .value("Date", entry.date ?? Date()),
+                                        y: .value("Weight", entry.weight)
+                                    )
+                                    .foregroundStyle(.white)
+                                    
+                                    
+                                    
+                                    
+                                }
                                 
-                                PointMark(
-                                    x: .value("Date", entry.date ?? Date()),
-                                    y: .value("Weight", entry.weight)
+                                RuleMark(
+                                    y: .value("Goal Weight", goalWeight)
                                 )
-                                .foregroundStyle(.white)
-                            }
-                            
-                            RuleMark(
-                                y: .value("Goal Weight", goalWeight)
+                                .foregroundStyle(.yellow)
+                                .lineStyle(StrokeStyle(lineWidth: 2, dash: [5, 5]))
+                                .annotation(position: .trailing) {
+                                    Text("Goal")
+                                        .foregroundStyle(.yellow)
+                                        .font(.caption)
+                                        .offset(x: 5)
+                                }
+                            BarMark(
+                                x: .value("Invisible", Date()),
+                                y: .value("Max Weight", maxWeightWithMargin(entries: Array(weightEntries)))
                             )
-                            .foregroundStyle(.yellow)
-                            .lineStyle(StrokeStyle(lineWidth: 2, dash: [5, 5]))
-                            .annotation(position: .trailing) {
-                                Text("Goal")
-                                    .foregroundStyle(.yellow)
-                                    .font(.caption)
-                                    .offset(x: 5)
+                            .opacity(0) // gör denna bar osynlig
+
+                            
                             }
-                            
-                            
-                        }
                         .frame(height: 300)
                         .padding(.leading, 10)
                         .padding(.trailing, 10)
@@ -95,11 +133,10 @@ struct TrackWeightView: View {
                         .chartXAxis {
                             AxisMarks(values: .stride(by: .day)) { _ in
                                 AxisGridLine()
-                                    .foregroundStyle(.white)
+                                    
                                 AxisTick()
                                     .foregroundStyle(.white)
-                                AxisValueLabel(format: .dateTime.day().month())
-                                    .foregroundStyle(.white)
+                                
                             }
                         }
                         .chartYAxis {
@@ -139,17 +176,24 @@ struct TrackWeightView: View {
                                     .cornerRadius(20)
                                     .foregroundColor(.yellow)
                             }
-                            .sheet(isPresented: $showingPicker) {
-                                    GoalPickerView(goalWeight: $goalWeight)
-                                    .presentationDetents([.medium])
-                                }
                             
+                            .sheet(isPresented: $showingPicker) {
+                                GoalPickerView(initialGoalWeight: goalWeight) { selectedWeight in
+                                    goalWeight = selectedWeight
+                                    saveGoalWeight()
+                                    
+                                }
+                                .presentationDetents([.medium])
+                            }
+
                             
 
                             .background(Color.clear.opacity(0))
-                            .onChange(of: goalWeight) { _ in
-                                saveGoalWeight()
+                            .onChange(of: goalWeight) { newValue in
+                                print("Goal Weight changed: \(newValue)")
+                                
                             }
+
                             
                             
                         }//V-stack
@@ -285,37 +329,40 @@ struct TrackWeightView: View {
     }
     
     func loadGoalWeight() {
-           let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CDGoalWeight")
-           do {
-               let result = try managedObjectContext.fetch(fetchRequest)
-               if let savedGoalWeight = result.first?.value(forKey: "goalWeight") as? Int {
-                   goalWeight = savedGoalWeight
-               }
-           } catch {
-               print("Error loading goal weight: \(error)")
-           }
-       }
+        if !showingPicker { // Kolla om .sheet är uppe
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CDGoalWeight")
+            do {
+                let result = try managedObjectContext.fetch(fetchRequest)
+                if let savedGoalWeight = result.first?.value(forKey: "goalWeight") as? Int {
+                    goalWeight = savedGoalWeight
+                }
+            } catch {
+                print("Error loading goal weight: \(error)")
+            }
+        } else {
+            print("loadGoalWeight() called while the sheet is presented")
+        }
+    }
+
     
     
     
     
     func saveGoalWeight() {
-           let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CDGoalWeight")
-           do {
-               let result = try managedObjectContext.fetch(fetchRequest)
-               if let existingGoalWeight = result.first {
-                   existingGoalWeight.setValue(goalWeight, forKey: "goalWeight")
-               } else {
-                   let entity = NSEntityDescription.entity(forEntityName: "CDGoalWeight", in: managedObjectContext)!
-                   let newGoalWeight = NSManagedObject(entity: entity, insertInto: managedObjectContext)
-                   newGoalWeight.setValue(goalWeight, forKey: "goalWeight")
-               }
-               
-               try managedObjectContext.save()
-           } catch {
-               print("Error saving goal weight: \(error)")
-           }
-       }
+        DispatchQueue.global(qos: .background).async {
+            let fetchRequest = NSFetchRequest<NSManagedObject>(entityName: "CDGoalWeight")
+            do {
+                let result = try self.managedObjectContext.fetch(fetchRequest)
+                let existingGoalWeight = result.first ?? NSManagedObject(entity: NSEntityDescription.entity(forEntityName: "CDGoalWeight", in: self.managedObjectContext)!, insertInto: self.managedObjectContext)
+                existingGoalWeight.setValue(self.goalWeight, forKey: "goalWeight")
+                
+                try self.managedObjectContext.save()
+            } catch {
+                print("Error saving goal weight: \(error)")
+            }
+        }
+    }
+
     
     
 
@@ -324,6 +371,49 @@ struct TrackWeightView: View {
         return weightEntries.last
     }
 
+    
+    // picker view
+    func filteredWeightEntries(for range: TimeRange) -> [CDWeightEntry] {
+        let endDate = Date()
+        let startDate: Date
+
+        switch range {
+        case .oneMonth:
+            startDate = Calendar.current.date(byAdding: .month, value: -1, to: endDate)!
+        case .treeMonths:
+            startDate = Calendar.current.date(byAdding: .month, value: -3, to: endDate)!
+        case .sixMonths:
+            startDate = Calendar.current.date(byAdding: .month, value: -6, to: endDate)!
+        }
+
+        return weightEntries.filter { $0.date ?? Date() >= startDate && $0.date ?? Date() <= endDate }
+    }
+
+    
+    // Funktion som returnerar datumformatet
+    func getAxisLabelFormat(for range: TimeRange) -> Date.FormatStyle {
+        switch range {
+        case .oneMonth:
+            return .dateTime.day().month()
+        case .treeMonths:
+            // Visa endast varje vecka eller specifika dagar
+            return .dateTime.day()
+        case .sixMonths:
+            // Visa endast varje månad
+            return .dateTime.month(.abbreviated).year()
+        }
+    }
+    
+    //exta room over chart
+    func maxWeightWithMargin(entries: [CDWeightEntry], marginPercentage: Double = 10.0) -> Double {
+        guard let maxWeight = entries.map({ $0.weight }).max() else { return 0 }
+        return maxWeight * (1 + marginPercentage / 100)
+    }
+
+
+    
+    
+    
     
     
     
@@ -338,5 +428,6 @@ struct TrackWeightView_Previews: PreviewProvider {
     static var previews: some View {
         TrackWeightView()
             .environment(\.managedObjectContext, PersistenceController.shared.container.viewContext)
+            .environmentObject(UserSettings())
     }
 }

@@ -11,7 +11,7 @@ struct SplashScreenView: View {
     @Binding var isActive: Bool
     @State private var size = 0.8
     @State private var opacity = 0.5
-    
+    @EnvironmentObject var userSettings: UserSettings
     
     var body: some View {
        
@@ -19,8 +19,8 @@ struct SplashScreenView: View {
         
         
         ZStack{
-            LinearGradient(gradient: Gradient(colors: [Color.darkPurple, Color.purpleDark, Color.darkPink]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                .ignoresSafeArea()
+            
+            CustomBackground()
             
             
             
@@ -28,10 +28,14 @@ struct SplashScreenView: View {
                 
                 VStack{
                     Image(systemName: "circle.dashed.inset.fill")
-                        .font(.system(size: 150))
-                        .foregroundStyle(.blueBack)
-                    Text("Inttermittent Fasting")
+                        .font(.system(size: 200))
                         .foregroundStyle(.white)
+                        .padding()
+                   
+                    
+                    Text("BioFast")
+                        .foregroundStyle(.white)
+                        .font(.title)
                         .fontWeight(.bold)
                         .foregroundStyle(.black.opacity(0.80))
                 }
@@ -51,16 +55,19 @@ struct SplashScreenView: View {
             }
             
             
-        }
+        }.environment(\.colorScheme, .light) // HårdK light mode 
         
         
     }
 }
+
+
 
 struct SplashScreenView_Previews: PreviewProvider {
     @State static var isActive = false // Create a state variable for the preview
 
     static var previews: some View {
         SplashScreenView(isActive: $isActive) // Pass the binding to isActive
+            .environmentObject(UserSettings())
     }
 }

@@ -13,11 +13,12 @@ struct Ai: View {
     @State private var assistantResponse: String = ""
     @State private var isLoading: Bool = false
         
+    @EnvironmentObject var userSettings: UserSettings//color status
     
     var body: some View {
         ZStack {
-            LinearGradient(gradient: Gradient(colors: [Color.darkPurple, Color.purpleDark, Color.darkPink]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                .ignoresSafeArea()
+            CustomBackground()
+
             
             
             
@@ -100,7 +101,7 @@ struct Ai: View {
                         .foregroundStyle(.white)
                 }
             }
-        }
+        }.environment(\.colorScheme, .light) // Hårdk
     }
     
     
@@ -108,5 +109,6 @@ struct Ai: View {
 
 #Preview {
     Ai()
+        .environmentObject(UserSettings())
 }
 

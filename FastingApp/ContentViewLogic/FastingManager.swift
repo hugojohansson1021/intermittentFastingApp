@@ -43,7 +43,7 @@ enum FastingPlan: String {
 
 
 class FastingManager: ObservableObject {
-    @Published private(set) var fastingState: FastingState = .notStarted 
+    @Published private(set) var fastingState: FastingState = .notStarted
     @Published var fastingPlan: FastingPlan = .intermediate {
         didSet {
             if fastingState == .fasting {
@@ -121,10 +121,18 @@ class FastingManager: ObservableObject {
                 scheduleStartNotification()
                 scheduleHalfwayNotification()
                 scheduleEndOfFastingNotification()
+            }else {
+                // Avbryt alla schemalagda notifikationer
+                cancelAllScheduledNotifications()
             }
         
     
     }
+    
+    func cancelAllScheduledNotifications() {
+            UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+            print("Alla schemalagda notiser avbrutna.")
+        }
 
 
     
@@ -333,6 +341,26 @@ class FastingManager: ObservableObject {
         }
         print("Schemalägger startnotifikation fast half")
     }
+    
+    func scheduleburningstageNotification() {
+        let content = UNMutableNotificationContent()
+        content.title = "Burning Stage..!"
+        content.body = "You're now entering the fat burning stage..!"
+
+        // Calculate the time interval for 75% of the fasting duration
+        let threeQuarterInterval = fastingTime * 0.75
+        if threeQuarterInterval > 0 {
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: threeQuarterInterval, repeats: false)
+            let request = UNNotificationRequest(identifier: "fatburningstage", content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request) { error in
+                if let error = error {
+                    print("Det gick inte att schemalägga burning stage-notifikation: \(error)")
+                }
+            }
+        }
+        print("Schemalägger startnotifikation for burning stage")
+    }
+
 
 
 

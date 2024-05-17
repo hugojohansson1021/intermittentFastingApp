@@ -9,16 +9,19 @@ import SwiftUI
 
 struct ContentView: View {
     @EnvironmentObject var fastingManager: FastingManager
+    @EnvironmentObject var userSettings: UserSettings
     //@State private var selectedFastingPlan: FastingPlan = .intermediate
+    
     @State private var isAddFastingDataViewVisible = false
     @State private var currentView: CurrentView = .data
     @State private var showRestartAlert = false
     @State private var showFastingEndPopup = false
-    
     @State private var showingEndFastingAlert = false
+    @State private var showingUpdateAlert = false
 
 
-    @EnvironmentObject var userSettings: UserSettings
+    
+    
     
 
     @State private var selectedFastingPlan: FastingPlan = {
@@ -50,8 +53,13 @@ struct ContentView: View {
     }
 
     
-    
-    
+    // For detecting app updates
+        @AppStorage("lastVersionPromptedForReview") var lastVersionPrompted: String?
+
+        // Current app version
+        let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String ?? "Unknown"
+
+        
     
     
     
@@ -66,7 +74,7 @@ struct ContentView: View {
             
             //MARK: Profile View bar
             NavigationLink(destination: ProfilView()) {
-                Image(systemName: "person.circle")
+                Image(systemName: "transmission")
                     .imageScale(.large)
                     .foregroundColor(.white)
             }
@@ -123,27 +131,42 @@ struct ContentView: View {
     }// Nav-stack
 
     var body: some View {
-        NavigationView {
-            ZStack {
-                //MARK: Background
-                CustomBackground()
-                content
+            NavigationView {
+                ZStack {
+                    CustomBackground()
+                    content
 
-                    
-                VStack {
+                    VStack {
                         Spacer()
                         bottomNavBar
                     }
-
-            }//Z-Stack
-            .environment(\.colorScheme, .light) // Hårdk
-            
-            
+                }
+                .environment(\.colorScheme, .light) // Hardcode to light mode
+                .onAppear {
+                    checkVersionAndUpdateNotes()
+                }
+                .accentColor(.white)
+                .navigationBarHidden(true)
+            }
+            .alert(isPresented: $showingUpdateAlert) {
+                Alert(title: Text("What's New"), message: Text("Here's what's new in version \(currentVersion): \n- Improved fasting timer accuracy\n- New health integration features\n- Enhanced user interface"), dismissButton: .default(Text("OK")))
+                
+            }
+        
         }
-        .accentColor(.white)
-        .navigationBarHidden(true)
+    private func checkVersionAndUpdateNotes() {
+            if let lastVersion = lastVersionPrompted {
+                if lastVersion != currentVersion {
+                    showingUpdateAlert = true
+                    lastVersionPrompted = currentVersion
+                }
+            } else {
+                lastVersionPrompted = currentVersion
+            }
+        }
     
-    }
+    
+    
 
     var content: some View {
         ScrollView {
@@ -237,10 +260,10 @@ struct ContentView: View {
                         primaryButton: .destructive(Text("End")) {
                             // Användaren har bekräftat att avsluta fastan
                             fastingManager.toggleFastingState()
-                            fastingManager.saveFastingData()  // Spara fastedatan
-                            fastingManager.scheduleFastingLoggedNotification()  // Schemalägg notifikationen
-                            
+                            fastingManager.saveFastingData() 
+                            fastingManager.scheduleFastingLoggedNotification()
                             fastingManager.scheduleEndOfFastingNotification()
+                            fastingManager.scheduleburningstageNotification()
                             
                         },
                         secondaryButton: .cancel()
@@ -339,6 +362,7 @@ struct ContentView: View {
             
         }
     }
+    
 }
 
 

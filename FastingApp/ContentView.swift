@@ -148,6 +148,7 @@ struct ContentView: View {
                 .accentColor(.white)
                 .navigationBarHidden(true)
             }
+            .accentColor(.white)
             .alert(isPresented: $showingUpdateAlert) {
                 Alert(title: Text("What's New"), message: Text("Here's what's new in version \(currentVersion): \n- Improved fasting timer accuracy\n- New health integration features\n- Enhanced user interface"), dismissButton: .default(Text("OK")))
                 

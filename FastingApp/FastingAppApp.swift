@@ -4,6 +4,7 @@
 //
 //  Created by Hugo Johansson on 2023-10-17.
 //
+
 import SwiftUI
 import UserNotifications
 
@@ -14,15 +15,22 @@ struct FastingAppApp: App {
     let persistenceController = PersistenceController.shared
     @State private var isActive = false
 
-    
     // Skapa en instans av NotificationManager
     private let notificationManager = NotificationManager()
 
     @Environment(\.scenePhase) var scenePhase
 
     init() {
+        // Anpassa navigation bar utseende
+        let appearance = UINavigationBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = .clear
+        appearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().standardAppearance = appearance
+        UINavigationBar.appearance().scrollEdgeAppearance = appearance
+        UINavigationBar.appearance().tintColor = .white // Färg för navigationspilar och "Back" text
         
-            
         // Begär tillstånd för notifikationer
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
             if granted {

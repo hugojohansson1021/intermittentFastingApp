@@ -34,9 +34,6 @@ struct ContentView: View {
     }()
 
     
-    
-    
-    
     enum CurrentView {
             case data, trackWeight, ai, profil, Exercise
         }
@@ -67,8 +64,7 @@ struct ContentView: View {
     
     
     var bottomNavBar: some View {
-        HStack {// h-stack for nav-bar
-            
+        HStack {
             Spacer()
             
             

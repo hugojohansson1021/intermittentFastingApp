@@ -37,8 +37,6 @@ struct TrackWeightView: View {
     
     
     @State private var selectedTimeRange: TimeRange = .oneMonth
-
-    
     @State private var showingAddWeightSheet = false
     @State private var showingWeightHistory = false
     @State private var goalWeight: Int = 60

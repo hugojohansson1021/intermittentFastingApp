@@ -34,6 +34,7 @@
 		07D4FAAE2B4DFA7100AD25FB /* ProfilView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4FAAD2B4DFA7100AD25FB /* ProfilView.swift */; };
 		07D4FAB12B4E001F00AD25FB /* CustomBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4FAB02B4E001F00AD25FB /* CustomBackground.swift */; };
 		07D4FAB32B4E07B200AD25FB /* UserSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4FAB22B4E07B200AD25FB /* UserSettings.swift */; };
+		07F07B762BF8A99500428581 /* Backbutton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07F07B752BF8A99500428581 /* Backbutton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -64,6 +65,7 @@
 		07D4FAAD2B4DFA7100AD25FB /* ProfilView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilView.swift; sourceTree = "<group>"; };
 		07D4FAB02B4E001F00AD25FB /* CustomBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomBackground.swift; sourceTree = "<group>"; };
 		07D4FAB22B4E07B200AD25FB /* UserSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSettings.swift; sourceTree = "<group>"; };
+		07F07B752BF8A99500428581 /* Backbutton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Backbutton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +189,7 @@
 				07B9F2A82ADEF474003B5AE1 /* ContentView.swift */,
 				07D4FAB22B4E07B200AD25FB /* UserSettings.swift */,
 				07D4FAB02B4E001F00AD25FB /* CustomBackground.swift */,
+				07F07B752BF8A99500428581 /* Backbutton.swift */,
 				07B9F2AA2ADEF475003B5AE1 /* Assets.xcassets */,
 				07D4FAA62B4DEC0C00AD25FB /* ExersiceLogViews */,
 				073B46142AF35387000687B2 /* DataStorageWeight */,
@@ -305,6 +308,7 @@
 				07D4FAAC2B4DF3A100AD25FB /* FeedBackView.swift in Sources */,
 				0786C9532AEF3B48002B252D /* WeightEntrySheet.swift in Sources */,
 				0786CC862AFDBC5A00685BBB /* InfoViews.swift in Sources */,
+				07F07B762BF8A99500428581 /* Backbutton.swift in Sources */,
 				0786C9652AEF5688002B252D /* WeightGoalDate.swift in Sources */,
 				0786CC992B0BE3F600685BBB /* FastingRecordsView.swift in Sources */,
 				0786CC8C2B03EA6800685BBB /* SplashScreenView.swift in Sources */,

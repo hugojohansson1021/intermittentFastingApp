@@ -25,7 +25,7 @@ struct ProgressRing: View {
             //MARK: Colored ring
             Circle()
                 .trim(from: 0.0, to: min(fastingManager.progress, 1.0))
-                .stroke(colorForProgress(fastingManager.progress), style: StrokeStyle(lineWidth: 15.0, lineCap: .round, lineJoin: .round))
+                .stroke(colorForProgress(fastingManager.progress), style: StrokeStyle(lineWidth: 25.0, lineCap: .round, lineJoin: .round))
                 .rotationEffect(Angle.degrees(270))
                 .animation(.easeInOut(duration: 1.0), value: fastingManager.progress)
 

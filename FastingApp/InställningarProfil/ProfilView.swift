@@ -18,6 +18,7 @@ struct ProfilView: View {
         ZStack {
             CustomBackground()
 
+            ScrollView {
             VStack(spacing: 15) {
                 Image(systemName: "transmission")
                     .font(.system(size: 70))
@@ -115,6 +116,7 @@ struct ProfilView: View {
                         .font(.title2)
                         .fontWeight(.bold)
                 }
+            }
             }
         } // ZStack
         .environment(\.colorScheme, .light) // Set color scheme to light mode

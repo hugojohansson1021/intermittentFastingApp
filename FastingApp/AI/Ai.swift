@@ -27,7 +27,14 @@ struct Ai: View {
             
             VStack(spacing: 5) {
                 
+        
                 
+                Spacer()
+                
+                Image(systemName: "brain.head.profile")
+                    .imageScale(.large)
+                    .foregroundColor(.white)
+                    .font(.system(size: 70))
                 
                 Spacer()
                 
@@ -35,12 +42,6 @@ struct Ai: View {
                     .foregroundStyle(.white)
                     .font(.headline)
                     .fontWeight(.bold)
-                
-                Spacer()
-                
-                Image(systemName: "brain.head.profile")
-                    .imageScale(.large)
-                    .foregroundColor(.white)
                 
                 Spacer()
                 

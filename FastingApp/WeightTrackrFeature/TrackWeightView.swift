@@ -299,6 +299,17 @@ struct TrackWeightView: View {
                         .font(.footnote)
                         .foregroundStyle(.white)
                 }
+                .navigationTitle("Settings")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .principal) {
+                        Text("Weight tracker")
+                            .foregroundColor(.white)
+                            .font(.title2)
+                            .fontWeight(.bold)
+                    }
+                }
+                
                 
             }
             

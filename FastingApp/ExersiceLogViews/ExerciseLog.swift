@@ -20,20 +20,16 @@ struct ExerciseLog: View {
     @State private var showingSheet = false
     @State private var selectedMarkedDate: MarkedDate? = nil
     @State private var selectedDate: Date? = nil
-    
     @State private var isDataLoaded = false
     @State private var preparedMarkedDate: MarkedDate? = nil
-    
-    @EnvironmentObject var userSettings: UserSettings//color status
-    
-    // Anpassad kalender som börjar veckan med måndag
+    @EnvironmentObject var userSettings: UserSettings
+
     private var calendar: Calendar {
         var cal = Calendar.current
-        cal.firstWeekday = 2 // Sätt första veckodagen till måndag (2)
+        cal.firstWeekday = 2
         return cal
     }
 
-    // Beräknar dagarna i månaden med hänsyn till veckans startdag
     private var daysInMonth: [Date?] {
         guard let monthStart = calendar.date(from: calendar.dateComponents([.year, .month], from: currentDate)),
               let monthRange = calendar.range(of: .day, in: .month, for: monthStart) else { return [] }
@@ -52,9 +48,7 @@ struct ExerciseLog: View {
     var body: some View {
         ZStack {
             CustomBackground()
-            
             VStack(spacing: 25) {
-                
                 Text("This lets you track every workout")
                     .font(.title3)
                     .foregroundStyle(.white)
@@ -79,22 +73,20 @@ struct ExerciseLog: View {
                             .foregroundStyle(.gray)
                     }
 
-                    ForEach(daysInMonth, id: \.self) { date in
+                    ForEach(daysInMonth.indices, id: \.self) { index in
+                        let date = daysInMonth[index]
                         if let date = date {
                             Button(action: {
                                 selectedMarkedDate = markedDates.first(where: { $0.date == date })
                                 selectedDate = date
-                                showingSheet = true
                                 loadDataForDate(date) {
-                                                        self.isDataLoaded = true
-                                                        self.showingSheet = true
-                                                    }
-
+                                    self.isDataLoaded = true
+                                    self.showingSheet = true
+                                }
                             }) {
                                 Text(date.formatted(.dateTime.day()))
                                     .foregroundColor(isToday(date) ? Color.red : Color.white)
                                     .frame(width: 40, height: 40)
-                                    .foregroundColor(Color.black)
                                     .background(backgroundForDate(date))
                                     .cornerRadius(20)
                             }
@@ -106,8 +98,8 @@ struct ExerciseLog: View {
                 }
                 .padding()
                 .foregroundStyle(.white)
-                
-                Text("Press on a date to logg your workout").font(.caption).foregroundStyle(.white)
+
+                Text("Press on a date to log your workout").font(.caption).foregroundStyle(.white)
                 Spacer()
                 Text("New features and updates will come in time").font(.footnote).foregroundStyle(.white)
             }
@@ -122,39 +114,30 @@ struct ExerciseLog: View {
                 }
             }
             .sheet(isPresented: $showingSheet) {
-                        if isDataLoaded, let selectedDate = selectedDate {
-                            DateDetailsSheet(isPresented: $showingSheet, markedDate: selectedMarkedDate, date: selectedDate)
-                                .onAppear(perform: clearSheetBackground)
-                                .presentationDetents([.medium])
-                                .environment(\.managedObjectContext, self.viewContext)
-                        }
-                    }
-        }.environment(\.colorScheme, .light) // HårdK light mode
+                if isDataLoaded, let selectedDate = selectedDate {
+                    DateDetailsSheet(isPresented: $showingSheet, markedDate: selectedMarkedDate, date: selectedDate)
+                        .onAppear(perform: clearSheetBackground)
+                        .presentationDetents([.medium])
+                        .environment(\.managedObjectContext, self.viewContext)
+                }
+            }
+        }
+        .environment(\.colorScheme, .light)
     }
 
-    
-    
-    //MARK: Funktion för röd today
     private func isToday(_ date: Date?) -> Bool {
-            guard let date = date else { return false }
-            return Calendar.current.isDateInToday(date)
-        }
-    
-    
+        guard let date = date else { return false }
+        return Calendar.current.isDateInToday(date)
+    }
 
-    //MARK: LoadDataForDate load data when user nav to this view
     private func loadDataForDate(_ date: Date, completion: @escaping () -> Void) {
-        
         let fetchRequest: NSFetchRequest<MarkedDate> = MarkedDate.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "date == %@", date as NSDate)
 
-        // Asynkron fetch för att undvika att blockera UI-tråden
         DispatchQueue.global(qos: .userInitiated).async {
             do {
                 let results = try self.viewContext.fetch(fetchRequest)
-   
                 DispatchQueue.main.async {
-                    // Uppdatera tillstånd och UI här
                     completion()
                 }
             } catch {
@@ -166,29 +149,17 @@ struct ExerciseLog: View {
         }
     }
 
-
-
-
-
-
-
     //MARK: Bug fix for Whitesheet
-    private func clearSheetBackground() {
-            guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-            guard let controller = windowScene.windows.first?.rootViewController?.presentedViewController else { return }
-            controller.view.backgroundColor = .clear
-        }
+        private func clearSheetBackground() {
+                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                guard let controller = windowScene.windows.first?.rootViewController?.presentedViewController else { return }
+                controller.view.backgroundColor = .clear
+            }
 
-
-
-
-
-    //MARK: Gets the months
     private var monthTitle: String {
         currentDate.formatted(.dateTime.month().year())
     }
 
-    //MARK: Sets the colors for date in sheet
     private func backgroundForDate(_ date: Date) -> Color {
         guard let markedDate = markedDates.first(where: { $0.date == date }),
               let colorStr = markedDate.color else {
@@ -196,31 +167,27 @@ struct ExerciseLog: View {
         }
 
         switch colorStr {
-        case "Blue": return Color("blueBack") // Antag att "blueBack" är namnet på din färg i Assets.xcassets
-        case "Red": return Color.red // Om du använder en standardfärg
-        case "Yellow": return Color.yellow // Om du använder en standardfärg
-        case "Green": return Color.green // Om du använder en standardfärg
-        case "Pink": return Color("PinkLink") // Antag att "pinkilink" är namnet på din färg i Assets.xcassets
+        case "Blue": return Color("blueBack")
+        case "Red": return Color.red
+        case "Yellow": return Color.yellow
+        case "Green": return Color.green
+        case "Pink": return Color("PinkLink")
         default: return Color.clear
         }
     }
 
-
-    //MARK: Funktion to change to next Month
     private func nextMonth() {
         if let nextMonth = calendar.date(byAdding: .month, value: 1, to: currentDate) {
             currentDate = nextMonth
         }
     }
 
-    //MARK: Funktion to change to previus Month
     private func previousMonth() {
         if let prevMonth = calendar.date(byAdding: .month, value: -1, to: currentDate) {
             currentDate = prevMonth
         }
     }
 
-    //MARK: func that saves auto change
     private func saveContext() {
         do {
             try viewContext.save()
@@ -237,3 +204,6 @@ struct ExerciseLog_Previews: PreviewProvider {
         .environmentObject(UserSettings())
     }
 }
+
+
+

@@ -137,7 +137,7 @@ struct ContentView: View {
                         bottomNavBar
                     }
                 }
-                .environment(\.colorScheme, .light) // Hardcode to light mode
+                .environment(\.colorScheme, .light)
                 .onAppear {
                     checkVersionAndUpdateNotes()
                 }
@@ -189,7 +189,7 @@ struct ContentView: View {
 
                 }
                 .background(.thinMaterial)
-                .disabled(!fastingManager.isPickerEnabled)  // Disable the picker based on fasting state
+                .disabled(!fastingManager.isPickerEnabled)  
                 
 
                 //MARK: Progressring

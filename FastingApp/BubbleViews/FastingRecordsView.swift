@@ -16,7 +16,7 @@ struct FastingRecordsView: View {
         sortDescriptors: [NSSortDescriptor(keyPath: \FastingRecord.endDate, ascending: false)]
     ) var fastingRecords: FetchedResults<FastingRecord>
 
-    @EnvironmentObject var userSettings: UserSettings // color status
+    @EnvironmentObject var userSettings: UserSettings
     
     @State private var recordToDelete: FastingRecord?
     @State private var showDeleteAlert = false
@@ -54,7 +54,7 @@ struct FastingRecordsView: View {
                     }
                 }
                 .padding(.horizontal)
-                .padding(.top, 16) // Adjust the top padding
+                .padding(.top, 16)
             }
             .navigationTitle("Fasting Logs")
             .navigationBarTitleDisplayMode(.inline)
@@ -81,7 +81,7 @@ struct FastingRecordsView: View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .environment(\.colorScheme, .light) // Hårdkodad färgschema
+        .environment(\.colorScheme, .light) 
     }
 
     private func deleteRecord(_ record: FastingRecord) {

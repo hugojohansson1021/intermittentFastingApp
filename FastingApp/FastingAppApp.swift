@@ -29,7 +29,7 @@ struct FastingAppApp: App {
         appearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().standardAppearance = appearance
         UINavigationBar.appearance().scrollEdgeAppearance = appearance
-        UINavigationBar.appearance().tintColor = .white // Färg för navigationspilar och "Back" text
+        UINavigationBar.appearance().tintColor = .white
         
         // Begär tillstånd för notifikationer
         UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
@@ -59,16 +59,16 @@ struct FastingAppApp: App {
             switch newScenePhase {
             case .background:
                 print("Appen går i bakgrunden")
-                fastingManager.saveFastingState() // Spara staten när appen går i bakgrunden
+                fastingManager.saveFastingState()
             case .active:
                 print("Appen blir aktiv")
-                fastingManager.restoreFastingState() // Återställ staten när appen blir aktiv
+                fastingManager.restoreFastingState()
             case .inactive:
                 print("Appen blir inaktiv")
-                // Inga ytterligare åtgärder för inaktiv tillstånd
+                
             @unknown default:
                 print("Okänd scenfas upptäckt")
-                // Hantera okända fall
+                
             }
         }
     }

@@ -76,7 +76,7 @@ struct ProgressRing: View {
         }
     }
 
-    // Determines the color of the progress ring based on the progress
+    
     private func colorForProgress(_ progress: Double) -> AngularGradient {
         if progress > 0.75 {
             return AngularGradient(gradient: Gradient(colors: [Color.red, Color.yellow, Color.red, Color.yellow, Color.red]), center: .center)

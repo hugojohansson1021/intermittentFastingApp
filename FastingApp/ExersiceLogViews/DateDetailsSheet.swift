@@ -12,7 +12,7 @@ import CoreData
 struct DateDetailsSheet: View {
     @Binding var isPresented: Bool
     @Environment(\.managedObjectContext) var viewContext
-    @EnvironmentObject var userSettings: UserSettings//color status
+    @EnvironmentObject var userSettings: UserSettings
     var markedDate: MarkedDate?
     var date: Date
     @State private var title: String = ""
@@ -20,11 +20,11 @@ struct DateDetailsSheet: View {
     @State private var selectedColor: String = "Red"
     
     let colorChoices = [
-        "Blue": Color("blueBack"), // Anpassad färg definierad i Assets.xcassets
-        "Red": Color.red,          // Standardfärg
-        "Yellow": Color.yellow,    // Standardfärg
-        "Green": Color.green,      // Standardfärg
-        "Pink": Color("PinkLink") // Anpassad färg definierad i Assets.xcassets
+        "Blue": Color("blueBack"),
+        "Red": Color.red,
+        "Yellow": Color.yellow,
+        "Green": Color.green,
+        "Pink": Color("PinkLink")
     ]
 
     
@@ -58,11 +58,11 @@ struct DateDetailsSheet: View {
                     .fontWeight(.bold)
                 
                 TextEditor(text: $note)
-                    .frame(minHeight: 80, maxHeight: 100) // Höjden anpassad för ungefär 5 rader
+                    .frame(minHeight: 80, maxHeight: 100)
                     .cornerRadius(5)
-                    .padding(10) // Mindre padding för att matcha TextField-stilen
-                    .background(RoundedRectangle(cornerRadius: 5).stroke(Color.gray, lineWidth: 0.1)) // Tunnare grå kant
-                    .cornerRadius(5) // Runda hörn för bakgrunden
+                    .padding(10)
+                    .background(RoundedRectangle(cornerRadius: 5).stroke(Color.gray, lineWidth: 0.1))
+                    .cornerRadius(5)
 
 
                 
@@ -98,7 +98,7 @@ struct DateDetailsSheet: View {
                 .cornerRadius(20)
                 .foregroundColor(.white)
                 
-                // Delete-knappen
+                // Deletae-knappen
                 if markedDate != nil {
                     Button("Delete") {
                         deleteMarkedDate()

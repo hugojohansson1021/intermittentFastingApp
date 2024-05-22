@@ -12,8 +12,7 @@ struct Ai: View {
     @State private var assistantResponse: String = ""
     @State private var isLoading: Bool = false
         
-    @EnvironmentObject var userSettings: UserSettings //color status
-    
+    @EnvironmentObject var userSettings: UserSettings 
     var body: some View {
         ZStack {
             CustomBackground()

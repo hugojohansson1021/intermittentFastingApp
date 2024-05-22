@@ -64,10 +64,10 @@ struct SplashScreenView: View {
 
 
 struct SplashScreenView_Previews: PreviewProvider {
-    @State static var isActive = false // Create a state variable for the preview
+    @State static var isActive = false
 
     static var previews: some View {
-        SplashScreenView(isActive: $isActive) // Pass the binding to isActive
+        SplashScreenView(isActive: $isActive) 
             .environmentObject(UserSettings())
     }
 }

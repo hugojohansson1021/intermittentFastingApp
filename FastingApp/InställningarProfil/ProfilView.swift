@@ -106,6 +106,16 @@ struct ProfilView: View {
                     .font(.footnote)
                     .foregroundStyle(.white)
             } // VStack
+            .navigationTitle("Settings")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Settings text")
+                        .foregroundColor(.white)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                }
+            }
         } // ZStack
         .environment(\.colorScheme, .light) // Set color scheme to light mode
     } // Body

@@ -80,6 +80,7 @@ struct FastingRecordsView: View {
             }
         }
         .navigationViewStyle(StackNavigationViewStyle())
+        .environment(\.colorScheme, .light) // Hårdkodad färgschema
     }
 
     private func deleteRecord(_ record: FastingRecord) {

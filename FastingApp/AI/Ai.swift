@@ -26,12 +26,7 @@ struct Ai: View {
             
             
             VStack(spacing: 5) {
-                Spacer()
                 
-                Text("FastingGPT")
-                    .foregroundStyle(.white)
-                    .font(/*@START_MENU_TOKEN@*/.title/*@END_MENU_TOKEN@*/)
-                    .fontWeight(.bold)
                 
                 
                 Spacer()
@@ -99,6 +94,16 @@ struct Ai: View {
                     Text(assistantResponse)
                         .padding()
                         .foregroundStyle(.white)
+                }
+            }
+            .navigationTitle("Fasting GPT1")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Fasting GPT")
+                        .foregroundColor(.white)
+                        .font(.title2)
+                        .fontWeight(.bold)
                 }
             }
         }.environment(\.colorScheme, .light) // Hårdk

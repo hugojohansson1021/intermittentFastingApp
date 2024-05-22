@@ -6,6 +6,8 @@
 //
 
 
+
+
 import SwiftUI
 import CoreData
 
@@ -20,8 +22,7 @@ struct ExerciseLog: View {
     @State private var showingSheet = false
     @State private var selectedMarkedDate: MarkedDate? = nil
     @State private var selectedDate: Date? = nil
-    @State private var isDataLoaded = false
-    @State private var preparedMarkedDate: MarkedDate? = nil
+    @State private var isDataLoading = false
     @EnvironmentObject var userSettings: UserSettings
 
     private var calendar: Calendar {
@@ -48,21 +49,22 @@ struct ExerciseLog: View {
     var body: some View {
         ZStack {
             CustomBackground()
+            
             VStack(spacing: 25) {
                 Text("This lets you track every workout")
                     .font(.title3)
-                    .foregroundStyle(.white)
+                    .foregroundColor(.white)
                     .padding(.top)
 
                 HStack {
                     Button(action: previousMonth) {
-                        Image(systemName: "chevron.left").foregroundStyle(.white)
+                        Image(systemName: "chevron.left").foregroundColor(.white)
                     }
                     Spacer()
-                    Text(monthTitle).font(.title).foregroundStyle(.white)
+                    Text(monthTitle).font(.title).foregroundColor(.white)
                     Spacer()
                     Button(action: nextMonth) {
-                        Image(systemName: "chevron.right").foregroundStyle(.white)
+                        Image(systemName: "chevron.right").foregroundColor(.white)
                     }
                 }
                 .padding()
@@ -70,19 +72,15 @@ struct ExerciseLog: View {
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible()), count: 7)) {
                     ForEach(0..<7, id: \.self) { index in
                         Text(calendar.veryShortWeekdaySymbols[(index + calendar.firstWeekday - 1) % 7])
-                            .foregroundStyle(.gray)
+                            .foregroundColor(.gray)
                     }
 
                     ForEach(daysInMonth.indices, id: \.self) { index in
                         let date = daysInMonth[index]
                         if let date = date {
                             Button(action: {
-                                selectedMarkedDate = markedDates.first(where: { $0.date == date })
-                                selectedDate = date
-                                loadDataForDate(date) {
-                                    self.isDataLoaded = true
-                                    self.showingSheet = true
-                                }
+                                isDataLoading = true
+                                loadDataForDate(date)
                             }) {
                                 Text(date.formatted(.dateTime.day()))
                                     .foregroundColor(isToday(date) ? Color.red : Color.white)
@@ -97,11 +95,11 @@ struct ExerciseLog: View {
                     }
                 }
                 .padding()
-                .foregroundStyle(.white)
+                .foregroundColor(.white)
 
-                Text("Press on a date to log your workout").font(.caption).foregroundStyle(.white)
+                Text("Press on a date to log your workout").font(.caption).foregroundColor(.white)
                 Spacer()
-                Text("New features and updates will come in time").font(.footnote).foregroundStyle(.white)
+                Text("New features and updates will come in time").font(.footnote).foregroundColor(.white)
             }
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
@@ -114,12 +112,17 @@ struct ExerciseLog: View {
                 }
             }
             .sheet(isPresented: $showingSheet) {
-                if isDataLoaded, let selectedDate = selectedDate {
+                if let selectedDate = selectedDate, !isDataLoading {
                     DateDetailsSheet(isPresented: $showingSheet, markedDate: selectedMarkedDate, date: selectedDate)
                         .onAppear(perform: clearSheetBackground)
                         .presentationDetents([.medium])
                         .environment(\.managedObjectContext, self.viewContext)
                 }
+            }
+            
+            if isDataLoading {
+                LoadingView()
+                    .transition(.opacity)
             }
         }
         .environment(\.colorScheme, .light)
@@ -130,7 +133,7 @@ struct ExerciseLog: View {
         return Calendar.current.isDateInToday(date)
     }
 
-    private func loadDataForDate(_ date: Date, completion: @escaping () -> Void) {
+    private func loadDataForDate(_ date: Date) {
         let fetchRequest: NSFetchRequest<MarkedDate> = MarkedDate.fetchRequest()
         fetchRequest.predicate = NSPredicate(format: "date == %@", date as NSDate)
 
@@ -138,23 +141,25 @@ struct ExerciseLog: View {
             do {
                 let results = try self.viewContext.fetch(fetchRequest)
                 DispatchQueue.main.async {
-                    completion()
+                    self.selectedMarkedDate = results.first
+                    self.selectedDate = date
+                    self.isDataLoading = false
+                    self.showingSheet = true
                 }
             } catch {
                 print("Error loading data: \(error)")
                 DispatchQueue.main.async {
-                    completion()
+                    self.isDataLoading = false
                 }
             }
         }
     }
 
-    //MARK: Bug fix for Whitesheet
-        private func clearSheetBackground() {
-                guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-                guard let controller = windowScene.windows.first?.rootViewController?.presentedViewController else { return }
-                controller.view.backgroundColor = .clear
-            }
+    private func clearSheetBackground() {
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+        guard let controller = windowScene.windows.first?.rootViewController?.presentedViewController else { return }
+        controller.view.backgroundColor = .clear
+    }
 
     private var monthTitle: String {
         currentDate.formatted(.dateTime.month().year())
@@ -197,6 +202,20 @@ struct ExerciseLog: View {
     }
 }
 
+struct LoadingView: View {
+    var body: some View {
+        ZStack {
+            Color.black.opacity(0.4).edgesIgnoringSafeArea(.all)
+            ProgressView("Loading...")
+                .progressViewStyle(CircularProgressViewStyle(tint: .white))
+                .foregroundColor(.white)
+                .padding()
+                .background(Color.gray.opacity(0.8))
+                .cornerRadius(10)
+        }
+    }
+}
+
 struct ExerciseLog_Previews: PreviewProvider {
     static var previews: some View {
         let context = PersistenceController.shared.container.viewContext
@@ -204,6 +223,11 @@ struct ExerciseLog_Previews: PreviewProvider {
         .environmentObject(UserSettings())
     }
 }
+
+
+
+
+
 
 
 

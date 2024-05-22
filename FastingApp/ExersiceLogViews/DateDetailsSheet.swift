@@ -12,7 +12,7 @@ import CoreData
 struct DateDetailsSheet: View {
     @Binding var isPresented: Bool
     @Environment(\.managedObjectContext) var viewContext
-    @EnvironmentObject var userSettings: UserSettings
+    @EnvironmentObject var userSettings: UserSettings//color status
     var markedDate: MarkedDate?
     var date: Date
     @State private var title: String = ""
@@ -20,21 +20,31 @@ struct DateDetailsSheet: View {
     @State private var selectedColor: String = "Red"
     
     let colorChoices = [
-        "Blue": Color("blueBack"),
-        "Red": Color.red,
-        "Yellow": Color.yellow,
-        "Green": Color.green,
-        "Pink": Color("PinkLink")
+        "Blue": Color("blueBack"), // Anpassad färg definierad i Assets.xcassets
+        "Red": Color.red,          // Standardfärg
+        "Yellow": Color.yellow,    // Standardfärg
+        "Green": Color.green,      // Standardfärg
+        "Pink": Color("PinkLink") // Anpassad färg definierad i Assets.xcassets
     ]
 
+    
+    
     var body: some View {
-        ZStack {
+        
+        
+        ZStack{
+            
             CustomBackground()
+            
+            
             VStack(spacing: 5) {
-                Text("Title")
+                
+                Text("Titel")
                     .font(.title2)
+                    
                     .foregroundStyle(.white)
                     .fontWeight(.bold)
+                
                 
                 TextField("Title", text: $title)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
@@ -43,15 +53,18 @@ struct DateDetailsSheet: View {
                 
                 Text("Note")
                     .font(.title2)
+    
                     .foregroundStyle(.white)
                     .fontWeight(.bold)
                 
                 TextEditor(text: $note)
-                    .frame(minHeight: 80, maxHeight: 100)
+                    .frame(minHeight: 80, maxHeight: 100) // Höjden anpassad för ungefär 5 rader
                     .cornerRadius(5)
-                    .padding(10)
-                    .background(RoundedRectangle(cornerRadius: 5).stroke(Color.gray, lineWidth: 0.1))
-                    .cornerRadius(5)
+                    .padding(10) // Mindre padding för att matcha TextField-stilen
+                    .background(RoundedRectangle(cornerRadius: 5).stroke(Color.gray, lineWidth: 0.1)) // Tunnare grå kant
+                    .cornerRadius(5) // Runda hörn för bakgrunden
+
+
                 
                 HStack {
                     ForEach(colorChoices.keys.sorted(), id: \.self) { colorName in
@@ -69,10 +82,15 @@ struct DateDetailsSheet: View {
                 }
                 .padding()
                 
+                
+                
+                
+                
                 Button("Save") {
                     saveData()
                     isPresented = false
                 }
+                
                 .fontWeight(.bold)
                 .padding(.horizontal, 24)
                 .padding(.vertical, 8)
@@ -80,10 +98,13 @@ struct DateDetailsSheet: View {
                 .cornerRadius(20)
                 .foregroundColor(.white)
                 
+                // Delete-knappen
                 if markedDate != nil {
                     Button("Delete") {
                         deleteMarkedDate()
                     }
+                    
+                    
                     .fontWeight(.bold)
                     .padding(.horizontal, 24)
                     .padding(.vertical, 8)
@@ -99,8 +120,8 @@ struct DateDetailsSheet: View {
                     selectedColor = existingData.color ?? "Red"
                 }
             }
-        }
-        .environment(\.colorScheme, .light)
+        }.environment(\.colorScheme, .light) // HårdK light mode
+        
     }
 
     private func saveData() {
@@ -120,6 +141,7 @@ struct DateDetailsSheet: View {
         }
     }
 
+
     private func deleteMarkedDate() {
         if let markedDateToDelete = markedDate {
             viewContext.delete(markedDateToDelete)
@@ -128,4 +150,7 @@ struct DateDetailsSheet: View {
         }
     }
 }
+
+
+
 

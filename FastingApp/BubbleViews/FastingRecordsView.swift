@@ -24,7 +24,7 @@ struct FastingRecordsView: View {
     var body: some View {
         ZStack {
             CustomBackground()
-
+            ScrollView {
             VStack {
                 Text("This lists all your fasting logs. To delete a list item, tap on it.")
                     .fontWeight(.thin)
@@ -65,6 +65,7 @@ struct FastingRecordsView: View {
                         .font(.title2)
                         .fontWeight(.bold)
                 }
+            }
             }
             .alert(isPresented: $showDeleteAlert) {
                 Alert(

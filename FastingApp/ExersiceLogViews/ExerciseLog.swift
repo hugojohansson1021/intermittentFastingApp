@@ -50,6 +50,8 @@ struct ExerciseLog: View {
         ZStack {
             CustomBackground()
             
+            ScrollView {
+            
             VStack(spacing: 25) {
                 Text("This lets you track every workout")
                     .font(.title3)
@@ -110,6 +112,7 @@ struct ExerciseLog: View {
                         .font(.title2)
                         .fontWeight(.bold)
                 }
+            }
             }
             .sheet(isPresented: $showingSheet) {
                 if let selectedDate = selectedDate, !isDataLoading {

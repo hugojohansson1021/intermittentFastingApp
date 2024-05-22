@@ -54,8 +54,11 @@ struct ExerciseLog: View {
             CustomBackground()
             
             VStack(spacing: 25) {
-                Text("Workout Logs").font(.title).foregroundStyle(.white)
-                Text("This lets you track every workout").font(.title3).foregroundStyle(.white)
+                
+                Text("This lets you track every workout")
+                    .font(.title3)
+                    .foregroundStyle(.white)
+                    .padding(.top)
 
                 HStack {
                     Button(action: previousMonth) {
@@ -107,6 +110,16 @@ struct ExerciseLog: View {
                 Text("Press on a date to logg your workout").font(.caption).foregroundStyle(.white)
                 Spacer()
                 Text("New features and updates will come in time").font(.footnote).foregroundStyle(.white)
+            }
+            .navigationTitle("Settings")
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .principal) {
+                    Text("Workout logs")
+                        .foregroundColor(.white)
+                        .font(.title2)
+                        .fontWeight(.bold)
+                }
             }
             .sheet(isPresented: $showingSheet) {
                         if isDataLoaded, let selectedDate = selectedDate {

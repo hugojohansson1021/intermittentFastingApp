@@ -69,13 +69,13 @@ struct ContentView: View {
             
             
             //MARK: Profile View bar
-            NavigationLink(destination: ProfilView()) {
-                Image(systemName: "transmission")
+            NavigationLink(destination: Ai()) {
+                Image(systemName: "text.bubble")
                     .imageScale(.large)
                     .foregroundColor(.white)
             }
             .buttonStyle(PlainButtonStyle())
-            .disabled(currentView == .profil)
+            .disabled(currentView == .ai)
 
             
             //MARK: Divider
@@ -324,16 +324,17 @@ struct ContentView: View {
                 }
                 
                 
-                //MARK: Ai GPT View Bubble
                 
-                NavigationLink(destination: Ai()) {
+                //MARK: Settings  View Bubble
+                
+                NavigationLink(destination: ProfilView()) {
                     HStack {
                         
-                        Image(systemName: "text.bubble" )
+                        Image(systemName: "transmission" )
                             .imageScale(.large)
                             .foregroundColor(.white)
 
-                        Text("FastingGPT")
+                        Text("Settings")
                             .foregroundColor(.white)
                             .font(.title)
                     }
